@@ -1,0 +1,12 @@
+[
+  { "from": "/102-2", "to": "/contact" },
+  { "from": "/102-2/", "to": "/contact" },
+  { "from": "/about-2", "to": "/about" },
+  { "from": "/about-2/", "to": "/about" },
+  { "from": "/travel-information", "to": "/venue" },
+  { "from": "/travel-information/", "to": "/venue" },
+  { "from": "/exhibitor-list", "to": "/exhibitors/list" },
+  { "from": "/exhibitor-list/", "to": "/exhibitors/list" },
+  { "from": "/go-travel-show-2019-review", "to": "/2019-review" },
+  { "from": "/go-travel-show-2019-review/", "to": "/2019-review" }
+]

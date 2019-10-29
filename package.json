@@ -1,0 +1,34 @@
+{
+  "name": "northern-travel-show",
+  "version": "1.0.0",
+  "description": "Northern Travel and Tourism Show",
+  "homepageURL": "https://www.northerntravel.show",
+  "author": "Jonathan Ingram",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.5.4",
+    "bezier-easing": "^2.1.0",
+    "cross-env": "^5.2.0",
+    "dayjs": "^1.8.14",
+    "leaflet": "^1.5.1",
+    "nuxt": "^2.8.1",
+    "nuxt-leaflet": "0.0.19",
+    "vue-scrollto": "^2.15.0",
+    "vue2-google-maps": "^0.10.6",
+    "vue2-leaflet": "^2.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "dotenv": "^7.0.0",
+    "glob-all": "^3.1.0",
+    "nodemon": "^1.18.9",
+    "purgecss-webpack-plugin": "^1.4.0",
+    "tailwindcss": "^0.7.4"
+  }
+}
