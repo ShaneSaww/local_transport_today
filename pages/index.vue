@@ -2,10 +2,17 @@
   <div>
     <page-header :displayHero="displayHero" />
     <!--<h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today</nuxt-link></h1>-->
-    <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-12">
+    <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <article class="mt-10 mx-4 max-w-sm md:max-w-lg">
+        <aside role="complementary">
+          <h4 id="continue-discussion-title" class="ltt-text-gray mt-6 mb-4 pr-1 md:mb-6 font-sans font-light md:font-medium text-base block md:inline-block">Continuing the discussion of:</h4>
+          <ul aria-labelledby="continue-discussion-title" class="pl-0 mb-8 md:mb-0 list-none block md:inline-block">
+            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Junction layouts</a></li>
+            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Pedestrians</a></li>
+          </ul>
+        </aside>
         <h1 class="font-sans font-extrabold leading-tight ltt-text-red mb-4 text-4xl md:text-6xl lg:mt-0">Re-think of side road junction layouts needed to ensure priority for pedestrians</h1>
-        <h2 class="ltt-text-gray my-6 font-sans font-light md:font-medium leading-loose md:leading-normal text-base"><span class="block md:inline">Viewpoint by <a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Lucy Marstrand</a></span> <span class="opacity-25 hidden md:inline md:px-2">|</span> <time class="block md:inline" pubdate="pubdate" datetime="2019-09-11">11&nbsp;October&nbsp;2019</time> <span class="opacity-25 hidden md:inline md:px-2">|</span> <span class="block md:inline">Featured&nbsp;inside&nbsp;<abbr title="Local Transport Today">LTT</abbr>&nbsp;issue&nbsp;№&nbsp;783</span></h2>
+        <h2 class="ltt-text-gray my-6 font-sans font-light md:font-medium leading-loose md:leading-normal text-base"><span class="block md:inline">Viewpoint by <a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Lucy Marstrand</a></span> <span class="opacity-25 hidden md:inline md:px-2">|</span> <time class="block md:inline" pubdate="pubdate" datetime="2019-09-11">11&nbsp;October&nbsp;2019</time> <span class="opacity-25 hidden md:inline md:px-2">|</span> <span class="block md:inline">Featured&nbsp;inside&nbsp;<abbr title="Local Transport Today">LTT</abbr>&nbsp;issue&nbsp;№&nbsp;783</span></h2>
         <div class="dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl">
           <p class="highlight-first-line">The other day I saw a heavily pregnant woman walking across a side road junction. About a third of the way across, a motorcyclist turning off the main road beeped her out the way, and she managed to step back just in time. I saw a similar incident earlier the same day. A woman with a pushchair crossing the side road, quickly reversed back onto the footway as an HGV turned into the side road, the driver again assuming priority.</p>
 

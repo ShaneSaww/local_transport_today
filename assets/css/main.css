@@ -27,6 +27,13 @@ body {
   background: linear-gradient(to bottom, #f7eef1, #ffffff);
 }
 
+@media only screen and (prefers-color-scheme: dark) {
+  body {
+    background-image: none;
+    background-color: #201e22;
+  }
+}
+
 .sr-only {
   border: 0;
   clip: rect(0, 0, 0, 0);
@@ -64,7 +71,8 @@ abbr, abbr[title] {
 
 .ltt-header {
   background-color: rgba(255,255,255,0.95);
-  border-bottom: solid 1px #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  /*box-shadow: 0 0 5px rgba(0,0,0,0.07);*/
 }
 
 @supports (backdrop-filter: blur(5px)) {
@@ -74,12 +82,32 @@ abbr, abbr[title] {
   }
 }
 
+@media only screen and (prefers-color-scheme: dark) {
+  .ltt-header {
+    font-weight: 100;
+    border-bottom: 1px solid #2f2d31;
+    background-color: rgba(0,0,0,0.95);
+  }
+
+  @supports (backdrop-filter: blur(5px)) {
+    .ltt-header {
+      background-color: rgba(0,0,0,0.7);
+    }
+  }
+}
+
 .menu-header a {
   position: relative;
   padding: 10px;
   background-color: transparent;
   text-decoration: none;
   color: #333;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .menu-header a {
+    color: #e0e1e3;
+  }
 }
 
 .menu-header a:hover, .menu-header a:focus {
@@ -266,16 +294,40 @@ abbr, abbr[title] {
     color: #333;
   }
 
+  @media only screen and (prefers-color-scheme: dark) {
+    .text-gray-333 {
+      color: #aeadae;
+    }
+  }
+
   .border-gray-333 {
     border-color: #333;
+  }
+
+  @media only screen and (prefers-color-scheme: dark) {
+    .border-gray-333 {
+      border-color: #aeadae;
+    }
   }
 
   .bg-gray-333 {
     background-color: #333;
   }
 
+  @media only screen and (prefers-color-scheme: dark) {
+    .bg-gray-333 {
+      background-color: #aeadae;
+    }
+  }
+
   .border-light-gray {
     border-color: #e4e4e4;
+  }
+
+  @media only screen and (prefers-color-scheme: dark) {
+    .border-light-gray {
+      border-color: #2f2d31;
+    }
   }
 
   .text-shadow {
@@ -342,12 +394,24 @@ abbr, abbr[title] {
   }
 }
 
+.content-text-spacing p:first-child {
+  border-left: 1rem solid #c21136;
+  padding-left: 1rem;
+  margin-left: -2rem;
+}
+
 .content-text-spacing p {
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .content-text-spacing p:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .content-text-spacing {
+    font-weight: 100;
+  }
 }
 
 .content-text-spacing blockquote {
