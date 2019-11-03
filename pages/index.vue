@@ -60,13 +60,21 @@
 
           <p>There are four elements of side-road junction design which indicate who has priority:</p>
 
-          <p>1. Kerb-line. If it follows the turning path of the motorist, the kerb line creates a clear visual clue that movement of drivers takes priority over the direction of travel of those proceeding on foot.</p>
+          <h3>1. Kerb-line</h3>
 
-          <p>2. Give-way markings. If they are on the edge of the main carriageway, for the convenience of the driver, it means pedestrians end up walking around the back of vehicles turning out of the side road (see Figure 3). It sends a message that the pedestrians desire line is secondary to the drivers.</p>
+          <p>If it follows the turning path of the motorist, the kerb line creates a clear visual clue that movement of drivers takes priority over the direction of travel of those proceeding on foot.</p>
 
-          <p>3. Levels. Are they designed for the ease, comfort and priority of the pedestrian or the motorist?</p>
+          <h3>2. Give-way markings</h3>
 
-          <p>4. Last and most important: Territory. In the images of junction design, in all three examples, the space between the footway is carriage-way for drivers, not a priority space for those on foot. The side road junction is a space which must be crossed and negotiated while ceding to turning drivers. It is all vehicle territory.</p>
+          <p>If they are on the edge of the main carriageway, for the convenience of the driver, it means pedestrians end up walking around the back of vehicles turning out of the side road (see Figure 3). It sends a message that the pedestrians desire line is secondary to the drivers.</p>
+
+          <h3>3. Levels</h3>
+
+          <p> Are they designed for the ease, comfort and priority of the pedestrian or the motorist?</p>
+
+          <h3>4. Last and most important: Territory</h3>
+
+          <p>In the images of junction design, in all three examples, the space between the footway is carriage-way for drivers, not a priority space for those on foot. The side road junction is a space which must be crossed and negotiated while ceding to turning drivers. It is all vehicle territory.</p>
 
           <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
             <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">

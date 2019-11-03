@@ -507,6 +507,10 @@ abbr, abbr[title] {
   margin-bottom: 0;
 }
 
+.content-text-spacing h3 {
+  margin-bottom: 1rem;
+}
+
 @media only screen and (prefers-color-scheme: dark) {
   .content-text-spacing {
     font-weight: 100;
