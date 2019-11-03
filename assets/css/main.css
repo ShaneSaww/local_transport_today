@@ -917,7 +917,7 @@ pre {
     padding-top: 0;
   }
 
-  #main h2 {
+  #main h2, #main h3 {
     page-break-after: avoid; /* Prevents page-breaks right after these elements, because that looks odd */
   }
 
