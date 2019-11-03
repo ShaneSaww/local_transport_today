@@ -915,6 +915,7 @@ pre {
 
   #main {
     padding-top: 0;
+    display: block !important; /* Flexbox causes problems with the 'page-break-inside' print setting */
   }
 
   #main h2, #main h3 {
@@ -923,5 +924,17 @@ pre {
 
   #main figure, #main aside, #main blockquote, #main p {
     page-break-inside: avoid; /* Avoid page-breaks inside these elements */
+  }
+
+  .content-text-spacing p {
+    font-size: 1.5rem !important;
+  }
+
+  article {
+    max-width: 100% !important;
+  }
+
+  article aside h4, article aside ul {
+    display: inline-block !important;
   }
 }
