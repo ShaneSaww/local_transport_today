@@ -909,10 +909,6 @@ pre {
     background-color: #ffffff;
   }
 
-  #header, #footer, .no-print {
-    display: none;
-  }
-
   #main {
     padding-top: 0;
     display: block !important; /* Flexbox causes problems with the 'page-break-inside' print setting */
@@ -936,5 +932,9 @@ pre {
 
   article aside h4, article aside ul {
     display: inline-block !important;
+  }
+
+  #header, #footer, .no-print {
+    display: none !important;
   }
 }
