@@ -7,88 +7,83 @@
         <aside role="complementary">
           <h4 id="continue-discussion-title" class="ltt-text-gray mt-6 mb-4 pr-1 md:mb-6 font-sans font-light md:font-medium text-base block md:inline-block">Continuing the discussion of:</h4>
           <ul aria-labelledby="continue-discussion-title" class="pl-0 mb-8 md:mb-0 list-none block md:inline-block">
-            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Junction layouts</a></li>
-            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Pedestrians</a></li>
+            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Technologies</a></li>
+            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Communication</a></li>
+            <li class="pr-2 inline-block"><a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Electric Vehicles</a></li>
           </ul>
         </aside>
-        <h1 class="font-sans font-extrabold leading-tight md:leading-tighter ltt-text-red mb-4 text-4xl md:text-6xl lg:mt-0">Re-think of side road junction layouts needed to ensure priority for pedestrians</h1>
+        <h1 class="font-sans font-extrabold leading-tight md:leading-tighter ltt-text-red mb-4 text-4xl md:text-6xl lg:mt-0">Driving change: travel in the 21<sup>st</sup> century</h1>
         <aside role="complementary">
           <h4 id="article-meta-title" class="sr-only no-print">Article information:</h4>
           <ul aria-labelledby="article-meta-title" class="ltt-text-gray font-sans font-light md:font-medium leading-loose md:leading-normal text-base pl-0 my-6 list-none">
-            <li class="pr-8 inline-block">Viewpoint by <a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Lucy Marstrand</a></li>
-            <li class="pr-8 inline-block">11 Oct 2019</li>
-            <li class="pr-8 inline-block">5 min read</li>
-            <li class="inline-block">Featured inside <abbr title="Local Transport Today">LTT</abbr> issue № 783</li>
+            <li class="pr-8 inline-block">Viewpoint by <a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Phil Goodwin</a></li>
+            <li class="pr-8 inline-block">14 Nov 2019</li>
+            <li class="pr-8 inline-block">8 min read</li>
+            <li class="inline-block">Featured inside <abbr title="Local Transport Today">LTT</abbr> issue № 780</li>
           </ul>
         </aside>
         <!--<h2 class="ltt-text-gray my-6 font-sans font-light md:font-medium leading-loose md:leading-normal text-base"><span class="block md:inline">Viewpoint by <a class="ltt-text-red underline hover:no-underline focus:no-underline" href="#">Lucy Marstrand</a></span> <span class="opacity-25 hidden md:inline md:px-2">|</span> <time class="block md:inline" pubdate="pubdate" datetime="2019-09-11">11&nbsp;October&nbsp;2019</time> <span class="opacity-25 hidden md:inline md:px-2">|</span> <span class="block md:inline">Featured&nbsp;inside&nbsp;<abbr title="Local Transport Today">LTT</abbr>&nbsp;issue&nbsp;№&nbsp;783</span></h2>-->
         <div class="dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">
-          <p class="highlight-first-line">The other day I saw a heavily pregnant woman walking across a side road junction. About a third of the way across, a motorcyclist turning off the main road beeped her out the way, and she managed to step back just in time. I saw a similar incident earlier the same day. A woman with a pushchair crossing the side road, quickly reversed back onto the footway as an HGV turned into the side road, the driver again assuming priority.</p>
+          <p class="highlight-first-line">There is a clever – I assume deliberate – ambiguity in the title of <em>David Metz’s</em> new book, <em>Driving Change</em>. It can mean that driving will change, due to the conditions of travel and the availability of new technologies. Or it can be a description of deliberate intervention, in the sense of a new <abbr title="Chief Executive Officer">CEO</abbr> or Prime Minister saying that his mission will be to drive change in the culture and practices of his company or country.</p>
 
-          <p>This scenario is no doubt repeated a thousand times a day across the UK. The least powerful giving way to the most powerful.</p>
+          <p>The first meaning calls for analytical research, and the second for a manifesto. The two, however, do interact.</p>
 
-          <p>Highway Code Rule 170 says drivers should “watch out for pedestrians crossing a road into which you are turning. If they have started to cross they have priority, so give way”. But who’s going to argue with a turning motorist?</p>
+          <p>Analysis without prescription can be sterile, and prescription without analysis likely to be ill-judged, short-lived, and beset by grievous errors of strategy and direction. Nor, however, does analysis guarantee good outcomes: some of the worst mistakes in transport investment have been supported by huge volumes of forecasts and surveys and studies, confidently published with little recognition of their inconsistencies and errors.</p>
 
-          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8" role="complementary">
-            <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
-              The way we design our side roads has a huge impact on the lives (and deaths) of people walking.
-            </blockquote>
-          </aside>
+          <p><em>Metz’s</em> own role is – he says firmly, on page 3 of the Introduction – “as an analyst rather than an advocate…my aim is to tease out the features common to the developed economies generally, and also to see if developing countries may be able to avoid some of the shortcomings of high-car-ownership societies”.</p>
 
-          <p>The side road is probably the most important aspect of highways design to get right. If people can’t proceed along a footway swiftly, in comfort and safety, then walking from A to B is severely limited.</p>
-
-          <p>The way we design our side roads has a huge impact on the lives (and deaths) of people walking. Yet standard UK side road design makes us wait, give way or walk round, marginalising those on foot.</p>
-
-          <p>Traffic remains the leading cause of death for children aged 5 to 19 in the UK (J Read, iWalk, 2017). And that’s just road danger, not pollution. Many of these deaths occur at side road junctions. British children are more likely to be killed than French or Dutch children even though they have less exposure to traffic and cross roads less frequently (Pedestrians and Cyclists, European Commission, 2018).</p>
-
-          <figure class="bg-light-gray mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0">
-            <img class="max-w-full border border-solid border-light-gray" src="~assets/img/map2.png" alt="Map of London" title="Map of London" />
-            <figcaption class="ltt-text-gray pt-1 md:pt-0 pb-2 pl-4 pr-4 text-base font-sans border-b border-solid border-light-gray">An overhead view of the City of London</figcaption>
-          </figure>
-
-          <p>Our failure to ensure side road priority leaves pedestrians at the mercy of turning drivers. Children are less able to judge speeds or make eye contact to negotiate with drivers in the way adults do. Children, those who are slower, older, less able-bodied, or encumbered with shopping – are all left to fend for themselves because of highways convention.</p>
-
-          <p>Pictured right are three examples of standard side road – none of these designs are neutral. They all undermine Rule 170 by giving priority to the car.</p>
-
-          <p>In Figure 1, the pedestrian pushing a pushchair deviates to cross at a less hostile, narrower point. Note how the tactiles in this case become academic.</p>
-
-          <p>Figure 2 shows a refuge – a feature that does nothing to give priority, and leaves people stranded between two streams of moving, polluting traffic.</p>
-
-          <p>In Figure 3, engineers have tightened the corner radii, introduced granite setts, and included a raised table to “encourage drivers to slow down”. Despite theses changes, the design (or visual) priority remains with the turning traffic, in part due to the kerb line and double yellows which follow the line of travel taken by a driver.</p>
-
-          <p>So, why is poor side-road design the norm? We don’t have to leave it to the whim of the driver as to whether they give way. Highways engineers have it in their gift to ensure drivers cede to pedestrians.</p>
-
-          <p>There are four elements of side-road junction design which indicate who has priority:</p>
-
-          <h3>1. Kerb-line</h3>
-
-          <p>If it follows the turning path of the motorist, the kerb line creates a clear visual clue that movement of drivers takes priority over the direction of travel of those proceeding on foot.</p>
-
-          <h3>2. Give-way markings</h3>
-
-          <p>If they are on the edge of the main carriageway, for the convenience of the driver, it means pedestrians end up walking around the back of vehicles turning out of the side road (see Figure 3). It sends a message that the pedestrians desire line is secondary to the drivers.</p>
-
-          <h3>3. Levels</h3>
-
-          <p> Are they designed for the ease, comfort and priority of the pedestrian or the motorist?</p>
-
-          <h3>4. Last and most important: Territory</h3>
-
-          <p>In the images of junction design, in all three examples, the space between the footway is carriage-way for drivers, not a priority space for those on foot. The side road junction is a space which must be crossed and negotiated while ceding to turning drivers. It is all vehicle territory.</p>
+          <p>The book is about one-third on the stresses built up to 20<sup>th</sup> century travel, and two-thirds on 21<sup>st</sup> century technologies, primarily the impact of digital communications, electric vehicles, and autonomous operations.</p>
 
           <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
             <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
-              The side road is probably the most important aspect of highways design to get right.
+              Analysis without prescription can be sterile, and prescription without analysis is likely to be ill-judged, short-lived, and beset by grievous errors of strategy and direction.
             </blockquote>
           </aside>
 
-          <p>There are two solutions that give some territory back to pedestrians. First, a continuous footway that gives clear visual priority to people walking – used to great effect as standard practice for decades in places like Copenhagen. While some disability groups have called for them to be used more widely, others have expressed concern that tactiles are needed to make people aware it’s a crossing point. But a well-designed continuous footway isn’t a crossing point for the pedestrian, it’s footway space that drivers have the privilege to cross.</p>
+          <p>There is a style running through both parts that is actually now quite rare in transport discussions, which I would describe as a campaign against exaggeration. <em>Metz’s</em> voice is moderate, calm, thoughtful, polite to just about everybody. He has read the reports from the <abbr title="Department for Transport">DfT</abbr>, consultants, motor industries, campaigners and lobbyists, and provides 15 pages of closely packed endnotes and references, paying attention to most of the serious voices on nearly all sides of the arguments, and treats them with courtesy and patience – more, I must admit, than I sometimes do. There is indeed an implied criticism – though he never actually says so – of those who too quickly reject the arguments or studies of their opponents. From this point of view the book would be an ideal introductory textbook both in style and breadth. It encourages an intellectual inclusiveness leading to a model of modest scepticism.</p>
 
-          <p>A second option is a side road zebra that gives legal priority to people walking. (And I mean zebras on the desire line of those walking, not set back to a point that’s convenient for turning drivers):</p>
+          <p>In some of his earlier work, <em>Metz</em> has become known for a rather more direct criticism, almost a campaign, of what had become the orthodoxy of forecasts of almost unlimited road traffic growth, especially those of his former employers, the <em>Department for Transport</em>. (He had been <em>Chief Scientist</em> of the <abbr title="Department for Transport">DfT</abbr>). These forecasts, and the policies of continued attempts to provide sufficient road provision to cope with them, had of course long been controversial. <em>Metz’s</em> criticism was largely based on two points:</p>
 
-          <p>Walking should be the easiest, most fundamental and inclusive method of travel. A well-designed side road can save lives. It affords children independence by offering them some priority over adults in cars. The Highway Code is being reviewed. I hope it will see a strengthening the rights of pedestrians. Unless highway design starts to comprehensively prioritise those on foot, the renewed Highway Code will be ineffective too.</p>
+          <p>First, the amount of time spent travelling was roughly constant over many years, increased speeds taken up in longer distance travel, so ‘time savings’ were an unhelpful concept, and traffic growth was bounded. Secondly, he suggested a simple explanation for the fact that traffic growth had indeed slowed and stabilised: people now were able to carry on their daily lives and had no need, in total, to travel more and more.</p>
 
-          <p>Side road zebras and continuous footways need to be rolled out on all urban side roads to become, not the exception, but the norm.</p>
+          <p>Both these propositions can be criticised, and their nuances are quite profound, but overall they chimed with a common sense interpretation of the experience of many people, and while they never became the core of any official forecasts, they still helped to generate a caution about relying on the idea of a ‘most probable’ trajectory of ever-increasing traffic volumes.</p>
+
+          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+            <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
+              The book would be an ideal introductory textbook both in style and breadth. It encourages an intellectual inclusiveness leading to a model of modest scepticism.
+            </blockquote>
+          </aside>
+
+          <!--<aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+            <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
+              A missing element is the way in which discussions of transport policy must now take place with a very much greater influence of environmental constraints than has ever been the case before. The idea that we do in fact need radical, fast, transformational change in travel behaviour…is a much bigger challenge to the idea that travel would continue much as before.
+            </blockquote>
+          </aside>-->
+
+          <p>So his discussion of travel in the 20<sup>th</sup> century leads to the conclusion “Growth of travel per person in the developed countries has ceased…and seems unlikely to resume’. But there have been new experiences which mean that “travel behaviour may be more open to modification through intervention than usually supposed, whether by means of policy measures or investment”.</p>
+
+          <p>Or, perhaps, from new technologies, which is the main focus of the book. His take on these is cautious, with a recognition of the potential for very big changes both positive and negative, which will need to be balanced. His overall conclusion will be surprising to some: “Generally, these new technologies seem unlikely to have much impact on the average speed of travel. They will therefore not lead to transformational or disruptive changes in how we travel”.</p>
+
+          <p>There are caveats to this, of course, but according to <em>Metz</em> exceptions will be in “limited markets, with little impact on the average speed of travel”. Life will, in many ways, proceed much as it has done, with potential improvements in reliability and interchange.</p>
+
+          <p>“More analytical rigour to counter unwarranted optimism would help avoid wasted effort and expenditure,” he writes. Overall, “the present challenge for transport policy – as this develops in debate involving politicians, the range of interested parties and the travelling public – is to take advantage of new technologies to achieve better means of travel for an improved quality of life. And because the transport system is for everyone – old and young, rich and poor, rural and urban – we need to balance the requirements of transport businesses with societal needs to help achieve more equitable outcomes”.</p>
+
+          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+            <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
+              Some of the worst mistakes in transport investment have been supported by huge volumes of forecasts, surveys and studies, confidently published with little recognition of their inconsistencies and errors.
+            </blockquote>
+          </aside>
+
+          <p>I take <em>David Metz</em> as a serious thinker in transport policy, and I respect the work he has done to come to these conclusions. But for me there are two important aspects missing in the approach, which would have implications for the analysis and its results.</p>
+
+          <p>First, there is little sense of transport policy as a battleground, with on occasion irreconcilable differences. Sometimes, as David discusses, this is a question of ‘balance’supervised by honest and scientifically informed local and national authorities. But sometimes the clash of vested interest, of divided loyalties and motives, and conflicting aspirations, means that the resolution is not at all in the best interests of equity or efficiency, but of power. He notes the omission of Brexit from his discussion, and justifies this because the problems discussed will be the same whatever the outcome of Brexit. I think that’s right. But what we have learned from Brexit is how difficult it is to achieve a balanced outcome in the interests of all, as anger rises. This is a frequent problem for transport also.</p>
+
+          <p>And the second missing element is the way in which discussions of transport policy must now take place with a very much greater influence of environmental constraints and objectives than has ever been the case before. There are a couple of pages on sustainability in the context of electric vehicles (which would reduce the problems if not solve them). But the idea that we do in fact need radical, fast, transformational change in travel behaviour, going far beyond what can be delivered by electric vehicles, is a much bigger challenge to the idea that travel would continue much as before. This will change everything.</p>
+
+          <p>By the way, cover illustrations count. I will definitely not reproduce it here, but I do wish that publishers would stop using really silly images of the ‘technical future’. Not <em>David Metz’s</em> fault, I’m sure.</p>
+
+          <p><em><a href="https://www.agendapub.com/books/78/driving-change">Driving Change: Travel in the Twenty-First Century</a> by David Metz, is published by Agenda Publishing.</em></p>
+
         </div>
         <div class="no-print border-t border-solid border-light-gray mt-8 py-4 flex flex-row justify-between">
           <aside role="complementary">
@@ -126,19 +121,19 @@
         <aside role="complementary" class="flex flex-col md:flex-row md:justify-between md:flex-row-reverse border-t border-solid border-light-gray py-8 px-6">
           <div class="md:w-1/3">
             <figure class="">
-              <img class="notch max-w-full" src="~assets/img/lucy_marstrand.jpg" alt="Lucy Marstrand" title="Lucy Marstrand" />
+              <img class="notch max-w-full" src="~assets/img/phil_goodwin.jpg" alt="Phil Goodwin" title="Phil Goodwin" />
             </figure>
           </div>
           <div class="md:w-2/3">
-            <h2 class="mb-8 mt-3 md:mt-0 text-center text-xl md:text-2xl md:text-left"><span class="sr-only">Author: </span><a class="red-block block md:inline-block" href="#">Lucy Marstrand</a></h2>
-            <p class="font-serif text-gray-333 leading-normal text-base md:text-xl md:pl-2 md:pr-8">Lucy Marstrand is a transport planning consultant specialising in walking, cycling and traffic reduction. She is a member of the DfT’s Cycling &amp; Walking Infrastructure Group and Road Danger Reduction Forum.</p>
-            <h4 id="author-social-media-title" class="sr-only no-print">Contact Lucy Marstrand:</h4>
+            <h2 class="mb-8 mt-3 md:mt-0 text-center text-xl md:text-2xl md:text-left"><span class="sr-only">Author: </span><a class="red-block block md:inline-block" href="#">Phil Goodwin</a></h2>
+            <p class="font-serif text-gray-333 leading-normal text-base md:text-xl md:pl-2 md:pr-8">Phil Goodwin is emeritus professor of transport policy at both the Centre for Transport and Society, University of the West of England, Bristol, and University College London.</p>
+            <h4 id="author-social-media-title" class="sr-only no-print">Contact Phil Goodwin:</h4>
             <ul aria-labelledby="author-social-media-title" class="no-print pl-0 md:pl-2 pt-4 list-none inline-block">
               <li class="block md:inline-block mb-4 md:mb-0 mr-6">
-                <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" target="_blank" rel="noopener noreferrer" href="#"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 229.66 229.66" xmlns="http://www.w3.org/2000/svg"><g transform="translate(288.87 -28.254)"><path d="m-272.85 223.12c-7.2498-1.0772-13.345-6.668-15.407-14.132-0.58413-2.1145-0.62245-6.1736-0.62245-65.93 0-59.756 0.0383-63.815 0.62245-65.93 1.7586-6.3659 6.1622-11.131 12.394-13.411l2.5054-0.91663h99.131c95.225 0 99.213 0.0255 101.23 0.64847 6.2047 1.9145 10.844 6.3943 12.958 12.514l0.81552 2.3602v64.735c0 62.538-0.0226 64.801-0.66614 66.675-1.1473 3.3418-2.2684 5.2105-4.6238 7.7074-2.3674 2.5095-4.8337 4.0632-8.292 5.2235-1.8662 0.62615-5.6859 0.65284-100.01 0.69895-53.94 0.0264-98.955-0.0833-100.03-0.24362zm190.07-13.614c0.19708-0.59124-59.382-55.158-60.225-55.158-0.38921 0-2.9064 2.0073-5.7798 4.6091-6.1944 5.6087-8.1328 7.0839-11.33 8.6224-4.1295 1.9872-7.1915 2.6937-12.524 2.8894-5.9672 0.21905-10.066-0.53215-14.666-2.6876-3.7642-1.764-5.2439-2.8654-11.616-8.6466-2.7164-2.4645-5.2149-4.6337-5.5522-4.8205-0.49798-0.2757-1.2607 0.24913-4.0569 2.7916-26.314 23.925-56.385 51.778-56.473 52.307-0.11093 0.66408 1.4133 0.67391 90.987 0.58653 68.112-0.0665 91.134-0.19093 91.235-0.49334zm-161.92-37.516c16.254-15.132 29.599-27.803 29.657-28.157 0.12807-0.79099-58.526-54.08-59.791-54.322l-0.81453-0.1557v55.074c0 54.648 5e-3 55.074 0.69829 55.074 0.43728 0 11.744-10.284 30.251-27.514zm172.38 26.72c0.28114-1.0491 0.27639-107.45-5e-3 -108.5-0.14339-0.53533-0.43734-0.77588-0.8622-0.70556-0.35454 0.0587-13.55 11.805-29.323 26.103-33.573 30.434-30.688 27.762-30.529 28.275 0.23528 0.7557 59.346 55.611 59.93 55.615 0.31691 2e-3 0.67194-0.35334 0.78893-0.78991zm-98.203-43.061c2.2997-0.9474 5.4392-3.0314 8.5776-5.694 6.7422-5.7198 79.458-72.667 79.553-73.242 0.11114-0.67151-1.1783-0.68112-91.437-0.68112-60.495 0-91.623 0.11936-91.767 0.35187-0.11961 0.19353 0.46633 1.0525 1.3021 1.9088 1.2132 1.243 64.175 58.91 75.684 69.319 6.3648 5.7566 11.472 8.8615 14.549 8.8454 0.87859-5e-3 2.4706-0.36806 3.5377-0.80769z"/></g></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Email</span></a>
+                <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" target="_blank" rel="noopener noreferrer" href="mailto:philinelh@yahoo.com"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 229.66 229.66" xmlns="http://www.w3.org/2000/svg"><g transform="translate(288.87 -28.254)"><path d="m-272.85 223.12c-7.2498-1.0772-13.345-6.668-15.407-14.132-0.58413-2.1145-0.62245-6.1736-0.62245-65.93 0-59.756 0.0383-63.815 0.62245-65.93 1.7586-6.3659 6.1622-11.131 12.394-13.411l2.5054-0.91663h99.131c95.225 0 99.213 0.0255 101.23 0.64847 6.2047 1.9145 10.844 6.3943 12.958 12.514l0.81552 2.3602v64.735c0 62.538-0.0226 64.801-0.66614 66.675-1.1473 3.3418-2.2684 5.2105-4.6238 7.7074-2.3674 2.5095-4.8337 4.0632-8.292 5.2235-1.8662 0.62615-5.6859 0.65284-100.01 0.69895-53.94 0.0264-98.955-0.0833-100.03-0.24362zm190.07-13.614c0.19708-0.59124-59.382-55.158-60.225-55.158-0.38921 0-2.9064 2.0073-5.7798 4.6091-6.1944 5.6087-8.1328 7.0839-11.33 8.6224-4.1295 1.9872-7.1915 2.6937-12.524 2.8894-5.9672 0.21905-10.066-0.53215-14.666-2.6876-3.7642-1.764-5.2439-2.8654-11.616-8.6466-2.7164-2.4645-5.2149-4.6337-5.5522-4.8205-0.49798-0.2757-1.2607 0.24913-4.0569 2.7916-26.314 23.925-56.385 51.778-56.473 52.307-0.11093 0.66408 1.4133 0.67391 90.987 0.58653 68.112-0.0665 91.134-0.19093 91.235-0.49334zm-161.92-37.516c16.254-15.132 29.599-27.803 29.657-28.157 0.12807-0.79099-58.526-54.08-59.791-54.322l-0.81453-0.1557v55.074c0 54.648 5e-3 55.074 0.69829 55.074 0.43728 0 11.744-10.284 30.251-27.514zm172.38 26.72c0.28114-1.0491 0.27639-107.45-5e-3 -108.5-0.14339-0.53533-0.43734-0.77588-0.8622-0.70556-0.35454 0.0587-13.55 11.805-29.323 26.103-33.573 30.434-30.688 27.762-30.529 28.275 0.23528 0.7557 59.346 55.611 59.93 55.615 0.31691 2e-3 0.67194-0.35334 0.78893-0.78991zm-98.203-43.061c2.2997-0.9474 5.4392-3.0314 8.5776-5.694 6.7422-5.7198 79.458-72.667 79.553-73.242 0.11114-0.67151-1.1783-0.68112-91.437-0.68112-60.495 0-91.623 0.11936-91.767 0.35187-0.11961 0.19353 0.46633 1.0525 1.3021 1.9088 1.2132 1.243 64.175 58.91 75.684 69.319 6.3648 5.7566 11.472 8.8615 14.549 8.8454 0.87859-5e-3 2.4706-0.36806 3.5377-0.80769z"/></g></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Email</span></a>
               </li>
               <li class="block md:inline-block mb-4 md:mb-0 mr-6">
-                <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" target="_blank" rel="noopener noreferrer" href="#"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Twitter</span></a>
+                <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" target="_blank" rel="noopener noreferrer" href="https://twitter.com/phil_goodwin99"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Twitter</span></a>
               </li>
               <!--<li class="block md:inline-block mb-4 md:mb-0">
                 <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" target="_blank" rel="noopener noreferrer" href="#"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">LinkedIn</span></a>
