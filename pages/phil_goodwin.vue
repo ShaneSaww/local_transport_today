@@ -34,7 +34,7 @@
 
           <p>The book is about one-third on the stresses built up to 20<sup>th</sup> century travel, and two-thirds on 21<sup>st</sup> century technologies, primarily the impact of digital communications, electric vehicles, and autonomous operations.</p>
 
-          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8" role="complementary">
             <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
               Analysis without prescription can be sterile, and prescription without analysis is likely to be ill-judged, short-lived, and beset by grievous errors of strategy and direction.
             </blockquote>
@@ -48,7 +48,7 @@
 
           <p>Both these propositions can be criticised, and their nuances are quite profound, but overall they chimed with a common sense interpretation of the experience of many people, and while they never became the core of any official forecasts, they still helped to generate a caution about relying on the idea of a ‘most probable’ trajectory of ever-increasing traffic volumes.</p>
 
-          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8" role="complementary">
             <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
               The book would be an ideal introductory textbook both in style and breadth. It encourages an intellectual inclusiveness leading to a model of modest scepticism.
             </blockquote>
@@ -68,7 +68,7 @@
 
           <p>“More analytical rigour to counter unwarranted optimism would help avoid wasted effort and expenditure,” he writes. Overall, “the present challenge for transport policy – as this develops in debate involving politicians, the range of interested parties and the travelling public – is to take advantage of new technologies to achieve better means of travel for an improved quality of life. And because the transport system is for everyone – old and young, rich and poor, rural and urban – we need to balance the requirements of transport businesses with societal needs to help achieve more equitable outcomes”.</p>
 
-          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8 lg:mr-0" role="complementary">
+          <aside class="notch bg-light-gray p-8 mb-6 lg:max-width-28 lg:float-right lg:-mr-20 lg:ml-8" role="complementary">
             <blockquote class="ml-12 pl-2 ltt-text-gray font-serif italic">
               Some of the worst mistakes in transport investment have been supported by huge volumes of forecasts, surveys and studies, confidently published with little recognition of their inconsistencies and errors.
             </blockquote>
@@ -118,13 +118,13 @@
             </ul>
           </aside>
         </div>
-        <aside role="complementary" class="flex flex-col md:flex-row md:justify-between md:flex-row-reverse border-t border-solid border-light-gray py-8 px-6">
-          <div class="md:w-1/3">
+        <aside role="complementary" class="author flex flex-col md:flex-row md:justify-between md:flex-row-reverse border-t border-solid border-light-gray py-8 px-6">
+          <div class="author-photo md:w-1/3">
             <figure class="">
               <img class="notch max-w-full" src="~assets/img/phil_goodwin.jpg" alt="Phil Goodwin" title="Phil Goodwin" />
             </figure>
           </div>
-          <div class="md:w-2/3">
+          <div class="author-bio md:w-2/3">
             <h2 class="mb-8 mt-3 md:mt-0 text-center text-xl md:text-2xl md:text-left"><span class="sr-only">Author: </span><a class="red-block block md:inline-block" href="#">Phil Goodwin</a></h2>
             <p class="font-serif text-gray-333 leading-normal text-base md:text-xl md:pl-2 md:pr-8">Phil Goodwin is emeritus professor of transport policy at both the Centre for Transport and Society, University of the West of England, Bristol, and University College London.</p>
             <h4 id="author-social-media-title" class="sr-only no-print">Contact Phil Goodwin:</h4>

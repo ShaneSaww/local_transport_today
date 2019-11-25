@@ -919,6 +919,10 @@ pre {
     background-color: #ffffff;
   }
 
+  @page {
+    size: A4 portrait;
+  }
+
   #main {
     padding-top: 0;
     display: block !important; /* Flexbox causes problems with the 'page-break-inside' print setting */
@@ -928,8 +932,35 @@ pre {
     page-break-after: avoid; /* Prevents page-breaks right after these elements, because that looks odd */
   }
 
-  #main figure, #main aside, #main blockquote, #main p {
+  #main figure, #main aside, #main blockquote {
     page-break-inside: avoid; /* Avoid page-breaks inside these elements */
+  }
+
+  #main p {
+    orphans: 2;
+    widows: 2;
+  }
+
+  #main figure, #main aside {
+    float: none;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .author {
+    display: block;
+  }
+
+  .author-photo {
+    width: 30% !important;
+    display: inline-block !important;
+    margin-right: 2rem;
+  }
+
+  .author-bio {
+    width: 50% !important;
+    display: inline-block !important;
   }
 
   .content-text-spacing p {
