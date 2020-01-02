@@ -3,7 +3,7 @@
     <page-header :displayHero="displayHero" />
     <!--<h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today</nuxt-link></h1>-->
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
-      <article class="mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
+      <article role="article" class="mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <aside role="complementary">
           <h4 id="continue-discussion-title" class="ltt-text-gray mt-6 mb-4 pr-1 md:mb-6 font-sans font-light md:font-medium text-base block md:inline-block">Continuing the discussion of:</h4>
           <ul aria-labelledby="continue-discussion-title" class="pl-0 mb-8 md:mb-0 list-none block md:inline-block">

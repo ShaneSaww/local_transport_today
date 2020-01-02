@@ -29,6 +29,7 @@
           <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/">Planning</nuxt-link></li>
           <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">Finance</nuxt-link></li>
           <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">Development</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
         </ul>
       </div>
     </nav>

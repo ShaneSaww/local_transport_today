@@ -17,7 +17,7 @@
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
     "leaflet": "^1.5.1",
-    "nuxt": "^2.8.1",
+    "nuxt": "^2.11.0",
     "nuxt-leaflet": "0.0.19",
     "vue-scrollto": "^2.15.0",
     "vue2-google-maps": "^0.10.6",
