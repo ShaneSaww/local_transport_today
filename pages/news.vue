@@ -6,7 +6,7 @@
       <div class="w-full mt-10 mx-6 lg:mx-4">
         <div class="newspaper">
           <div class="cell cell--0">
-            <article role="article" class="article-item">
+            <article role="article" itemscope itemtype="https://schema.org/Article" class="article-item">
               <aside role="complementary" class="w-full">
                 <h4 id="article-links-title-0" class="sr-only no-print">Article Links:</h4>
                 <ul aria-labelledby="article-links-title-0" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
@@ -18,13 +18,13 @@
                 <a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Electric Vehicles</a>
                 <a class="leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" href="#"><svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z"/></svg><span class="pl-2 align-text-bottom font-sans font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Save</span></a>
               </div>-->
-              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight md:leading-tighter text-2xl md:text-5xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Driving change: travel in the 21<sup>st</sup> century</a></h2>
-              <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base md:text-xl lg:text-xl highlight-first-line">Some of the worst mistakes in transport investment have been supported by huge volumes of forecasts, surveys and studies, confidently published with little recognition of their inconsistencies and errors.</p>
+              <h2 itemprop="headline" class="w-full my-4 font-sans text-left font-extrabold leading-tight md:leading-tighter text-2xl md:text-5xl"><a rel="bookmark" class="ltt-text-red no-underline hover:underline focus:underline" href="#">Driving change: travel in the 21<sup>st</sup> century</a></h2>
+              <p itemprop="subheading" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base md:text-xl lg:text-xl highlight-first-line">Some of the worst mistakes in transport investment have been supported by huge volumes of forecasts, surveys and studies, confidently published with little recognition of their inconsistencies and errors.</p>
               <aside role="complementary" class="w-full">
                 <h4 id="article-meta-title-0" class="sr-only no-print">Article information:</h4>
                 <ul aria-labelledby="article-meta-title-0" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
-                  <li class="pr-8 inline-block"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Phil Goodwin</a></li>
-                  <li class="pr-8 inline-block">14 Nov 2019</li>
+                  <li class="pr-8 inline-block"><a rel="author" itemprop="author" class="ltt-text-red no-underline hover:underline focus:underline" href="#">Phil Goodwin</a></li>
+                  <li class="pr-8 inline-block"><time itemprop="dateCreated pubdate datePublished" datetime="2019-11-14">14 Nov 2019</time></li>
                   <li class="inline-block">8 min read</li>
                 </ul>
               </aside>
@@ -104,7 +104,7 @@
                 </ul>
               </aside>
               <!--<div class="w-full text-left text-sm font-serif"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Urban Movement</a></div>-->
-              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Politicians: work in progress</a></h2>
+              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-5xl lg:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Politicians: work in progress</a></h2>
               <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">I wrote last time about the sad fate that befell a TfL-led proposal for cycle tracks. Since then, the plug has been pulled on two other active travel scheme proposals in London, with the political ‘justification’ being disconcertingly similar.</p>
               <aside role="complementary" class="w-full">
                 <h4 id="article-meta-title-4" class="sr-only no-print">Article information:</h4>
@@ -125,7 +125,7 @@
                 </ul>
               </aside>
               <!--<div class="w-full text-left text-sm font-serif"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Electric Vehicles</a></div>-->
-              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Footways are no place for EV charging cables</a></h2>
+              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-5xl lg:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Footways are no place for EV charging cables</a></h2>
               <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">Having failed to find evidence of a pending April Fool’s prank, I find myself compelled to pass the following comments.</p>
               <aside role="complementary" class="w-full">
                 <h4 id="article-meta-title-5" class="sr-only no-print">Article information:</h4>
@@ -146,7 +146,7 @@
                 </ul>
               </aside>
               <!--<div class="w-full text-left text-sm font-serif"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Transport Infrastructure</a></div>-->
-              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Where does the public fit in to Bristol’s transport priorities?</a></h2>
+              <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-5xl lg:text-2xl"><a class="ltt-text-red no-underline hover:underline focus:underline" href="#">Where does the public fit in to Bristol’s transport priorities?</a></h2>
               <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">Bristol’s affectation of selecting wildly expensive and inappropriate transport infrastructure, instead of undertaking rational transport planning in anything resembling a democratic manner, continues unabated.</p>
               <aside role="complementary" class="w-full">
                 <h4 id="article-meta-title-6" class="sr-only no-print">Article information:</h4>
