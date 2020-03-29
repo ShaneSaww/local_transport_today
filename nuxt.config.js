@@ -85,7 +85,7 @@ export default {
   },
 
   env: {
-    submitVisitorRegistrationUrl: `${process.env.CRM_URL}/api/forms/submit/Northern_Travel_Show_Visitor_Registrations?token=${process.env.SUBMIT_FORMS_TOKEN}`
+    //retrieveEditorialsUrl: `${process.env.CMS_URL}${process.env.READ_EDITORIALS_PATH}?token=${process.env.READ_EDITORIALS_TOKEN}`
   },
 
   serverMiddleware: [
@@ -107,20 +107,12 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  /*plugins: [
-    '~/plugins/google-maps'
-  ],*/
-
   plugins: [
-    //{ src: '~/plugins/google-maps', mode: 'server' },
     { src: '~/plugins/intersection-observer.js', mode: 'client' },
     { src: '~/plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/autotrack.js', mode: 'client' },
     { src: '~/plugins/vue-scrollto.js', mode: 'server'}
-    //{ src: '~/plugins/vue-leaflet', mode: 'client' }
     //{ src: '~/plugins/imagesloaded.pkgd.min.js', mode: 'client' },
-    //{ src: '~/plugins/demo3.js', mode: 'client' }
-    //{ src: '~/plugins/jspostcode', mode: 'server' }
   ],
 
   /*

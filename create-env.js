@@ -1,6 +1,7 @@
 const fs = require('fs')
 fs.writeFileSync('./.env', `
 URL=${process.env.URL}\n
-CRM_URL=${process.env.CRM_URL}\n
-SUBMIT_FORMS_TOKEN=${process.env.SUBMIT_FORMS_TOKEN}
+CMS_URL=${process.env.CMS_URL}\n
+READ_EDITORIALS_PATH=${process.env.READ_EDITORIALS_PATH}\n
+READ_EDITORIALS_TOKEN=${process.env.READ_EDITORIALS_TOKEN}
 `)

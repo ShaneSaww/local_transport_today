@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+#publish_mode: editorial_workflow # Only include if you want an interface for drafting, reviewing, and approving posts
+
+media_folder: 'static/images/uploads' # Media files will be stored in the repo under static/images/uploads
+public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
+
+site_url: https://festive-swirles-0f46c8.netlify.com
+display_url: https://localtransport.today
+logo_url: '/local_transport_today_logo_colour.svg'
+
+collections: # A list of collections the CMS should be able to edit
+  - label: 'Authors'
+    name: 'authors'
+    folder: 'assets/content/authors'
+    format: 'json'
+    extension: 'json'
+    create: true
+    identifier_field: name
+    editor:
+      preview: false
+    fields:
+      - {label: 'Name', name: 'name', widget: 'string', required: true}
+      - {label: 'Bio', name: 'bio', widget: 'string', required: true}
+      - {label: 'Photo', name: 'photo', widget: 'image', allow_multiple: false, required: false}
+      - {label: 'Email', name: 'email', widget: 'string', required: false, pattern: ['/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi', 'Must be a valid email address.']}
+      - {label: 'Website', name: 'website', widget: 'string', required: false}
+      - {label: 'Twitter', name: 'twitter', widget: 'string', required: false}
+      - {label: 'LinkedIn', name: 'linkedin', widget: 'string', required: false}
+  - label: 'Categories'
+    name: 'categories'
+    folder: 'assets/content/categories'
+    create: true
+    identifier_field: name
+    editor:
+      preview: false
+    fields:
+      - {label: 'Name', name: 'name', widget: 'string', required: true}
+  - label: 'Editorials'
+    name: 'editorials'
+    folder: 'assets/content/editorials'
+    create: true
+    identifier_field: headline
+    editor:
+      preview: true
+    fields:
+      - {label: 'Publish Online?', name: 'published', widget: 'boolean', default: false}
+      - {label: 'Headline', name: 'headline', widget: 'string', required: true}
+      - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: Use the blockquote inside the print publication.'}
+      - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField, 'name', multiple: true, optionsLength: 5}
+      - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField, 'name', multiple: false, optionsLength: 5}
+      - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: '1', step: '1', required: false}
+      - {label: 'Date Published', name: 'datePublished', widget: 'datetime', required: true, format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
+      - {label: 'Body', name: 'body', widget: 'string', required: true, button: ['bold', 'italic', 'link', 'heading-two', 'quote', 'bulleted-list', 'numbered-list']}

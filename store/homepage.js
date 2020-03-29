@@ -12,11 +12,12 @@ export const mutations = {
 }
 
 export const actions = {
-  async retrieveActivities({commit}) {
-    await axios.post('https://crm.grouptravelorganiser.com/api/collections/get/Show_Activities?token=19bf867a17a69bb1600440a1fbbf4f',
+  async retrieveEditorials({commit}, { url, tag, limit }) {
+    await axios.post(url,
       JSON.stringify({
-        filter: { Event: 'Northern Travel Show', Active: true },
-        sort: {Title:1},
+        filter: { published: true, tags: { $has: tag } },
+        sort: {datePublished:1},
+        limit: limit,
         populate: 1
       }),
       {

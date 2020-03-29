@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <!-- Include the script that enables Netlify Identity on this page. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script>
+      /*var homepagePreview = createClass({
+        render: function() {
+          var entry = this.props.entry;
+          var image = entry.getIn(['data', 'front_cover']);
+          var frontCover = this.props.getAsset(image);
+          return  h('header', {"className": "flex flex-col items-center justify-between", "id": "header"},
+                    h('section', {"className": "flex-basis-100 mb-12 flex flex-wrap flex-col lg:flex-row items-center justify-center"},
+                      h('div', {"className": "px-6"},
+                        h('h1', {"className": "font-sans text-white text-center lg:text-left font-extrabold text-4xl uppercase pb-6 lg:pb-2"}, entry.getIn(['data', 'title'])),
+                        h('h2', {"className": "font-sans text-white text-center leading-tight lg:text-left font-light text-2xl italic pb-8"}, entry.getIn(['data', 'subtitle'])),
+                        h('p', {"className": "text-center lg:text-left"},
+                          h('a', {"className": "font-sans font-normal text-base button-press-white mb-8 lg:mb-0", "href": entry.getIn(['data', 'button_url'])}, entry.getIn(['data', 'button_title'])),
+                        ),
+                      ),
+                      h('div', {"className": "px-6 pt-6 lg:pt-0"},
+                        h('img', {src: frontCover.toString(), width: 300, height: 413}),
+                      ),
+                    ),
+                  );
+        }
+      });
+
+      CMS.registerPreviewTemplate('home', homepagePreview);
+
+      CMS.registerPreviewStyle('https://musing-bell-4b866b.netlify.com/_nuxt/f54ded626dcc2572c12a.css');*/
+    </script>
+  </body>
+</html>
