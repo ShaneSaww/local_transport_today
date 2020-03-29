@@ -25,10 +25,10 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Name', name: 'name', widget: 'string', required: true}
       - {label: 'Bio', name: 'bio', widget: 'string', required: true}
       - {label: 'Photo', name: 'photo', widget: 'image', allow_multiple: false, required: false}
-      - {label: 'Email', name: 'email', widget: 'string', required: false, pattern: ['/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi', 'Must be a valid email address.']}
-      - {label: 'Website', name: 'website', widget: 'string', required: false}
-      - {label: 'Twitter', name: 'twitter', widget: 'string', required: false}
-      - {label: 'LinkedIn', name: 'linkedin', widget: 'string', required: false}
+      - {label: 'Email', name: 'email', widget: 'string', required: false, pattern: ['/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi', 'Must be a valid email address']}
+      - {label: 'Website URL', name: 'website', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
+      - {label: 'Twitter Page URL', name: 'twitter', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
+      - {label: 'LinkedIn Page URL', name: 'linkedin', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
   - label: 'Categories'
     name: 'categories'
     folder: 'assets/content/categories'
@@ -50,9 +50,9 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: true
     fields:
-      - {label: 'Publish Online?', name: 'published', widget: 'boolean', default: false}
+      - {label: 'Publish Editorial Online?', name: 'published', widget: 'boolean', default: false}
       - {label: 'Headline', name: 'headline', widget: 'string', required: true}
-      - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: Use the blockquote found inside the print publication edition.'}
+      - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: Please use the blockquote found inside the print publication edition.'}
       - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: true, optionsLength: 5}
       - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: '1', step: '1', required: false}
