@@ -26,9 +26,9 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Bio', name: 'bio', widget: 'string', required: true}
       - {label: 'Photo', name: 'photo', widget: 'image', allow_multiple: false, required: false}
       - {label: 'Email', name: 'email', widget: 'string', required: false, pattern: ['/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi', 'Must be a valid email address']}
-      - {label: 'Website URL', name: 'website', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
-      - {label: 'Twitter Page URL', name: 'twitter', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
-      - {label: 'LinkedIn Page URL', name: 'linkedin', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (which includes the preceding HTTPS)']}
+      - {label: 'Website URL', name: 'website', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (including the HTTPS)']}
+      - {label: 'Twitter Page URL', name: 'twitter', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (including the HTTPS)']}
+      - {label: 'LinkedIn Page URL', name: 'linkedin', widget: 'string', required: false, pattern: ['^(http|https)://', 'Please use the full URL (including the HTTPS)']}
   - label: 'Categories'
     name: 'categories'
     folder: 'assets/content/categories'
