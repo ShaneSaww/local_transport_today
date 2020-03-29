@@ -50,7 +50,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Headline', name: 'headline', widget: 'string', required: true}
       - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: Use the blockquote inside the print publication.'}
       - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: true, optionsLength: 5}
-      - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField, 'name', multiple: false, optionsLength: 5}
+      - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: '1', step: '1', required: false}
       - {label: 'Date Published', name: 'datePublished', widget: 'datetime', required: true, format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
       - {label: 'Body', name: 'body', widget: 'markdown', required: true, button: ['bold', 'italic', 'link', 'heading-three', 'quote', 'bulleted-list', 'numbered-list']}
