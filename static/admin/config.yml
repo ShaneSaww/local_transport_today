@@ -32,6 +32,8 @@ collections: # A list of collections the CMS should be able to edit
   - label: 'Categories'
     name: 'categories'
     folder: 'assets/content/categories'
+    format: 'json'
+    extension: 'json'
     create: true
     identifier_field: name
     editor:
@@ -41,6 +43,8 @@ collections: # A list of collections the CMS should be able to edit
   - label: 'Editorials'
     name: 'editorials'
     folder: 'assets/content/editorials'
+    format: 'json'
+    extension: 'json'
     create: true
     identifier_field: headline
     editor:
@@ -53,4 +57,4 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: '1', step: '1', required: false}
       - {label: 'Date Published', name: 'datePublished', widget: 'datetime', required: true, format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
-      - {label: 'Body', name: 'body', widget: 'markdown', required: true, button: ['bold', 'italic', 'link', 'heading-three', 'quote', 'bulleted-list', 'numbered-list']}
+      - {label: 'Body', name: 'body', widget: 'markdown', required: true, buttons: ['bold', 'italic', 'link', 'heading-three', 'quote', 'bulleted-list', 'numbered-list']}
