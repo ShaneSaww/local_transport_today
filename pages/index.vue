@@ -189,7 +189,7 @@ export default {
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        { innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
+        //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
         //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
       ],
       title: 'Local Transport Today - Transport Policy, Planning, Finance, Development',

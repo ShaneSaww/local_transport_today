@@ -12,6 +12,26 @@ display_url: https://localtransport.today
 logo_url: '/local_transport_today_logo_colour.svg'
 
 collections: # A list of collections the CMS should be able to edit
+  - name: 'settings'
+    label: 'Settings'
+    format: 'json'
+    extension: 'json'
+    editor:
+      preview: false
+    files:
+      - file: 'assets/content/settings/_home.json'
+        label: 'Home Page'
+        name: 'home'
+        fields:
+          - {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
+      - file: 'assets/content/settings/_header.json'
+        label: 'Header'
+        name: 'header'
+        fields:
+          - {label: 'Category 1', name: 'category1', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
+          - {label: 'Category 2', name: 'category2', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
+          - {label: 'Category 3', name: 'category3', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
+          - {label: 'Category 4', name: 'category4', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
   - label: 'Authors'
     name: 'authors'
     folder: 'assets/content/authors'
@@ -40,9 +60,11 @@ collections: # A list of collections the CMS should be able to edit
       preview: false
     fields:
       - {label: 'Name', name: 'name', widget: 'string', required: true}
+      - {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5, hint: 'Leave blank to disable this setting.'}
   - label: 'Editorials'
     name: 'editorials'
     folder: 'assets/content/editorials'
+    #slug: "{{fields.categories}}_{{slug}}_{{fields.author}}"
     format: 'json'
     extension: 'json'
     create: true

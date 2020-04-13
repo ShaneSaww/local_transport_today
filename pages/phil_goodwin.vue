@@ -184,7 +184,7 @@ export default {
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        { innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
+        //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
         //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
       ],
       title: 'Local Transport Today - Transport Policy, Planning, Finance, Development',
@@ -192,7 +192,7 @@ export default {
         { hid: 'description', name: 'description', content: 'Local Transport Today' }
       ],
       link: [
-        { hid: 'canonical', rel: 'canonical', href: 'https://discussion.localtransport.today' }
+        { hid: 'canonical', rel: 'canonical', href: 'https://www.localtransport.today' }
       ]
     }
   }
