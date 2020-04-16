@@ -24,12 +24,12 @@
       </div>
       <div :class="open ? 'block': 'hidden'" class="w-full block flex-grow lg:flex lg:w-auto">
         <ul aria-labelledby="header-nav-title" class="menu-header w-full px-4 lg:px-0 lg:flex lg:justify-end lg:items-center list-none text-sm">
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">All</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">Policy</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/">Planning</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">Finance</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#">Development</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="#"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link exact to="/">Home</nuxt-link></li>
+          <li v-if="settingsHeader.category1" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category1)">{{ settingsHeader.category1 }}</nuxt-link></li>
+          <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2)">{{ settingsHeader.category2 }}</nuxt-link></li>
+          <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3)">{{ settingsHeader.category3 }}</nuxt-link></li>
+          <li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4)">{{ settingsHeader.category4 }}</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/myLTT"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
         </ul>
       </div>
     </nav>
@@ -87,6 +87,7 @@
 <script>
 
 //import Homepage from '~/pages/index.vue'
+import helperSlugify from '~/assets/js/slugify.js'
 
 export default {
   data: function () {
@@ -102,6 +103,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    settingsHeader: {
+      type: Object,
+      required: false,
+      default: null
     }
   },
 
@@ -112,6 +118,10 @@ export default {
   methods: {
   	toggleHamburger() {
     	this.open = !this.open
+    },
+
+    slugify (string) {
+      return helperSlugify.slugify(string)
     }
 
     /*if (!this.$nuxt.$route.path || this.$nuxt.$route.path === '/') {

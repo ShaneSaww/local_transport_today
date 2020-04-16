@@ -13,6 +13,7 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ dispatch }) { // nuxtServerInit is only called from the server-side (or SSR build time) and can only be declared in index.js
+    await dispatch('settings/retrieveSettings')
     await dispatch('editorials/retrieveEditorials')
   }
 }

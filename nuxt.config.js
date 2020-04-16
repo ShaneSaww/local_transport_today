@@ -111,8 +111,8 @@ export default {
     { src: '~/plugins/intersection-observer.js', mode: 'client' },
     { src: '~/plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/autotrack.js', mode: 'client' },
-    { src: '~/plugins/vue-scrollto.js', mode: 'server'},
-    //{ src: '~/plugins/slugify.js', mode: 'server'}
+    { src: '~/plugins/vue-scrollto.js', mode: 'server'}
+    //{ src: '~/plugins/helper.js', mode: 'server'}
     //{ src: '~/plugins/imagesloaded.pkgd.min.js', mode: 'client' },
   ],
 
