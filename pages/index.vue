@@ -40,7 +40,7 @@
                 <ul aria-labelledby="featured-author" class="list-none pl-0">
                   <li v-for="(article, key) in featuredAuthorEditorials" class="block line-after my-3">
                     <article role="article" itemscope itemtype="https://schema.org/Article">
-                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl"><a class="ltt-text-red no-underline hover:underline focus:underline" :href="'/'+article.slug">{{ article.headline }}</a></h3>
+                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><a class="ltt-text-red no-underline hover:underline focus:underline" :href="'/'+article.slug">{{ article.headline }}</a></h3>
                       <aside role="complementary" class="w-full">
                         <h4 :id="'featured-author-'+key" class="sr-only no-print">Article information:</h4>
                         <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-sm pl-0 list-none">

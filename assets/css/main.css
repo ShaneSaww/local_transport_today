@@ -849,7 +849,7 @@ abbr, abbr[title] {
   }
 }*/
 
-.content-text-spacing p:first-child {
+#main .content-text-spacing p:first-child {
   border-left: 1rem solid #c21136;
   padding-left: 1rem;
   margin-left: -2rem;
@@ -913,7 +913,7 @@ abbr, abbr[title] {
   }
 }
 
-.content-text-spacing p:last-child:after {
+#main .content-text-spacing p:last-child:after {
   color: #ffffff;
   background-color: #C21136;
   content: "LTT";
