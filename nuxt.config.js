@@ -147,6 +147,11 @@ export default {
           description: pkg.siteDescription,
           language: 'en-GB',
           copyright: 'Copyright: ' + pkg.description,
+          author: {
+            name: 'Local Transport Today',
+            email: 'ed.ltt@landor.co.uk',
+            link: pkg.homepageURL
+          },
           feedLinks: {
             atom: pkg.homepageURL + '/feed.xml'
           }
@@ -188,12 +193,12 @@ export default {
             id: pkg.homepageURL + '/' + post.slug,
             link: pkg.homepageURL + '/' + post.slug,
             description: post.subHeadline,
-            /*author: [ // author removed because we can't guarantee an email address for all authors
+            author: [
               {
-                name: post.author,
-                email: null
+                name: 'Local Transport Today',
+                email: 'ed.ltt@landor.co.uk'
               }
-            ],*/
+            ],
             date: post.date
           })
         })
