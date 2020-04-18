@@ -1,8 +1,9 @@
 {
-  "name": "northern-travel-show",
+  "name": "local-transport-today",
   "version": "1.0.0",
-  "description": "Northern Travel and Tourism Show",
-  "homepageURL": "https://www.northerntravel.show",
+  "description": "LTT Discussion - Local Transport Today",
+  "siteDescription": "Informing transport decision makers.",
+  "homepageURL": "https://www.localtransport.today",
   "author": "Jonathan Ingram",
   "private": true,
   "scripts": {
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/feed": "^1.1.0",
     "bezier-easing": "^2.1.0",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
@@ -26,7 +28,7 @@
   "devDependencies": {
     "autoprefixer": "^9.5.1",
     "dotenv": "^7.0.0",
-    "glob-all": "^3.1.0",
+    "glob-all": "^3.2.1",
     "nodemon": "^1.18.9",
     "purgecss-webpack-plugin": "^1.4.0",
     "tailwindcss": "^0.7.4"

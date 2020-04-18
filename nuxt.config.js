@@ -28,27 +28,28 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      //{ name: 'google-site-verification', content: 'ZuWo8BSwX-kcUKx6Hehplgrh7kVxeKxjCmuryUf0vhQ' },
       { hid: 'description', name: 'description', content: pkg.description },
       { hid: 'robot', name: 'robot', content: 'index, follow' },
       { name: 'format-detection', content: 'telephone=no' },
       { property: 'og:locale', content: 'en_GB' },
       { hid: 'og-type', property: 'og:type', content: 'website' },
-      { hid: 'og-title', property: 'og:title', content: 'Northern Travel & Tourism Show' },
-      { hid: 'og-description', property: 'og:description', content: 'Northern Travel & Tourism Show is the north’s leading travel show for group travel organisers, travel trade and tour operators.' },
+      { hid: 'og-title', property: 'og:title', content: pkg.description },
+      { hid: 'og-description', property: 'og:description', content: pkg.siteDescription },
       { hid: 'og-url', property: 'og:url', content: pkg.homepageURL },
-      { hid: 'og-site-name', property: 'og:site_name', content: 'Northern Travel & Tourism Show' },
+      { hid: 'og-site-name', property: 'og:site_name', content: pkg.description },
       { hid: 'og-image', property: 'og:image', content: pkg.homepageURL + '/local_transport_today_og_image_white.png' },
       { hid: 'og-image-secure_url', property: 'og:image:secure_url', content: pkg.homepageURL + '/local_transport_today_og_image_white.png' },
       { hid: 'og-image-width', property: 'og:image:width', content: '1200' },
       { hid: 'og-image-height', property: 'og:image:height', content: '628' },
-      { hid: 'og-image-alt', property: 'og:image:alt', content: 'Northern Travel & Tourism Show logo' },
+      { hid: 'og-image-alt', property: 'og:image:alt', content: pkg.description + ' logo' },
       { hid: 'twitter-card', name: 'twitter:card', content: 'summary_large_image' },
-      { hid: 'twitter-description', name: 'twitter:description', content: 'Northern Travel & Tourism Show is the north’s leading travel show for group travel organisers, travel trade and tour operators.' },
-      { hid: 'twitter-title', name: 'twitter:title', content: 'Northern Travel & Tourism Show' },
+      { hid: 'twitter-description', name: 'twitter:description', content: pkg.siteDescription },
+      { hid: 'twitter-title', name: 'twitter:title', content: pkg.description },
       { hid: 'twitter-site', name: 'twitter:site', content: '@TransportXtra' },
       { hid: 'twitter-image', name: 'twitter:image', content: pkg.homepageURL + '/local_transport_today_twitter_image_white.png' },
       { hid: 'twitter-creator', name: 'twitter:creator', content: '@TransportXtra' },
-      { hid: 'application-name', name: 'application-name', content: 'Northern Travel & Tourism Show' },
+      { hid: 'application-name', name: 'application-name', content: pkg.description },
       { hid: 'msapplication-square70x70logo', name: 'msapplication-square70x70logo', content: pkg.homepageURL + '/msapplication_small.png' },
       { hid: 'msapplication-square150x150logo', name: 'msapplication-square150x150logo', content: pkg.homepageURL + '/msapplication_medium.png' },
       { hid: 'msapplication-wide310x150logo', name: 'msapplication-wide310x150logo', content: pkg.homepageURL + '/msapplication_wide.png' },
@@ -57,7 +58,7 @@ export default {
       { hid: 'apple-mobile-web-app-capable', name: 'apple-mobile-web-app-capable', content: 'yes' },
       { hid: 'mobile-web-app-capable', name: 'mobile-web-app-capable', content: 'yes' },
       { hid: 'apple-mobile-web-app-status-bar-style', name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
-      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'NorthernShow' }
+      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'LTT Discussion' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: pkg.homepageURL + '/favicon.png' },
@@ -89,19 +90,8 @@ export default {
   },
 
   serverMiddleware: [
-    // Will register redirect-ssl npm package
-    //'redirect-ssl',
-
-    //"~/juju/index.js"
-    //{ path: '/juju', handler: '~/juju/index.js' },
-    '~/servermiddleware/test.js'
-
-    // Will register file from project api directory to handle /api/* requires
+    //'~/servermiddleware/test.js'
     //{ path: '/api', handler: '~/api/index.js' }
-
-
-    // We can create custom instances too
-    //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }
   ],
 
   /*
@@ -135,7 +125,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'nuxt-leaflet',
-    'vue-scrollto/nuxt'
+    'vue-scrollto/nuxt',
+    '@nuxtjs/feed'
     //['nuxt-leaflet', { /* module options */ }],
   ],
   /*
@@ -145,11 +136,79 @@ export default {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  generate: {
+  feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        feed.options = {
+          title: pkg.description,
+          link: pkg.homepageURL,
+          id: pkg.homepageURL,
+          description: pkg.siteDescription,
+          language: 'en-GB',
+          copyright: 'Copyright: ' + pkg.description,
+          feedLinks: {
+            atom: pkg.homepageURL + '/feed.xml'
+          }
+        }
+
+        let fs = require('fs')
+        let path = require('path')
+
+        let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
+
+        let allEditorials = await fs.readdirSync('./assets/content/editorials').map(file => {
+          let editorial = require(`./assets/content/editorials/${file}`)
+          let date = editorial.datePublished.split('-')
+          let month = parseInt(date[1])
+
+          return {
+            ...editorial,
+            slug: `${file.replace('.json', '').replace('./', '')}`,
+            date: new Date(date[2] + ' ' + months[month - 1] + ' ' + date[0] + ' 00:00:00 GMT')
+          }
+        })
+
+        allEditorials.sort(function (a, b) {
+          if (a.datePublished < b.datePublished) {
+            return 1
+          }
+          if (a.datePublished > b.datePublished) {
+            return -1
+          }
+
+          return 0 // names must be equal
+        })
+
+        let publishedEditorials = allEditorials.filter(x => x.published === true)
+
+        publishedEditorials.forEach(post => {
+          feed.addItem({
+            title: post.headline,
+            id: pkg.homepageURL + '/' + post.slug,
+            link: pkg.homepageURL + '/' + post.slug,
+            description: post.subHeadline,
+            /*author: [ // author removed because we can't guarantee an email address for all authors
+              {
+                name: post.author,
+                email: null
+              }
+            ],*/
+            date: post.date
+          })
+        })
+      },
+      cacheTime: 1000 * 60 * 15, // How long should the feed be cached (15-mins)
+      type: 'rss2', // Can be: rss2, atom1, json1
+      //data: ['Some additional data'] // Will be passed as 2nd argument to `create` function
+    }
+  ],
+
+  /*generate: {
     routes: [
       '/miffy'
     ]
-  },
+  },*/
 
   /*
   ** Build configuration
