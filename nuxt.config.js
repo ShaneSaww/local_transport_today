@@ -88,7 +88,21 @@ export default {
     //retrieveEditorialsUrl: `${process.env.CMS_URL}${process.env.READ_EDITORIALS_PATH}?token=${process.env.READ_EDITORIALS_TOKEN}`
   },
 
+  serverMiddleware: [
+    // Will register redirect-ssl npm package
+    //'redirect-ssl',
 
+    //"~/juju/index.js"
+    //{ path: '/juju', handler: '~/juju/index.js' },
+    '~/servermiddleware/test.js'
+
+    // Will register file from project api directory to handle /api/* requires
+    //{ path: '/api', handler: '~/api/index.js' }
+
+
+    // We can create custom instances too
+    //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }
+  ],
 
   /*
   ** Customize the progress-bar color
@@ -131,21 +145,11 @@ export default {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  serverMiddleware: [
-    // Will register redirect-ssl npm package
-    //'redirect-ssl',
-
-    //"~/juju/index.js"
-    //{ path: '/juju', handler: '~/juju/index.js' },
-    '~/servermiddleware/test.js'
-
-    // Will register file from project api directory to handle /api/* requires
-    //{ path: '/api', handler: '~/api/index.js' }
-
-
-    // We can create custom instances too
-    //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }
-  ],
+  generate: {
+    routes: [
+      '/miffy'
+    ]
+  },
 
   /*
   ** Build configuration
