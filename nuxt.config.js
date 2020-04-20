@@ -63,6 +63,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/png', href: pkg.homepageURL + '/favicon.png' },
       { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL },
+      { hid: 'rss', rel: 'alternate', type: 'application/rss+xml', title: pkg.description, href: pkg.homepageURL + '/feed.xml' },
       { href: pkg.homepageURL + '/2048x2692.png', media: '(device-width: 1024px) and (device-height: 1366px) and (-webkit device-pixel-ratio: 2) and (orientation: portrait)', rel: 'apple-touch-startup-image' },
       { href: pkg.homepageURL + '/2008x2732.png', media: '(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)', rel: 'apple-touch-startup-image' },
       { href: pkg.homepageURL + '/1668x2184.png', media: '(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)', rel: 'apple-touch-startup-image' },
@@ -126,7 +127,8 @@ export default {
     '@nuxtjs/axios',
     'nuxt-leaflet',
     'vue-scrollto/nuxt',
-    '@nuxtjs/feed'
+    '@nuxtjs/feed',
+    '@nuxtjs/sitemap'
     //['nuxt-leaflet', { /* module options */ }],
   ],
   /*
@@ -142,16 +144,11 @@ export default {
       async create(feed) {
         feed.options = {
           title: pkg.description,
-          link: pkg.homepageURL,
+          link: pkg.homepageURL + '/?utm_source=feed&utm_medium=rss&utm_campaign=RSS_Feed',
           id: pkg.homepageURL,
           description: pkg.siteDescription,
           language: 'en-GB',
           copyright: 'Copyright: ' + pkg.description,
-          author: {
-            name: 'Local Transport Today',
-            email: 'ed.ltt@landor.co.uk',
-            link: pkg.homepageURL
-          },
           feedLinks: {
             atom: pkg.homepageURL + '/feed.xml'
           }
@@ -191,12 +188,12 @@ export default {
           feed.addItem({
             title: post.headline,
             id: pkg.homepageURL + '/' + post.slug,
-            link: pkg.homepageURL + '/' + post.slug,
+            link: pkg.homepageURL + '/' + post.slug + '/?utm_source=feed&utm_medium=rss&utm_campaign=RSS_Feed',
             description: post.subHeadline,
             author: [
               {
-                name: 'Local Transport Today',
-                email: 'ed.ltt@landor.co.uk'
+                name: post.author,
+                email: pkg.editorialEmail
               }
             ],
             date: post.date
@@ -214,6 +211,46 @@ export default {
       '/miffy'
     ]
   },*/
+
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: pkg.homepageURL,
+    cacheTime: 1000 * 60 * 15,
+    trailingSlash: true,
+    xslUrl: '/sitemap.xsl',
+    generate: true, // Enable when using nuxt generate
+    async routes () {
+      let fs = require('fs')
+      let path = require('path')
+
+      let allEditorials = await fs.readdirSync('./assets/content/editorials').map(file => {
+        let editorial = require(`./assets/content/editorials/${file}`)
+
+        return {
+          ...editorial,
+          slug: `${file.replace('.json', '').replace('./', '')}`
+        }
+      })
+
+      let publishedEditorials = allEditorials.filter(x => x.published === true)
+
+      let editorials = publishedEditorials.map((editorial) => {
+        return '/' + editorial.slug
+      })
+
+      let categories = await fs.readdirSync('./assets/content/categories').map(file => {
+        let slug = file.replace('.json', '').replace('./', '')
+        return '/category/' + slug
+      })
+
+      let authors = await fs.readdirSync('./assets/content/authors').map(file => {
+        let slug = file.replace('.json', '').replace('./', '')
+        return '/author/' + slug
+      })
+
+      return editorials.concat(categories, authors)
+    }
+  },
 
   /*
   ** Build configuration

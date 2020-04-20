@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "LTT Discussion - Local Transport Today",
   "siteDescription": "Informing transport decision makers.",
+  "editorialEmail": "ed.ltt@landor.co.uk",
   "homepageURL": "https://www.localtransport.today",
   "author": "Jonathan Ingram",
   "private": true,
@@ -15,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.5.4",
     "@nuxtjs/feed": "^1.1.0",
+    "@nuxtjs/sitemap": "^2.2.0",
     "bezier-easing": "^2.1.0",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
