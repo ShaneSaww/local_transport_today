@@ -127,6 +127,7 @@ export default {
     '@nuxtjs/axios',
     'nuxt-leaflet',
     'vue-scrollto/nuxt',
+    'cookie-universal-nuxt',
     '@nuxtjs/feed',
     '@nuxtjs/sitemap'
     //['nuxt-leaflet', { /* module options */ }],
@@ -218,7 +219,7 @@ export default {
     cacheTime: 1000 * 60 * 15,
     trailingSlash: true,
     xslUrl: '/sitemap.xsl',
-    generate: true, // Enable when using nuxt generate
+    //generate: true, // Enable when using nuxt generate
     async routes () {
       let fs = require('fs')
       let path = require('path')

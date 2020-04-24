@@ -28,7 +28,7 @@
           <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2)">{{ settingsHeader.category2 }}</nuxt-link></li>
           <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3)">{{ settingsHeader.category3 }}</nuxt-link></li>
           <li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4)">{{ settingsHeader.category4 }}</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/myLTT"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/myltt"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
         </ul>
       </div>
     </nav>

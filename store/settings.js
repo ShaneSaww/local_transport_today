@@ -6,7 +6,7 @@ export const state = () => ({
 })
 
 export const getters = {
-  retrieveSettings: (state) => (region) => {
+  retrieveSetting: (state) => (region) => {
     return state.settings.find(x => x.slug === region)
   }
 }
@@ -27,8 +27,6 @@ export const actions = {
       res.slug = key.slice(2, -5);
       return res;
     })
-
-    //console.log(settings)
 
     await commit('UPDATE_SETTINGS', settings)
   }

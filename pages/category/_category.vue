@@ -1,11 +1,11 @@
 <template>
   <div>
     <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
-    <h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today Discussion</nuxt-link></h1>
+    <h1 class="sr-only"><nuxt-link :to="'/category/' + categorySlug + '/'">{{ category.name }} - Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div class="w-full mt-10 mx-6 lg:mx-4">
-        <div :class="latestEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
-          <template v-for="(article, key) in latestEditorials" v-if="key <= 6">
+        <div :class="categoryEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
+          <template v-for="(article, key) in categoryEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">
               <article role="article" itemscope itemtype="https://schema.org/Article" class="article-item">
                 <aside role="complementary" class="w-full">
@@ -37,18 +37,18 @@
             </div>
           </template>
           <template v-for="num in 7">
-            <template v-if="latestEditorials.length < num">
+            <template v-if="categoryEditorials.length < num">
               <div :class="'hidden md:block cell cell--' + (num - 1)"></div>
             </template>
           </template>
           <template v-if="displaySidebar">
             <div class="cell cell--7">
               <aside role="complementary">
-                <h2 id="featured-author" class="w-full mb-8 text-left text-base font-serif text-gray-333">Featured: <nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(settingsHome.featuredAuthor)">{{ settingsHome.featuredAuthor }}</nuxt-link></h2>
+                <!--<h2 id="featured-author" class="w-full mb-8 text-left text-base font-serif text-gray-333">Featured: <a class="ltt-text-red no-underline hover:underline focus:underline" :href="'/author/' + slugify(settingsHome.featuredAuthor)">{{ settingsHome.featuredAuthor }}</a></h2>
                 <ul aria-labelledby="featured-author" class="list-none pl-0">
                   <li v-for="(article, key) in featuredAuthorEditorials" class="block line-after my-3">
                     <article role="article" itemscope itemtype="https://schema.org/Article">
-                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
+                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><a class="ltt-text-red no-underline hover:underline focus:underline" :href="'/'+article.slug">{{ article.headline }}</a></h3>
                       <aside role="complementary" class="w-full">
                         <h4 :id="'featured-author-'+key" class="sr-only no-print">Article information:</h4>
                         <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-sm pl-0 list-none">
@@ -58,12 +58,12 @@
                       </aside>
                     </article>
                   </li>
-                </ul>
+                </ul>-->
               </aside>
             </div>
           </template>
           <template v-else>
-            <template v-for="(article, key) in latestEditorials" v-if="key >= 7 && key <= 9">
+            <template v-for="(article, key) in categoryEditorials" v-if="key >= 7 && key <= 9">
               <div :class="'cell cell--' + (key + 1)">
                 <article role="article" itemscope itemtype="https://schema.org/Article" class="article-item">
                   <aside role="complementary" class="w-full">
@@ -96,7 +96,7 @@
             </template>
             <template v-for="num in 10">
               <template v-if="num >= 8">
-                <template v-if="latestEditorials.length < num">
+                <template v-if="categoryEditorials.length < num">
                   <div :class="'hidden md:block cell cell--' + num"></div>
                 </template>
               </template>
@@ -119,7 +119,9 @@ export default {
   data: function () {
     return {
       displayHero: true,
-      displaySidebar: false
+      displaySidebar: false,
+      category: {},
+      categorySlug: this.$route.params.category
       //latestEditorials: this.$store.getters['editorials/retrieveAllEditorials'],
       //settings: this.$store.getters['settings/retrieveSettings'](''),
       //featuredAuthorEditorials: this.$store.getters['editorials/retrieveAuthorEditorials']('Phil Goodwin')
@@ -143,34 +145,9 @@ export default {
   },
 
   mounted() {
-    if (this.$store.getters['settings/retrieveSetting']('home').featuredAuthor) {
-      this.displaySidebar = true
-    }
+    this.category = this.$store.getters['categories/retrieveCategory'](this.categorySlug)
 
     this.updateBookmarkState()
-
-    /*if (process.env.NODE_ENV !== 'production') {
-      this.$cookies.set('bookmarks', '', {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 7,
-        sameSite: 'Lax',
-        httpOnly: false // Cookies created via JavaScript cannot include the 'HttpOnly' flag (only server-side languages)
-      })
-    }
-    else {
-      this.$cookies.set('bookmarks', 'juju-zippy', {
-        path: '/',
-        domain: `${pkg.homepageURL.replace('https://', '').replace('www.', '')}`,
-        maxAge: 60 * 60 * 24 * 7,
-        sameSite: 'Lax',
-        httpOnly: false, // Cookies created via JavaScript cannot include the 'HttpOnly' flag (only server-side languages)
-        secure: true
-      })
-    }
-
-
-    let cookieBookmarks = this.$cookies.get('bookmarks', { parseJSON: false })
-    console.log(cookieBookmarks)*/
   },
 
   computed: {
@@ -178,16 +155,8 @@ export default {
       return this.$store.getters['settings/retrieveSetting']('header')
     },
 
-    settingsHome () {
-      return this.$store.getters['settings/retrieveSetting']('home')
-    },
-
-    latestEditorials () {
-      return this.$store.getters['editorials/retrieveAllEditorials']
-    },
-
-    featuredAuthorEditorials () {
-      return this.$store.getters['editorials/retrieveAuthorEditorials'](this.settingsHome.featuredAuthor)
+    categoryEditorials () {
+      return this.$store.getters['editorials/retrieveCategoryEditorials'](this.category.name)
     }
   },
 
@@ -233,27 +202,14 @@ export default {
         //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
         //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
       ],
-      title: pkg.description,
-      /*title: 'Local Transport Today - Transport Policy, Planning, Finance, Development',
-      meta: [
+      title: this.category.name + ' - ' + pkg.description,
+      /*meta: [
         { hid: 'description', name: 'description', content: 'Local Transport Today' }
       ],*/
       link: [
-        { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL }
+        { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/category/' + this.categorySlug + '/' }
       ]
     }
-  }
-}
-
-if (process.client) { // Nuxt requires this otherwise 'window.' or 'document.' will be undefined
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on('init', user => {
-      if (!user) {
-        window.netlifyIdentity.on('login', () => {
-          document.location.href = '/admin/'
-        })
-      }
-    })
   }
 }
 </script>

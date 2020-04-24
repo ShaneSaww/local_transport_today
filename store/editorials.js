@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+import helperMd5 from '~/assets/js/md5.js'
 
 export const state = () => ({
   editorials: []
@@ -9,6 +10,19 @@ export const getters = {
   retrieveEditorial: (state) => (slug) => {
     return state.editorials.find(x => x.slug === slug)
   },
+
+  /*retrieveBookmarkedEditorials: (state) => (bookmarks) => {
+
+    let allBookmarkedEditorials = bookmarks.keys().map(key => {
+      //let bookmark = bookmarks(key)
+      let bookmarked = state.editorials.filter(x => x.md5 === key)
+      if (bookmarked[0]) {
+        return bookmarked[0]
+      }
+    })
+
+    return allBookmarkedEditorials
+  },*/
 
   retrieveAllEditorials: (state) => {
     return state.editorials
@@ -42,9 +56,14 @@ export const actions = {
       return Math.floor(minutes)
     }
 
+    function md5 (string) {
+      return helperMd5.md5(string)
+    }
+
     const allEditorials = await context.keys().map(key => ({
       ...context(key),
       slug: `${key.replace('.json', '').replace('./', '')}`,
+      md5: md5(`${key.replace('.json', '').replace('./', '')}`),
       estimatedReadingTimeMinutes: estimateReadingTime(context(key).body)
     }))
 
