@@ -11,18 +11,21 @@ export const getters = {
     return state.editorials.find(x => x.slug === slug)
   },
 
-  /*retrieveBookmarkedEditorials: (state) => (bookmarks) => {
+  retrieveBookmarkedEditorials: (state) => (bookmarks) => {
 
-    let allBookmarkedEditorials = bookmarks.keys().map(key => {
-      //let bookmark = bookmarks(key)
-      let bookmarked = state.editorials.filter(x => x.md5 === key)
-      if (bookmarked[0]) {
-        return bookmarked[0]
+    let bookmaredEditorials = []
+
+    if (bookmarks.length > 0) {
+      for (let i = 0; i < bookmarks.length; i++) {
+        let bookmark = state.editorials.find(x => x.md5 === bookmarks[i])
+        if (bookmark) {
+          bookmaredEditorials.push(bookmark)
+        }
       }
-    })
+    }
 
-    return allBookmarkedEditorials
-  },*/
+    return bookmaredEditorials
+  },
 
   retrieveAllEditorials: (state) => {
     return state.editorials

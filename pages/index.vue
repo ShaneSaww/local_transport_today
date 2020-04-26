@@ -13,7 +13,7 @@
                   <ul :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
                     <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
                     <li class="inline-block no-print">
-                      <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" @click="toggle(article.md5)">
+                      <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                         <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
                         </svg>
@@ -23,7 +23,7 @@
                     </li>
                   </ul>
                 </aside>
-                <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
+                <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
                 <p itemprop="subheading" :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-meta-title-' + key" class="sr-only no-print">Article information:</h4>
@@ -48,7 +48,7 @@
                 <ul aria-labelledby="featured-author" class="list-none pl-0">
                   <li v-for="(article, key) in featuredAuthorEditorials" class="block line-after my-3">
                     <article role="article" itemscope itemtype="https://schema.org/Article">
-                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
+                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
                       <aside role="complementary" class="w-full">
                         <h4 :id="'featured-author-'+key" class="sr-only no-print">Article information:</h4>
                         <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-sm pl-0 list-none">
@@ -71,7 +71,7 @@
                     <ul :aria-labelledby="'article-links-title-' + (key + 1)" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
                       <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
-                        <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-pink-50 hover:ltt-text-pink focus:ltt-text-pink" @click="toggle(article.md5)">
+                        <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                           <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
                           </svg>
@@ -81,7 +81,7 @@
                       </li>
                     </ul>
                   </aside>
-                  <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
+                  <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
                   <p itemprop="subheading" :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + (key + 1)" class="sr-only no-print">Article information:</h4>

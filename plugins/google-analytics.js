@@ -3,6 +3,25 @@ export default ({ app }) => {
   ** Only run on client-side and only in production mode
   */
   if (process.env.NODE_ENV !== 'production') return
+
+  /*
+  ** Check for Google Analytics permission from user
+  */
+  var ga_disable_toggle = false;
+
+  if (window.localStorage) {
+    if (localStorage.getItem('ga-toggle') === 'false') {
+      ga_disable_toggle = true;
+    }
+  }
+  else {
+    if (this.$cookies.get('ga-toggle', { parseJSON: false }) === 'false') {
+      ga_disable_toggle = true;
+    }
+  }
+
+  window['ga-disable-UA-75984540-1'] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
+
   /*
   ** Include Google Analytics Script
   **

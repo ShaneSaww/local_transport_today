@@ -3,7 +3,7 @@
     <nav role="navigation" class="w-full flex flex-col lg:flex-row lg:justify-between font-sans block text-sm px-6 py-3 leading-normal md:leading-none">
       <div class="flex flex-row justify-between">
         <div class="block self-center">
-          <h1><nuxt-link exact to="/" class="font-sans ltt-text-red no-underline tracking-wide">LTT<span class="ltt-text-gray font-serif italic tracking-normal"> Discussion</span></nuxt-link></h1>
+          <h1><nuxt-link exact to="/" class="font-sans ltt-text-red no-underline tracking-wide hover:underline focus:underline">LTT<span class="ltt-text-gray font-serif italic tracking-normal"> Discussion</span></nuxt-link></h1>
         </div>
         <h2 id="header-nav-title" class="sr-only">Site navigation</h2>
         <div class="block lg:hidden">

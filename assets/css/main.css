@@ -471,7 +471,7 @@ abbr, abbr[title] {
   }
 
   .cell--0:hover, .cell--1:hover, .cell--2:hover, .cell--3:hover, .cell--4:hover, .cell--5:hover, .cell--6:hover, .cell--8:hover, .cell--9:hover, .cell--10:hover {
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.15), 0 1px 1px 0 rgba(0,0,0,.08);
+    /*box-shadow: 0 1px 1px 0 rgba(0,0,0,.15), 0 1px 1px 0 rgba(0,0,0,.08);*/
   }
 }
 
@@ -655,6 +655,17 @@ abbr, abbr[title] {
 }
 
 @variants hover, focus {
+  .ltt-headline {
+    /*color: #333;*/
+    color: #431b0b;
+  }
+
+  @media only screen and (prefers-color-scheme: dark) {
+    .ltt-headline {
+      color: #eee;
+    }
+  }
+
   .ltt-text-red {
     color: #C21136;
   }
@@ -1197,7 +1208,7 @@ ul.bullet-check li:before {
 }
 
 .checkbox_switch .checkbox-label {
-  vertical-align: super;
+  vertical-align: text-top;
 }
 
 /* End for iOS style checkbox */
@@ -1269,6 +1280,24 @@ ul.bullet-check li:before {
 
 pre {
   @apply my-8;
+}
+
+.light-mode-inline {
+  display: inline-block;
+}
+
+.dark-mode-inline {
+  display: none;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .light-mode-inline {
+    display: none;
+  }
+
+  .dark-mode-inline {
+    display: inline-block;
+  }
 }
 
 @media print {
