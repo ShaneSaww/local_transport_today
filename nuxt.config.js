@@ -207,11 +207,27 @@ export default {
     }
   ],
 
-  /*generate: {
-    routes: [
-      '/miffy'
-    ]
-  },*/
+  generate: {
+    interval: 200,
+    routes: function () {
+      const fs = require('fs')
+      const path = require('path')
+
+      let categories = fs.readdirSync('./assets/content/categories').map(file => {
+        let slug = file.replace('.json', '').replace('./', '')
+        return '/category/' + slug
+      })
+
+      let authors = fs.readdirSync('./assets/content/authors').map(file => {
+        let slug = file.replace('.json', '').replace('./', '')
+        return '/author/' + slug
+      })
+
+      return Promise.all([categories, authors]).then(values => {
+        return values.join().split(',')
+      })
+    }
+  },
 
   sitemap: {
     path: '/sitemap.xml',
