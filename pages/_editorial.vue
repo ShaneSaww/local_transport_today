@@ -74,6 +74,44 @@
           </div>
         </aside>
       </article>
+      <section id="comments">
+      </section>
+      <section v-if="authorEditorials.length > 0" id="further-contributions" class="w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg">
+        <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>
+        <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between">
+          <article v-for="(article, key) in authorEditorials" v-if="key <= 1" role="article" class="flex-basis-100 md:flex-basis-50 -mx-4 border-light-gray border border-solid p-4 mb-4 md:mb-8 flex flex-col justify-between">
+            <div>
+              <aside role="complementary" class="w-full">
+                <h4 :id="'article-links-title-' + article.md5" class="sr-only no-print">Article Links:</h4>
+                <ul :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                  <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
+                  <li class="inline-block no-print">
+                    <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
+                      <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
+                      </svg>
+                      <span v-if="bookmarked(article.md5)" class="sr-only">Remove bookmark for this article</span>
+                      <span v-else class="sr-only">Bookmark this article</span>
+                    </button>
+                  </li>
+                </ul>
+              </aside>
+              <h3 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
+              <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
+            </div>
+            <div>
+              <aside role="complementary" class="w-full">
+                <h4 :id="'article-meta-title-' + article.md5" class="sr-only no-print">Article information:</h4>
+                <ul :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                  <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
+                  <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                  <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
+                </ul>
+              </aside>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -145,13 +183,9 @@ export default {
     },
 
     authorEditorials () {
-      return this.$store.getters['editorials/retrieveAuthorEditorials'](this.article.author)
+      let allEditorialsForAuthor = this.$store.getters['editorials/retrieveAuthorEditorials'](this.article.author)
+      return allEditorialsForAuthor.filter(x => x.md5 != this.article.md5) // omit currently viewed article from list
     }
-
-    /*markdownArticleBody () {
-      //return marked(this.article.body, {smartypants: true})
-      return this.parseMarkdown(this.article.body)
-    }*/
   },
 
   methods: {

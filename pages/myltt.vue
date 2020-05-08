@@ -23,7 +23,7 @@
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-links-title-' + article.md5" class="sr-only no-print">Article Links:</h4>
                     <ul :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
-                      <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
+                      <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
                         <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                           <svg aria-hidden="true" role="img" class="fill-current h-4 w-4" viewBox="0 0 15.789 15.797" xmlns="http://www.w3.org/2000/svg">
@@ -35,14 +35,14 @@
                       </li>
                     </ul>
                   </aside>
-                  <h3 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
+                  <h3 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
                   <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 </div>
                 <div>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + article.md5" class="sr-only no-print">Article information:</h4>
                     <ul :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
-                      <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author)">{{ article.author }}</nuxt-link></li>
+                      <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
                       <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                       <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                     </ul>
