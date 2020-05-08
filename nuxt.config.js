@@ -243,7 +243,8 @@ export default {
       })
 
       return Promise.all([categories, authors, editorials]).then(values => {
-        return values.join().split(',')
+        //return values.join().split(',')
+        return editorials
       })
     }
   },
