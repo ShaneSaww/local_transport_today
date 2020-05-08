@@ -969,13 +969,13 @@ img {
   color: hsl(214, 7%, 47%);
 }
 
-.content-text-spacing figure {
+.dropcap figure {
   background-color: #e4e4e4;
   margin-bottom: 1.5rem;
 }
 
 @media (min-width: 992px) {
-  .content-text-spacing figure {
+  .dropcap figure {
     max-width: 28rem;
     float: right;
     margin-right: -5rem;
@@ -984,12 +984,12 @@ img {
 }
 
 @media only screen and (prefers-color-scheme: dark) {
-  .content-text-spacing figure {
+  .dropcap figure {
     background-color: #2f2d31;
   }
 }
 
-.content-text-spacing figure figcaption {
+.dropcap figure figcaption {
   font-size: 1rem;
   padding: 0.25rem 1rem 0.5rem 1rem;
   color: #4D4D4D;
@@ -997,7 +997,7 @@ img {
 }
 
 @media (min-width: 768px) {
-  .content-text-spacing figure figcaption {
+  .dropcap figure figcaption {
     padding-top: 0;
   }
 }
