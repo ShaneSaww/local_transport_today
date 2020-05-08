@@ -48,6 +48,7 @@ export default {
       { hid: 'twitter-title', name: 'twitter:title', content: pkg.description },
       { hid: 'twitter-site', name: 'twitter:site', content: '@TransportXtra' },
       { hid: 'twitter-image', name: 'twitter:image', content: pkg.homepageURL + '/local_transport_today_twitter_image_white.png' },
+      { hid: 'twitter-image-alt', name: 'twitter:image:alt', content: pkg.description + ' logo' },
       { hid: 'twitter-creator', name: 'twitter:creator', content: '@TransportXtra' },
       { hid: 'application-name', name: 'application-name', content: pkg.description },
       { hid: 'msapplication-square70x70logo', name: 'msapplication-square70x70logo', content: pkg.homepageURL + '/msapplication_small.png' },
@@ -115,6 +116,7 @@ export default {
     { src: '~/plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/autotrack.js', mode: 'client' },
     { src: '~/plugins/vue-scrollto.js', mode: 'server'}
+    //{ src: '~/plugins/markdown.js', mode: 'client'}
     //{ src: '~/plugins/helper.js', mode: 'server'}
     //{ src: '~/plugins/imagesloaded.pkgd.min.js', mode: 'client' },
   ],
@@ -215,15 +217,32 @@ export default {
 
       let categories = fs.readdirSync('./assets/content/categories').map(file => {
         let slug = file.replace('.json', '').replace('./', '')
-        return '/category/' + slug
+
+        return {
+          route: '/category/' + slug + '/',
+          payload: require(`./assets/content/categories/${file}`)
+        }
       })
 
       let authors = fs.readdirSync('./assets/content/authors').map(file => {
         let slug = file.replace('.json', '').replace('./', '')
-        return '/author/' + slug
+
+        return {
+          route: '/author/' + slug + '/',
+          payload: require(`./assets/content/authors/${file}`)
+        }
       })
 
-      return Promise.all([categories, authors]).then(values => {
+      let editorials = fs.readdirSync('./assets/content/editorials').map(file => {
+        let slug = file.replace('.json', '').replace('./', '')
+
+        return {
+          route: '/' + slug + '/',
+          payload: require(`./assets/content/editorials/${file}`)
+        }
+      })
+
+      return Promise.all([categories, authors, editorials]).then(values => {
         return values.join().split(',')
       })
     }

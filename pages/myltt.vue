@@ -1,7 +1,6 @@
 <template>
   <div>
     <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
-    <h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div role="article" class="mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <h1 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-4 text-4xl md:text-6xl lg:mt-0"><span class="font-serif italic opacity-75">my</span>LTT</h1>
@@ -19,11 +18,11 @@
         <div role="region" aria-labelledby="bookmarks" aria-live="polite" aria-atomic="false" aria-relevant="removals" class="flex flex-col md:flex-row md:flex-wrap md:justify-between">
           <template v-for="(article, key) in bookmarkedEditorials">
             <transition name="fade">
-              <article role="article" itemscope itemtype="https://schema.org/Article" class="flex-basis-100 md:flex-basis-50 -mx-4 border-light-gray border border-solid p-4 mb-4 md:mb-8 flex flex-col justify-between">
+              <article role="article" class="flex-basis-100 md:flex-basis-50 -mx-4 border-light-gray border border-solid p-4 mb-4 md:mb-8 flex flex-col justify-between">
                 <div>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-links-title-' + article.md5" class="sr-only no-print">Article Links:</h4>
-                    <ul :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
+                    <ul :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                       <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
                         <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
@@ -36,15 +35,15 @@
                       </li>
                     </ul>
                   </aside>
-                  <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
-                  <p itemprop="subheading" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
+                  <h3 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h3>
+                  <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 </div>
                 <div>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + article.md5" class="sr-only no-print">Article information:</h4>
-                    <ul :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal pl-0 list-none">
-                      <li class="pr-8 inline-block"><nuxt-link rel="author" itemprop="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author)">{{ article.author }}</nuxt-link></li>
-                      <li class="pr-8 inline-block"><time itemprop="dateCreated pubdate datePublished" :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                    <ul :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                      <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author)">{{ article.author }}</nuxt-link></li>
+                      <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                       <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                     </ul>
                   </aside>
@@ -230,18 +229,9 @@ export default {
   head() {
     return {
       __dangerouslyDisableSanitizers: ['script'],
-      script: [
-        //{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-        //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
-        //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
-      ],
       title: 'myLTT - ' + pkg.description,
-      /*title: 'Local Transport Today - Transport Policy, Planning, Finance, Development',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Local Transport Today' }
-      ],*/
       link: [
-        { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/myltt' }
+        { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/myltt/' }
       ]
     }
   }

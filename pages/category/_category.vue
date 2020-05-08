@@ -7,11 +7,11 @@
         <div :class="categoryEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
           <template v-for="(article, key) in categoryEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">
-              <article role="article" itemscope itemtype="https://schema.org/Article" class="article-item">
+              <article role="article" class="article-item">
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</h4>
-                  <ul :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
-                    <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
+                  <ul :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                    <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                     <li class="inline-block no-print">
                       <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                         <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -23,13 +23,13 @@
                     </li>
                   </ul>
                 </aside>
-                <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
-                <p itemprop="subheading" :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
+                <h2 :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h2>
+                <p :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-meta-title-' + key" class="sr-only no-print">Article information:</h4>
-                  <ul :aria-labelledby="'article-meta-title-' + key" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal pl-0 list-none">
-                    <li class="pr-8 inline-block"><nuxt-link rel="author" itemprop="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author)">{{ article.author }}</nuxt-link></li>
-                    <li class="pr-8 inline-block"><time itemprop="dateCreated pubdate datePublished" :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                  <ul :aria-labelledby="'article-meta-title-' + key" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                    <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
+                    <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                     <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                   </ul>
                 </aside>
@@ -47,12 +47,12 @@
                 <!--<h2 id="featured-author" class="w-full mb-8 text-left text-base font-serif text-gray-333">Featured: <a class="ltt-text-red no-underline hover:underline focus:underline" :href="'/author/' + slugify(settingsHome.featuredAuthor)">{{ settingsHome.featuredAuthor }}</a></h2>
                 <ul aria-labelledby="featured-author" class="list-none pl-0">
                   <li v-for="(article, key) in featuredAuthorEditorials" class="block line-after my-3">
-                    <article role="article" itemscope itemtype="https://schema.org/Article">
-                      <h3 itemprop="headline" class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><a class="ltt-headline no-underline hover:underline focus:underline" :href="'/'+article.slug">{{ article.headline }}</a></h3>
+                    <article role="article">
+                      <h3 class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><a class="ltt-headline no-underline hover:underline focus:underline" :href="'/'+article.slug">{{ article.headline }}</a></h3>
                       <aside role="complementary" class="w-full">
                         <h4 :id="'featured-author-'+key" class="sr-only no-print">Article information:</h4>
-                        <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-sm pl-0 list-none">
-                          <li class="pr-6 inline-block"><time itemprop="dateCreated pubdate datePublished" :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                        <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose text-sm pl-0 list-none">
+                          <li class="pr-6 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                           <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                         </ul>
                       </aside>
@@ -65,11 +65,11 @@
           <template v-else>
             <template v-for="(article, key) in categoryEditorials" v-if="key >= 7 && key <= 9">
               <div :class="'cell cell--' + (key + 1)">
-                <article role="article" itemscope itemtype="https://schema.org/Article" class="article-item">
+                <article role="article" class="article-item">
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-links-title-' + (key + 1)" class="sr-only no-print">Article Links:</h4>
-                    <ul :aria-labelledby="'article-links-title-' + (key + 1)" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal text-base pl-0 list-none">
-                      <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0])">{{ article.categories[0] }}</nuxt-link></li>
+                    <ul :aria-labelledby="'article-links-title-' + (key + 1)" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                      <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
                         <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                           <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -81,13 +81,13 @@
                       </li>
                     </ul>
                   </aside>
-                  <h2 itemprop="headline" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/'+article.slug">{{ article.headline }}</nuxt-link></h2>
-                  <p itemprop="subheading" :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
+                  <h2 :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h2>
+                  <p :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + (key + 1)" class="sr-only no-print">Article information:</h4>
-                    <ul :aria-labelledby="'article-meta-title-' + (key + 1)" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose md:leading-normal pl-0 list-none">
-                      <li class="pr-8 inline-block"><nuxt-link rel="author" itemprop="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author)">{{ article.author }}</nuxt-link></li>
-                      <li class="pr-8 inline-block"><time itemprop="dateCreated pubdate datePublished" :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                    <ul :aria-labelledby="'article-meta-title-' + (key + 1)" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                      <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
+                      <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                       <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                     </ul>
                   </aside>
@@ -120,32 +120,30 @@ export default {
     return {
       displayHero: true,
       displaySidebar: false,
-      category: {},
+      //category: {},
       categorySlug: this.$route.params.category
-      //latestEditorials: this.$store.getters['editorials/retrieveAllEditorials'],
-      //settings: this.$store.getters['settings/retrieveSettings'](''),
-      //featuredAuthorEditorials: this.$store.getters['editorials/retrieveAuthorEditorials']('Phil Goodwin')
-
-      //this.$store.state.todos.list
-      //structuredData: this.$store.state.event.structuredData
     }
   },
-
-  /*mounted () {
-    let juju = this.$slugify('works in mounted')
-    console.log(juju)
-  },*/
 
   components: {
     PageHeader
   },
 
-  async fetch ({ store }) {
-    //await store.dispatch('pages/retrievePages')
+  async asyncData({ params, payload }) {
+    if (payload) {
+      return {
+        category: payload
+      }
+    }
+    else {
+      return {
+        category: await require(`~/assets/content/categories/${params.category}.json`)
+      }
+    }
   },
 
   mounted() {
-    this.category = this.$store.getters['categories/retrieveCategory'](this.categorySlug)
+    //this.category = this.$store.getters['categories/retrieveCategory'](this.categorySlug)
 
     this.updateBookmarkState()
   },
@@ -177,35 +175,19 @@ export default {
       toggle: 'bookmarks/TOGGLE_BOOKMARK',
       updateBookmarkState: 'bookmarks/UPDATE_BOOKMARKS'
     })
-
-    /*slugify(string) {
-      const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-      const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-      const p = new RegExp(a.split('').join('|'), 'g')
-
-      return string.toString().toLowerCase()
-        .replace(/\s+/g, '-') // Replace spaces with -
-        .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-        .replace(/&/g, '-and-') // Replace & with 'and'
-        .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-        .replace(/\-\-+/g, '-') // Replace multiple - with single -
-        .replace(/^-+/, '') // Trim - from start of text
-        .replace(/-+$/, '') // Trim - from end of text
-    }*/
   },
 
   head() {
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        //{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-        //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
-        //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
+        { innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
       ],
       title: this.category.name + ' - ' + pkg.description,
-      /*meta: [
-        { hid: 'description', name: 'description', content: 'Local Transport Today' }
-      ],*/
+      meta: [
+        { hid: 'og-title', property: 'og:title', content: this.category.name + ' - ' + pkg.description },
+        { hid: 'twitter-title', name: 'twitter:title', content: this.category.name + ' - ' + pkg.description }
+      ],
       link: [
         { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/category/' + this.categorySlug + '/' }
       ]

@@ -1,6 +1,7 @@
 
 import axios from 'axios'
 import helperMd5 from '~/assets/js/md5.js'
+import helperEstimateReadingTime from '~/assets/js/reading-time.js'
 
 export const state = () => ({
   editorials: []
@@ -50,13 +51,8 @@ export const actions = {
   async retrieveEditorials({ state, commit }) {
     const context = await require.context('~/assets/content/editorials/', false, /\.json$/)
 
-    function estimateReadingTime(articleBody) {
-      let wordCount = articleBody.split(' ').length
-      let minutes = wordCount / 120 // typical reading speed of 120 words a minute
-      if (minutes < 1) {
-        minutes = 1
-      }
-      return Math.floor(minutes)
+    function estimateReadingTime (articleBody) {
+      return helperEstimateReadingTime.estimateReadingTime(articleBody)
     }
 
     function md5 (string) {

@@ -69,6 +69,12 @@ abbr, abbr[title] {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
+}
+
 @media only screen and (prefers-color-scheme: dark) {
   abbr, abbr[title] {
     border-bottom-color: rgba(174, 173, 174, 0.5);
@@ -639,7 +645,7 @@ abbr, abbr[title] {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
   }
 
-  .notch {
+  .notch, .content-text-spacing blockquote {
     clip-path: polygon(2rem 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 2rem) 100%, 0 100%, 0 3rem);
   }
 
@@ -814,11 +820,11 @@ abbr, abbr[title] {
   }
 }
 
-.highlight-first-line::first-line {
+.dropcap > p:first-child::first-line, .highlight-first-line::first-line {
   font-weight: 700;
 }
 
-.dropcap p:first-child::first-letter {
+.dropcap > p:first-child::first-letter {
   /*initial-letter: 2;*/
   color: #C21136;
   text-transform: uppercase;
@@ -831,44 +837,44 @@ abbr, abbr[title] {
 }
 
 @-moz-document url-prefix() {
-  .dropcap p:first-child::first-letter {
+  .dropcap > p:first-child::first-letter {
     margin: 10px 8px -7px 0;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .dropcap p:first-child::first-letter {
+  .dropcap > p:first-child::first-letter {
     margin: -4px 8px -7px 0;
     font-size: 6rem;
   }
 
   @-moz-document url-prefix() {
-    .dropcap p:first-child::first-letter {
+    .dropcap > p:first-child::first-letter {
       margin: 12px 8px -7px 0;
     }
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .dropcap p:first-child::first-letter {
+  .dropcap > p:first-child::first-letter {
     font-size: 7.25rem;
   }
 }
 
 /*@media only screen and (min-width: 1023px) {
-  .dropcap p:first-child::first-letter {
+  .dropcap > p:first-child::first-letter {
     margin: -4px 8px -7px 0;
     font-size: 100px;
   }
 
   @-moz-document url-prefix() {
-    .dropcap p:first-child::first-letter {
+    .dropcap > p:first-child::first-letter {
       margin: 12px 8px -7px 0;
     }
   }
 }*/
 
-#main .content-text-spacing p:first-child {
+#main .content-text-spacing > p:first-child {
   border-left: 1rem solid #c21136;
   padding-left: 1rem;
   margin-left: -2rem;
@@ -888,6 +894,11 @@ abbr, abbr[title] {
 
 .content-text-spacing a {
   @apply ltt-text-red;
+  text-decoration: none;
+}
+
+.content-text-spacing a:hover, .content-text-spacing a:focus {
+  text-decoration: underline;
 }
 
 @media only screen and (prefers-color-scheme: dark) {
@@ -898,6 +909,24 @@ abbr, abbr[title] {
 
 .content-text-spacing blockquote {
   position: relative;
+  background-color: #e4e4e4;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .content-text-spacing blockquote {
+    max-width: 28rem;
+    float: right;
+    margin-right: -5rem;
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .content-text-spacing blockquote {
+    background-color: #2f2d31;
+  }
 }
 
 .content-text-spacing blockquote:before {
@@ -910,7 +939,7 @@ abbr, abbr[title] {
   line-height: 1em;
   font-weight: 700;
   font-style: normal;
-  left: -4rem;
+  left: 1rem;
 }
 
 @-moz-document url-prefix() {
@@ -932,7 +961,48 @@ abbr, abbr[title] {
   }
 }
 
-#main .content-text-spacing p:last-child:after {
+.content-text-spacing blockquote p {
+  margin-left: 3rem;
+  padding-left: 0.5rem;
+  font-style: italic;
+  color: #4D4D4D;
+  color: hsl(214, 7%, 47%);
+}
+
+.content-text-spacing figure {
+  background-color: #e4e4e4;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .content-text-spacing figure {
+    max-width: 28rem;
+    float: right;
+    margin-right: -5rem;
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .content-text-spacing figure {
+    background-color: #2f2d31;
+  }
+}
+
+.content-text-spacing figure figcaption {
+  font-size: 1rem;
+  padding: 0.25rem 1rem 0.5rem 1rem;
+  color: #4D4D4D;
+  color: hsl(214, 7%, 47%);
+}
+
+@media (min-width: 768px) {
+  .content-text-spacing figure figcaption {
+    padding-top: 0;
+  }
+}
+
+#main .content-text-spacing > p:last-child:after {
   color: #ffffff;
   background-color: #C21136;
   content: "LTT";
@@ -945,24 +1015,6 @@ abbr, abbr[title] {
   font-family: 'Merriweather Sans', system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   vertical-align: text-top;
 }
-
-/*figure.float-right figcaption {
-  margin-right: -100px;
-}
-
-figure.float-left figcaption {
-  margin-left: -100px;
-}
-
-@media only screen and (min-width: 1200px) {
-  figure.md\:float-right figcaption {
-    margin-right: -150px;
-  }
-
-  figure.md\:float-left figcaption {
-    margin-left: -150px;
-  }
-}*/
 
 @-moz-document url-prefix() {
   .hide-moz {
