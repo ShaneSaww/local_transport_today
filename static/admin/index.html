@@ -12,20 +12,20 @@
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script>
-      function estimateReadingTime(articleBody) {
-        let wordCount = articleBody.split(' ').length
-        let minutes = wordCount / 120 // typical reading speed of 120 words a minute
-        if (minutes < 1) {
-          minutes = 1
-        }
-        return Math.floor(minutes)
-      }
 
       var editorialPreview = createClass({
         render: function() {
           var entry = this.props.entry;
           var categories = entry.getIn(['data', 'categories']).toJS();
-          var estimateReadingTime = estimateReadingTime(entry.getIn(['data', 'body']));
+
+          let articleBody = entry.getIn(['data', 'body']);
+          let wordCount = articleBody.split(' ').length;
+          let minutes = wordCount / 120; // typical reading speed of 120 words a minute
+          if (minutes < 1) {
+            minutes = 1;
+          }
+          var estimateReadingTime = Math.floor(minutes);
+
           return  h('div', {},
                     h('header', {"className": "w-full ltt-header fixed top-0 left-0 right-0 z-50", "id": "header", "role": "banner"},
                       h('nav', {"className": "w-full flex flex-col lg:flex-row lg:justify-between font-sans block text-sm px-6 py-3 leading-normal md:leading-none", "role": "navigation"},
