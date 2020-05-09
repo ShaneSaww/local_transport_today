@@ -74,7 +74,7 @@
           </div>
         </aside>
       </article>
-      <section id="comments">
+      <section v-if="article.allowComments" id="comments">
       </section>
       <section v-if="authorEditorials.length > 0" id="further-contributions" class="w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>

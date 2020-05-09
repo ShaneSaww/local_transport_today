@@ -18,6 +18,12 @@
           var entry = this.props.entry;
           var categories = entry.getIn(['data', 'categories']).toJS();
 
+          let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+          let date = entry.getIn(['data', 'datePublished']);
+          date = date.split('-');
+          let month = parseInt(date[1]);
+          var editorialDate = date[2] + ' ' + months[month - 1] + ' ' + date[0];
+
           let articleBody = entry.getIn(['data', 'body']);
           let wordCount = articleBody.split(' ').length;
           let minutes = wordCount / 120; // typical reading speed of 120 words a minute
@@ -69,7 +75,7 @@
                       h('article', {"className": "mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg", "role": "article"},
                         h('aside', {"role": "complementary"},
                           h('h4', {"className": "ltt-text-gray mt-6 md:mb-4 pr-1 md:mb-6 font-serif font-light md:font-medium text-sm md:text-base block md:inline-block leading-loose", "id": "continue-discussion-title"},
-                            "Continuing the discussion of:"
+                            "Continuing the discussion of: "
                           ),
                           h('ul', {"className": "pl-0 mb-8 md:mb-0 list-none block md:inline-block font-serif font-light md:font-medium leading-loose text-sm md:text-base", "aria-labelledby": "continue-discussion-title"},
                             categories.map(function(category, index) {
@@ -95,7 +101,7 @@
                             ),
                             h('li', {"className": "pr-4 lg:pr-8 inline-block"},
                               h('time', {"datetime": entry.getIn(['data', 'datePublished'])},
-                                entry.getIn(['data', 'datePublished'])
+                                editorialDate
                               ),
                             ),
                             h('li', {"className": "pr-4 lg:pr-8 inline-block"},
