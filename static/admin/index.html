@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
+    <title>LTT CMS</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <!-- Include the script that enables Netlify Identity on this page. -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
@@ -11,31 +12,120 @@
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script>
-      /*var homepagePreview = createClass({
+      function estimateReadingTime(articleBody) {
+        let wordCount = articleBody.split(' ').length
+        let minutes = wordCount / 120 // typical reading speed of 120 words a minute
+        if (minutes < 1) {
+          minutes = 1
+        }
+        return Math.floor(minutes)
+      }
+
+      var editorialPreview = createClass({
         render: function() {
           var entry = this.props.entry;
-          var image = entry.getIn(['data', 'front_cover']);
-          var frontCover = this.props.getAsset(image);
-          return  h('header', {"className": "flex flex-col items-center justify-between", "id": "header"},
-                    h('section', {"className": "flex-basis-100 mb-12 flex flex-wrap flex-col lg:flex-row items-center justify-center"},
-                      h('div', {"className": "px-6"},
-                        h('h1', {"className": "font-sans text-white text-center lg:text-left font-extrabold text-4xl uppercase pb-6 lg:pb-2"}, entry.getIn(['data', 'title'])),
-                        h('h2', {"className": "font-sans text-white text-center leading-tight lg:text-left font-light text-2xl italic pb-8"}, entry.getIn(['data', 'subtitle'])),
-                        h('p', {"className": "text-center lg:text-left"},
-                          h('a', {"className": "font-sans font-normal text-base button-press-white mb-8 lg:mb-0", "href": entry.getIn(['data', 'button_url'])}, entry.getIn(['data', 'button_title'])),
+          var estimateReadingTime = estimateReadingTime(entry.getIn(['data', 'body']));
+          return  h('div', {},
+                    h('header', {"className": "w-full ltt-header fixed top-0 left-0 right-0 z-50", "id": "header", "role": "banner"},
+                      h('nav', {"className": "w-full flex flex-col lg:flex-row lg:justify-between font-sans block text-sm px-6 py-3 leading-normal md:leading-none", "role": "navigation"},
+                        h('div', {"className": "flex flex-row justify-between"},
+                          h('div', {"className": "block self-center"},
+                            h('h1', {},
+                              h('a', {"className": "font-sans ltt-text-red no-underline tracking-wide hover:underline focus:underline", "href": ""},
+                                "LTT",
+                                h('span', {"className": "ltt-text-gray font-serif italic tracking-normal"}, " Discussion"),
+                              ),
+                            ),
+                          ),
+                          h('div', {"className": "block lg:hidden"},
+                            h('button', {"className": "flex items-center px-3 py-2 border-2 rounded text-gray-333"},
+                              h('svg', {"className": "fill-current h-5 w-5 block", "viewBox": "0 0 18.969 15", "xmlns": "http://www.w3.org/2000/svg"},
+                                h('path', {"d": "m 18.945,1.25 c 0,0.69 -0.5,1.25 -1.117,1.25 H 1.141 C 0.524,2.5 0.023,1.94 0.023,1.25 v 0 C 0.023,0.56 0.523,0 1.141,0 h 16.688 c 0.616,0 1.116,0.56 1.116,1.25 z"}),
+                                h('path', {"d": "m 18.923,7.5 c 0,0.689 -0.501,1.25 -1.118,1.25 H 1.118 C 0.5,8.75 0,8.189 0,7.5 v 0 C 0,6.811 0.5,6.25 1.118,6.25 h 16.687 c 0.617,0 1.118,0.561 1.118,1.25 z"}),
+                                h('path', {"d": "m 18.969,13.75 c 0,0.689 -0.5,1.25 -1.117,1.25 H 1.164 C 0.547,15 0.046,14.439 0.046,13.75 v 0 c 0,-0.689 0.5,-1.25 1.118,-1.25 h 16.688 c 0.617,0 1.117,0.561 1.117,1.25 z"}),
+                              ),
+                            ),
+                          ),
+                        ),
+                        h('div', {"className": "w-full block flex-grow lg:flex lg:w-auto hidden"},
+                          h('ul', {"className": "menu-header w-full px-4 lg:px-0 lg:flex lg:justify-end lg:items-center list-none text-sm"},
+                            h('li', {"className": "my-6 lg:my-2 lg:mx-4"},
+                              h('a', {"href": ""},
+                                "Home"
+                              ),
+                            ),
+                            h('li', {"className": "my-6 lg:my-2 lg:mx-4"},
+                              h('a', {"href": ""},
+                                h('span', {"className": "font-serif italic opacity-75"}, "my"),
+                                "LTT"
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      h('div', {"className": "px-6 pt-6 lg:pt-0"},
-                        h('img', {src: frontCover.toString(), width: 300, height: 413}),
+                    ),
+                    h('div', {"className": "w-full overflow-hidden flex flex-wrap justify-center pt-8", "id": "main", "role": "main"},
+                      h('article', {"className": "mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg", "role": "article"},
+                        h('aside', {"role": "complementary"},
+                          h('h4', {"className": "ltt-text-gray mt-6 md:mb-4 pr-1 md:mb-6 font-serif font-light md:font-medium text-sm md:text-base block md:inline-block leading-loose", "id": "continue-discussion-title"},
+                            "Continuing the discussion of:"
+                          ),
+                          h('ul', {"className": "pl-0 mb-8 md:mb-0 list-none block md:inline-block font-serif font-light md:font-medium leading-loose text-sm md:text-base", "aria-labelledby": "continue-discussion-title"},
+                            var categories = chapter.getIn(['data', 'categories']).toJS()
+                            categories.map(function(category, index) {
+                            //this.props.widgetsFor('categories').map(function(category, key) {
+                              return  h('li', {"className": "pr-3 inline-block"},
+                                        h('a', {"className": "ltt-text-red no-underline hover:underline focus:underline", "href": ""},
+                                          category
+                                        ),
+                              );
+                            })
+                          ),
+                        ),
+                        h('h1', {"className": "font-sans font-extrabold leading-tight md:leading-tighter ltt-text-red mb-4 text-4xl md:text-6xl lg:mt-0"},
+                          entry.getIn(['data', 'headline'])
+                        ),
+                        h('aside', {"role": "complementary"},
+                          h('ul', {"className": "ltt-text-gray font-serif font-light md:font-medium leading-loose text-sm md:text-base pl-0 my-6 list-none"},
+                            h('li', {"className": "pr-4 lg:pr-8 inline-block"},
+                              "Viewpoint by ",
+                              h('a', {"className": "ltt-text-red no-underline hover:underline focus:underline", "href": ""},
+                                entry.getIn(['data', 'author'])
+                              ),
+                            ),
+                            h('li', {"className": "pr-4 lg:pr-8 inline-block"},
+                              h('time', {"datetime": entry.getIn(['data', 'datePublished'])},
+                                entry.getIn(['data', 'datePublished'])
+                              ),
+                            ),
+                            h('li', {"className": "pr-4 lg:pr-8 inline-block"},
+                              estimateReadingTime,
+                              " min read"
+                            ),
+                            h('li', {"className": "inline-block"},
+                              "Featured inside ",
+                              h('abbr', {"title": "Local Transport Today"},
+                                "LTT"
+                              ),
+                              " issue № ",
+                              entry.getIn(['data', 'issue'])
+                            ),
+                          ),
+                        ),
+                        h('div', {"className": "dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"},
+                          entry.getIn(['data', 'body'])
+                        ),
                       ),
                     ),
                   );
         }
       });
 
-      CMS.registerPreviewTemplate('home', homepagePreview);
+      CMS.registerPreviewTemplate('editorials', editorialPreview);
 
-      CMS.registerPreviewStyle('https://musing-bell-4b866b.netlify.com/_nuxt/f54ded626dcc2572c12a.css');*/
+      CMS.registerPreviewStyle('/admin/custom_preview.css');
+      CMS.registerPreviewStyle('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap');
+      CMS.registerPreviewStyle('https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i&display=swap');
     </script>
   </body>
 </html>

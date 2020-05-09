@@ -7,7 +7,7 @@ backend:
 media_folder: 'static/images/uploads' # Media files will be stored in the repo under static/images/uploads
 public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
 
-site_url: https://festive-swirles-0f46c8.netlify.com
+site_url: https://www.localtransport.today
 display_url: https://localtransport.today
 logo_url: '/local_transport_today_logo_colour.svg'
 
