@@ -24,6 +24,7 @@
       var editorialPreview = createClass({
         render: function() {
           var entry = this.props.entry;
+          var categories = entry.getIn(['data', 'categories']).toJS();
           var estimateReadingTime = estimateReadingTime(entry.getIn(['data', 'body']));
           return  h('div', {},
                     h('header', {"className": "w-full ltt-header fixed top-0 left-0 right-0 z-50", "id": "header", "role": "banner"},
@@ -71,7 +72,6 @@
                             "Continuing the discussion of:"
                           ),
                           h('ul', {"className": "pl-0 mb-8 md:mb-0 list-none block md:inline-block font-serif font-light md:font-medium leading-loose text-sm md:text-base", "aria-labelledby": "continue-discussion-title"},
-                            var categories = chapter.getIn(['data', 'categories']).toJS()
                             categories.map(function(category, index) {
                             //this.props.widgetsFor('categories').map(function(category, key) {
                               return  h('li', {"className": "pr-3 inline-block"},
