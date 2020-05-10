@@ -33,7 +33,19 @@
           }
           var estimateReadingTime = Math.floor(minutes);
 
-          const renderer = new Renderer() // create your custom renderer
+          const renderer = {
+            blockquote (quote) {
+              return `<aside role="complementary"><blockquote>${quote}</blockquote></aside>`;
+            },
+
+            image (href, title, text) {
+              return `<figure><img src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`;
+            }
+          };
+
+          renderer.smartypants = true; // smartypants = typographic punctuation for quotes and dashes
+
+          /*const renderer = new Renderer() // create your custom renderer
 
           renderer.smartypants = true // smartypants = typographic punctuation for quotes and dashes
 
@@ -43,9 +55,10 @@
 
           renderer.image = (href, title, text) => {
             return `<figure><img src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`
-          }
+          }*/
 
-          marked.setOptions({ renderer }) // set the renderer to marked
+          //marked.setOptions({ renderer }) // set the renderer to marked
+          marked.use({ renderer }); // set the renderer to marked
 
           var body = marked(entry.getIn(['data', 'body']));
 
