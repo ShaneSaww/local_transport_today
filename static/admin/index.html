@@ -11,6 +11,7 @@
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
 
       var editorialPreview = createClass({
@@ -31,6 +32,8 @@
             minutes = 1;
           }
           var estimateReadingTime = Math.floor(minutes);
+
+          var body = marked(entry.getIn(['data', 'body']));
 
           return  h('div', {},
                     h('header', {"className": "w-full ltt-header fixed top-0 left-0 right-0 z-50", "id": "header", "role": "banner"},
@@ -118,8 +121,7 @@
                             ),
                           ),
                         ),
-                        h('div', {"className": "dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"},
-                          entry.getIn(['data', 'body'])
+                        h('div', {"className": "dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl", dangerouslySetInnerHTML: {__html: body}},
                         ),
                       ),
                     ),
