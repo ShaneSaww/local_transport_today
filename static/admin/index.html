@@ -17,13 +17,20 @@
       var editorialPreview = createClass({
         render: function() {
           var entry = this.props.entry;
-          var categories = entry.getIn(['data', 'categories']).toJS();
+          var categories;
+          //var categories = entry.getIn(['data', 'categories']).toJS();
+          if(entry.getIn(['data', 'categories'])) {
+            categories = entry.getIn(['data', 'categories']).toJS();
+          }
+          else {
+            categories = [];
+          }
 
           let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
           let date = entry.getIn(['data', 'datePublished']);
           date = date.split('-');
           let month = parseInt(date[1]);
-          var editorialDate = date[2] + ' ' + months[month - 1] + ' ' + date[0];
+          var editorialDate = parseInt(date[2]) + ' ' + months[month - 1] + ' ' + date[0];
 
           let articleBody = entry.getIn(['data', 'body']);
           let wordCount = articleBody.split(' ').length;
@@ -96,7 +103,6 @@
                           ),
                           h('ul', {"className": "pl-0 mb-8 md:mb-0 list-none block md:inline-block font-serif font-light md:font-medium leading-loose text-sm md:text-base", "aria-labelledby": "continue-discussion-title"},
                             categories.map(function(category, index) {
-                            //this.props.widgetsFor('categories').map(function(category, key) {
                               return  h('li', {"className": "pr-3 inline-block"},
                                         h('a', {"className": "ltt-text-red no-underline hover:underline focus:underline", "href": ""},
                                           category
