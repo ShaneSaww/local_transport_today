@@ -18,27 +18,39 @@
         render: function() {
           var entry = this.props.entry;
           var categories;
+          var editorialDate;
+          var estimateReadingTime = 1;
+          var issueNumber = '';
+
           //var categories = entry.getIn(['data', 'categories']).toJS();
-          if(entry.getIn(['data', 'categories'])) {
+          if (entry.getIn(['data', 'categories'])) {
             categories = entry.getIn(['data', 'categories']).toJS();
           }
           else {
             categories = [];
           }
 
-          let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
-          let date = entry.getIn(['data', 'datePublished']);
-          date = date.split('-');
-          let month = parseInt(date[1]);
-          var editorialDate = parseInt(date[2]) + ' ' + months[month - 1] + ' ' + date[0];
-
-          let articleBody = entry.getIn(['data', 'body']);
-          let wordCount = articleBody.split(' ').length;
-          let minutes = wordCount / 120; // typical reading speed of 120 words a minute
-          if (minutes < 1) {
-            minutes = 1;
+          if (entry.getIn(['data', 'datePublished'])) {
+            let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+            let date = entry.getIn(['data', 'datePublished']);
+            date = date.split('-');
+            let month = parseInt(date[1]);
+            editorialDate = parseInt(date[2]) + ' ' + months[month - 1] + ' ' + date[0];
           }
-          var estimateReadingTime = Math.floor(minutes);
+
+          if (entry.getIn(['data', 'body']) {
+            let articleBody = entry.getIn(['data', 'body']);
+            let wordCount = articleBody.split(' ').length;
+            let minutes = wordCount / 120; // typical reading speed of 120 words a minute
+            if (minutes < 1) {
+              minutes = 1;
+            }
+            estimateReadingTime = Math.floor(minutes);
+          }
+
+          if (entry.getIn(['data', 'issue'])) {
+            issueNumber = 'Featured inside LTT issue № ' + entry.getIn(['data', 'issue']);
+          }
 
           const renderer = {
             blockquote (quote) {
@@ -132,12 +144,7 @@
                               " min read"
                             ),
                             h('li', {"className": "inline-block"},
-                              "Featured inside ",
-                              h('abbr', {"title": "Local Transport Today"},
-                                "LTT"
-                              ),
-                              " issue № ",
-                              entry.getIn(['data', 'issue'])
+                              issueNumber
                             ),
                           ),
                         ),
