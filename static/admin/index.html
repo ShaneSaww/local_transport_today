@@ -21,6 +21,7 @@
           var editorialDate;
           var estimateReadingTime = 1;
           var issueNumber = '';
+          var body = '';
 
           //var categories = entry.getIn(['data', 'categories']).toJS();
           if (entry.getIn(['data', 'categories'])) {
@@ -66,7 +67,9 @@
 
           marked.use({ renderer }); // set the renderer to marked
 
-          var body = marked(entry.getIn(['data', 'body']));
+          if (entry.getIn(['data', 'body'])) {
+            body = marked(entry.getIn(['data', 'body']));
+          }
 
           return  h('div', {},
                     h('header', {"className": "w-full ltt-header fixed top-0 left-0 right-0 z-50", "id": "header", "role": "banner"},
