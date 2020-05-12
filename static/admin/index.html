@@ -59,7 +59,17 @@
             },
 
             image (href, title, text) {
-              return `<figure><img src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`;
+              if (href) {
+                if (title) {
+                  return `<figure><img src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`;
+                }
+                else {
+                  return `<figure><img src="${href}" alt="${text}" /></figure>`;
+                }
+              }
+              else {
+                return '';
+              }
             }
           };
 

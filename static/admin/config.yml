@@ -19,12 +19,12 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: false
     files:
-      - file: 'assets/content/settings/_home.json'
+      - file: 'assets/content/settings/home.json'
         label: 'Home Page'
         name: 'home'
         fields:
           - {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
-      - file: 'assets/content/settings/_header.json'
+      - file: 'assets/content/settings/header.json'
         label: 'Header'
         name: 'header'
         fields:

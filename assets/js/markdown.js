@@ -11,7 +11,17 @@ const util = {
     }
 
     renderer.image = (href, title, text) => {
-      return `<figure><img loading="lazy" src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`
+      if (href) {
+        if (title) {
+          return `<figure><img loading="lazy" src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`
+        }
+        else {
+          return `<figure><img loading="lazy" src="${href}" alt="${text}" /></figure>`
+        }
+      }
+      else {
+        return ''
+      }
     }
 
     marked.setOptions({ renderer }) // set the renderer to marked
