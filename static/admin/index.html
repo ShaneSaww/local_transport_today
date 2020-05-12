@@ -45,19 +45,6 @@
 
           renderer.smartypants = true; // smartypants = typographic punctuation for quotes and dashes
 
-          /*const renderer = new Renderer() // create your custom renderer
-
-          renderer.smartypants = true // smartypants = typographic punctuation for quotes and dashes
-
-          renderer.blockquote = (quote) => {
-            return `<aside role="complementary"><blockquote>${quote}</blockquote></aside>`
-          }
-
-          renderer.image = (href, title, text) => {
-            return `<figure><img src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`
-          }*/
-
-          //marked.setOptions({ renderer }) // set the renderer to marked
           marked.use({ renderer }); // set the renderer to marked
 
           var body = marked(entry.getIn(['data', 'body']));
@@ -102,7 +89,7 @@
                       ),
                     ),
                     h('div', {"className": "w-full overflow-hidden flex flex-wrap justify-center pt-8", "id": "main", "role": "main"},
-                      h('article', {"className": "mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg", "role": "article"},
+                      h('article', {"className": "mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg border-b border-solid border-light-gray pb-8 mb-8", "role": "article"},
                         h('aside', {"role": "complementary"},
                           h('h4', {"className": "ltt-text-gray mt-6 md:mb-4 pr-1 md:mb-6 font-serif font-light md:font-medium text-sm md:text-base block md:inline-block leading-loose", "id": "continue-discussion-title"},
                             "Continuing the discussion of: "

@@ -75,7 +75,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Publish Editorial Online?', name: 'published', widget: 'boolean', default: false}
       - {label: 'Allow User Comments?', name: 'allowComments', widget: 'boolean', default: true}
       - {label: 'Headline', name: 'headline', widget: 'string', required: true}
-      - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: An enticing sub-headline can be found from the blockquote found inside the print publication edition.'}
+      - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: An enticing sub-headline can be found from the blockquote inside the print publication edition.'}
       - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: true, optionsLength: 5}
       - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: '1', step: '1', required: false}
