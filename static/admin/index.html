@@ -38,7 +38,7 @@
             editorialDate = parseInt(date[2]) + ' ' + months[month - 1] + ' ' + date[0];
           }
 
-          if (entry.getIn(['data', 'body']) {
+          if (entry.getIn(['data', 'body'])) {
             let articleBody = entry.getIn(['data', 'body']);
             let wordCount = articleBody.split(' ').length;
             let minutes = wordCount / 120; // typical reading speed of 120 words a minute
