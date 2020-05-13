@@ -77,7 +77,7 @@ export default {
   head() {
     return {
       script: [
-        //{ async: true, src: 'https://www.google-analytics.com/analytics.js' }
+        { async: true, src: 'https://www.google-analytics.com/analytics.js' }
       ]
     }
   }

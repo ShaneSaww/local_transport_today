@@ -21,7 +21,7 @@ export default ({ app }) => {
     }
   }
 
-  //window['ga-disable-' + process.env.googleAnalyticsID] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
+  window['ga-disable-' + process.env.googleAnalyticsID] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
 
   /*
   ** Include Google Analytics Script
