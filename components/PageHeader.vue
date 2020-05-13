@@ -43,7 +43,7 @@ export default {
   data: function () {
     return {
       open: false,
-      googleAnalyticsDisableToggle: this.toggleGoogleAnalytics()
+      //googleAnalyticsDisableToggle: this.toggleGoogleAnalytics()
     }
   },
 
@@ -70,20 +70,20 @@ export default {
     	this.open = !this.open
     },
 
-    toggleGoogleAnalytics () {
-      /*if (window.localStorage) {
+    /*toggleGoogleAnalytics () {
+      if (window.localStorage) {
         if (localStorage.getItem('ga-toggle') === 'false') {
           return true
         }
       }
-      else {*/
+      else {
         if (this.$cookies.get('ga-toggle', { parseJSON: false }) === 'false') {
           return true
         }
-      //}
+      }
 
       return false
-    },
+    },*/
 
     slugify (string) {
       return helperSlugify.slugify(string)
@@ -92,9 +92,9 @@ export default {
 
   head() {
     return {
-      __dangerouslyDisableSanitizers: ['script'],
+      //__dangerouslyDisableSanitizers: ['script'],
       script: [
-        { innerHTML: "window['ga-disable-" + process.env.googleAnalyticsID + "'] = " + this.googleAnalyticsDisableToggle + ";" }, // if 'true' it disables from sending data to Google Analytics
+        //{ innerHTML: "window['ga-disable-" + process.env.googleAnalyticsID + "'] = " + this.googleAnalyticsDisableToggle + ";" }, // if 'true' it disables from sending data to Google Analytics
         { async: true, src: 'https://www.google-analytics.com/analytics.js' }
       ]
     }

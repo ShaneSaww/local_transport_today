@@ -6,6 +6,24 @@ export default ({ app }) => {
   if (process.env.NODE_ENV !== 'production' || process.env.googleAnalyticsID === '') return
 
   /*
+  ** Check for Google Analytics permission from user
+  */
+  var ga_disable_toggle = false;
+
+  if (window.localStorage) {
+    if (localStorage.getItem('ga-toggle') === 'false') {
+      ga_disable_toggle = true;
+    }
+  }
+  else {
+    if (this.$cookies.get('ga-toggle', { parseJSON: false }) === 'false') {
+      ga_disable_toggle = true;
+    }
+  }
+
+  window['ga-disable-' + process.env.googleAnalyticsID] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
+
+  /*
   ** Include Google Analytics Script
   **
   ** The alternative async tracking snippet below adds support for preloading, which will provide a small performance boost on modern browsers, but can degrade to synchronous loading and execution on IE 9 and older mobile browsers that do not recognize the async script attribute. Only use this tracking snippet if your visitors primarily use modern browsers to access your site.
