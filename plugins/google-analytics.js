@@ -2,7 +2,10 @@ export default ({ app }) => {
   /*
   ** Only run on client-side and only in production mode
   */
+  console.log('Google ID = ' + process.env.googleAnalyticsID)
   if (process.env.NODE_ENV !== 'production' || process.env.googleAnalyticsID === '') return
+
+  console.log("I'm in")
 
   /*
   ** Check for Google Analytics permission from user
