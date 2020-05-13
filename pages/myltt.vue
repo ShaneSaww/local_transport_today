@@ -181,10 +181,10 @@ export default {
         toggle = 'true'
       }
 
-      if (window.localStorage) {
+      /*if (window.localStorage) {
         localStorage.setItem('ga-toggle', toggle)
       }
-      else {
+      else {*/
         if (process.env.NODE_ENV !== 'production') {
           this.$cookies.set('ga-toggle', toggle, {
             path: '/',
@@ -205,22 +205,22 @@ export default {
             secure: true
           })
         }
-      }
+      //}
     },
 
     updateGoogleAnalyticsToggle () {
       let toggle = true
 
-      if (window.localStorage) {
+      /*if (window.localStorage) {
         if (localStorage.getItem('ga-toggle') === 'false') {
           toggle = false
         }
       }
-      else {
+      else {*/
         if (this.$cookies.get('ga-toggle', { parseJSON: false }) === 'false') {
           toggle = false
         }
-      }
+      //}
 
       this.enableGoogleAnalytics = toggle
     }
@@ -228,7 +228,7 @@ export default {
 
   head() {
     return {
-      __dangerouslyDisableSanitizers: ['script'],
+      //__dangerouslyDisableSanitizers: ['script'],
       title: 'myLTT - ' + pkg.description,
       link: [
         { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/myltt/' }

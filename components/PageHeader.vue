@@ -42,7 +42,8 @@ import helperSlugify from '~/assets/js/slugify.js'
 export default {
   data: function () {
     return {
-      open: false
+      open: false,
+      googleAnalyticsDisableToggle: this.toggleGoogleAnalytics()
     }
   },
 
@@ -65,8 +66,23 @@ export default {
   },
 
   methods: {
-  	toggleHamburger() {
+  	toggleHamburger () {
     	this.open = !this.open
+    },
+
+    toggleGoogleAnalytics () {
+      /*if (window.localStorage) {
+        if (localStorage.getItem('ga-toggle') === 'false') {
+          return true
+        }
+      }
+      else {*/
+        if (this.$cookies.get('ga-toggle', { parseJSON: false }) === 'false') {
+          return true
+        }
+      //}
+
+      return false
     },
 
     slugify (string) {
@@ -76,7 +92,9 @@ export default {
 
   head() {
     return {
+      __dangerouslyDisableSanitizers: ['script'],
       script: [
+        { innerHTML: "window['ga-disable-" + process.env.googleAnalyticsID + "'] = " + this.googleAnalyticsDisableToggle + ";" }, // if 'true' it disables from sending data to Google Analytics
         { async: true, src: 'https://www.google-analytics.com/analytics.js' }
       ]
     }
