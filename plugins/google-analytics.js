@@ -2,10 +2,8 @@ export default ({ app }) => {
   /*
   ** Only run on client-side and only in production mode
   */
-  console.log('Google ID = ' + process.env.googleAnalyticsID)
-  if (process.env.NODE_ENV !== 'production' || process.env.googleAnalyticsID === '') return
 
-  console.log("I'm in")
+  if (process.env.NODE_ENV !== 'production' || process.env.googleAnalyticsID === '') return
 
   /*
   ** Check for Google Analytics permission from user
@@ -22,6 +20,8 @@ export default ({ app }) => {
       ga_disable_toggle = true;
     }
   }
+
+  console.log(ga_disable_toggle)
 
   window['ga-disable-' + process.env.googleAnalyticsID] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
 
