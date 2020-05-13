@@ -2,7 +2,7 @@ export default ({ app }) => {
   /*
   ** Only run on client-side and only in production mode
   */
-  if (process.env.NODE_ENV !== 'production') return
+  if (process.env.NODE_ENV !== 'production' || process.env.googleAnalyticsID === '') return
 
   /*
   ** Check for Google Analytics permission from user
@@ -20,7 +20,7 @@ export default ({ app }) => {
     }
   }
 
-  window['ga-disable-UA-75984540-1'] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
+  window['ga-disable-' + process.env.googleAnalyticsID] = ga_disable_toggle; // if 'true' it disables from sending data to Google Analytics
 
   /*
   ** Include Google Analytics Script
@@ -35,7 +35,7 @@ export default ({ app }) => {
   var GA_LOCAL_STORAGE_KEY = 'ga:clientId';
 
   if (window.localStorage) {
-    ga('create', 'UA-75984540-1', {
+    ga('create', process.env.googleAnalyticsID, {
       'storage': 'none',
       'clientId': localStorage.getItem(GA_LOCAL_STORAGE_KEY)
     });
@@ -44,7 +44,7 @@ export default ({ app }) => {
     });
   }
   else {
-    ga('create', 'UA-75984540-1', 'auto')
+    ga('create', process.env.googleAnalyticsID, 'auto')
   }
   /*
   ** Every time the route changes (fired on initialization too)

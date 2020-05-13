@@ -88,7 +88,7 @@ export default {
   },
 
   env: {
-    //retrieveEditorialsUrl: `${process.env.CMS_URL}${process.env.READ_EDITORIALS_PATH}?token=${process.env.READ_EDITORIALS_TOKEN}`
+    googleAnalyticsID: 'UA-166386469-1'
   },
 
   serverMiddleware: [
