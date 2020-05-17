@@ -11,7 +11,7 @@
   color: #c21136;
 }
 
-.commento-root a {
+.commento-root a, .commento-root .commento-login-box-container .commento-login-box .commento-email-container .commento-email .commento-email-button, .commento-root .commento-login-box-container .commento-login-box .commento-email-container .commento-email .commento-email-button:hover {
   color: #c21136;
 }
 
@@ -19,7 +19,7 @@
   text-decoration: underline;
 }
 
-.commento-root * {
+.commento-root *, .commento-root .commento-login-box-container .commento-login-box button, .commento-root .commento-login-box-container .commento-login-box input, .commento-root .commento-login-box-container .commento-login-box textarea {
   font-size: inherit;
 }
 
