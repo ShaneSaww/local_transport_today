@@ -23,10 +23,14 @@
   font-size: inherit;
 }
 
-.commento-root .commento-card .commento-body p {
+.commento-root .commento-card .commento-body p, .commento-root blockquote {
   margin-bottom: 1rem;
 }
 
 .commento-root .commento-card .commento-body p:last-child {
   margin-bottom: 0;
+}
+
+.commento-root .commento-login-box-container .commento-login-box {
+  border: 1px solid #e4e4e4;
 }
