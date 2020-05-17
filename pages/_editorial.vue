@@ -75,6 +75,14 @@
         </aside>
       </article>
       <section v-if="article.allowComments" id="comments">
+        <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Comments</h2>
+        <script defer
+          src="https://cdn.commento.io/js/commento.js"
+          data-no-fonts="true"
+          data-auto-init="true"
+          :data-page-id="'/' + article.slug + '/'">
+        </script>
+        <div id="commento" class="content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"></div>
       </section>
       <section v-if="authorEditorials.length > 0" id="further-contributions" class="w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>
