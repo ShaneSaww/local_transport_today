@@ -83,7 +83,7 @@
           data-auto-init="true"
           :data-page-id="'/' + article.slug + '/'">
         </script>
-        <div id="commento" class="font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"></div>
+        <div id="commento" class="font-serif text-gray-333 leading-normal text-base md:text-xl"></div>
       </section>
       <section v-if="authorEditorials.length > 0" id="further-contributions" class="w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-8 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>

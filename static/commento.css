@@ -11,6 +11,22 @@
   color: #c21136;
 }
 
+.commento-root a {
+  color: #c21136;
+}
+
+.commento-root a:hover, .commento-root a:focus {
+  text-decoration: underline;
+}
+
 .commento-root * {
   font-size: inherit;
+}
+
+.commento-body p {
+  margin-bottom: 2rem;
+}
+
+.commento-body p:last-child {
+  margin-bottom: 0;
 }
