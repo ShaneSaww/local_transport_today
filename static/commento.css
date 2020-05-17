@@ -23,10 +23,10 @@
   font-size: inherit;
 }
 
-.commento-body p {
-  margin-bottom: 2rem;
+.commento-root .commento-card .commento-body p {
+  margin-bottom: 1rem;
 }
 
-.commento-body p:last-child {
+.commento-root .commento-card .commento-body p:last-child {
   margin-bottom: 0;
 }
