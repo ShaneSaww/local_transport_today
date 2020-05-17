@@ -19,8 +19,12 @@
   text-decoration: underline;
 }
 
-.commento-root *, .commento-root .commento-login-box-container .commento-login-box button, .commento-root .commento-login-box-container .commento-login-box input, .commento-root .commento-login-box-container .commento-login-box textarea {
+.commento-root * {
   font-size: inherit;
+}
+
+.commento-root .commento-login-box-container .commento-login-box button, .commento-root .commento-login-box-container .commento-login-box input, .commento-root .commento-login-box-container .commento-login-box textarea {
+  font-family: inherit;
 }
 
 .commento-root .commento-card .commento-body p, .commento-root blockquote {
