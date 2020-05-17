@@ -1,0 +1,16 @@
+
+.commento-root .commento-submit-button {
+  background-color: #c21136;
+}
+
+.commento-root .commento-sort-policy-buttons-container .commento-sort-policy-buttons .commento-sort-policy-button-selected {
+  color: #c21136;
+}
+
+.commento-root .commento-mod-tools::before {
+  color: #c21136;
+}
+
+.commento-root * {
+  font-size: inherit;
+}

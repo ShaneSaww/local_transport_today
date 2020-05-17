@@ -74,10 +74,11 @@
           </div>
         </aside>
       </article>
-      <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+      <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Comments</h2>
         <script defer
           src="https://cdn.commento.io/js/commento.js"
+          :data-css-override="homepageURL + '/commento.css'"
           data-no-fonts="true"
           data-auto-init="true"
           :data-page-id="'/' + article.slug + '/'">
