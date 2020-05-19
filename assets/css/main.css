@@ -715,8 +715,9 @@ img {
   }
 
   .ltt-text-gray {
-    color: #4D4D4D;
-    color: hsl(214, 7%, 47%);
+    color: #666d75;
+    /*color: hsl(214, 7%, 47%);*/
+    color: hsl(214, 7%, 43%);
   }
 
   .ltt-border-gray {
