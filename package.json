@@ -26,7 +26,6 @@
     "nuxt": "^2.11.0",
     "nuxt-leaflet": "0.0.19",
     "vue-scrollto": "^2.15.0",
-    "vue2-google-maps": "^0.10.6",
     "vue2-leaflet": "^2.1.1"
   },
   "devDependencies": {
