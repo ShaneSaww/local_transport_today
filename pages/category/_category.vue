@@ -3,7 +3,7 @@
     <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
     <h1 class="sr-only"><nuxt-link :to="'/category/' + categorySlug + '/'">{{ category.name }} - Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
-      <div class="w-full mt-10 mx-6 lg:mx-4">
+      <div class="w-full mt-10 mx-6 lg:mx-4 print:mx-0">
         <div :class="categoryEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
           <template v-for="(article, key) in categoryEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">

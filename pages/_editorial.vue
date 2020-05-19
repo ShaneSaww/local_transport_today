@@ -74,7 +74,7 @@
           </div>
         </aside>
       </article>
-      <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+      <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Comments</h2>
         <script defer
           src="https://cdn.commento.io/js/commento.js"
@@ -85,7 +85,7 @@
         </script>
         <div id="commento" class="font-serif text-gray-333 leading-normal text-base md:text-xl"></div>
       </section>
-      <section v-if="authorEditorials.length > 0" id="further-contributions" class="w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+      <section v-if="authorEditorials.length > 0" id="further-contributions" class="no-print w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-8 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>
         <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between">
           <article v-for="(article, key) in authorEditorials" v-if="key <= 1" role="article" class="flex-basis-100 md:flex-basis-50 -mx-4 border-light-gray border border-solid p-4 mb-4 md:mb-8 flex flex-col justify-between">
