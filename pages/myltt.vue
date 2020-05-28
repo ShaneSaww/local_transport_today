@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
+    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="pageName" />
     <div role="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div role="article" class="mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <h1 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-4 text-4xl md:text-6xl lg:mt-0"><span class="font-serif italic opacity-75">my</span>LTT</h1>
@@ -108,6 +108,7 @@ export default {
     return {
       displayHero: true,
       displaySidebar: false,
+      pageName: 'myltt',
       rssFeedUrl: pkg.homepageURL + '/feed.xml',
       copyToClipboardMsg: null,
       enableGoogleAnalytics: true

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
+    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="articleSlug" />
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <article role="article" class="mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <aside v-if="article.categories.length > 0" role="complementary">

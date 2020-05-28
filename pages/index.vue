@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" />
+    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="pageName" />
     <h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div class="w-full mt-10 mx-6 lg:mx-4 print:mx-0">
@@ -119,7 +119,8 @@ export default {
   data: function () {
     return {
       displayHero: true,
-      displaySidebar: false
+      displaySidebar: false,
+      pageName: 'home'
       //latestEditorials: this.$store.getters['editorials/retrieveAllEditorials'],
       //settings: this.$store.getters['settings/retrieveSettings'](''),
       //featuredAuthorEditorials: this.$store.getters['editorials/retrieveAuthorEditorials']('Phil Goodwin')
