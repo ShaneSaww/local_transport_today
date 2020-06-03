@@ -1,5 +1,7 @@
 <template>
   <div>
+    <a href="#menu" class="sr-only">Skip to navigation</a>
+    <a href="#main" class="sr-only">Skip to main content</a>
     <nuxt/>
     <page-footer/>
   </div>
