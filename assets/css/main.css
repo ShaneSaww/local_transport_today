@@ -609,6 +609,10 @@ img {
     flex-basis: calc(100%);
   }
 
+  .flex-basis-75 {
+    flex-basis: calc(75%);
+  }
+
   .flex-basis-50 {
     flex-basis: calc(50%);
   }
@@ -647,6 +651,10 @@ img {
 
   .notch, .content-text-spacing blockquote {
     clip-path: polygon(2rem 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 2rem) 100%, 0 100%, 0 3rem);
+  }
+
+  .notch-small {
+    clip-path: polygon(0.5rem 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 0.5rem) 100%, 0 100%, 0 1rem);
   }
 
   /*.bg-light-gray {

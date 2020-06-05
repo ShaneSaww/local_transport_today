@@ -22,11 +22,11 @@
                 <div>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-links-title-' + article.md5" class="sr-only no-print">Article Links:</h4>
-                    <ul :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                    <ul role="list" :aria-labelledby="'article-links-title-' + article.md5" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                       <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
                         <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
-                          <svg aria-hidden="true" role="img" class="fill-current h-4 w-4" viewBox="0 0 15.789 15.797" xmlns="http://www.w3.org/2000/svg">
+                          <svg aria-hidden="true" focusable="false" role="img" class="fill-current h-4 w-4" viewBox="0 0 15.789 15.797" xmlns="http://www.w3.org/2000/svg">
                             <path d="m 15.6105,13.277 -5.395,-5.415 5.407,-5.345 c 0.222,-0.222 0.222,-0.584 0,-0.806 L 14.0845,0.165 C 13.9785,0.058 13.8335,0 13.6815,0 c -0.152,0 -0.295,0.062 -0.402,0.165 L 7.8975,5.493 2.5075,0.168 C 2.4005,0.062 2.2565,0.003 2.1045,0.003 c -0.152,0 -0.296,0.062 -0.403,0.165 l -1.535,1.547 c -0.222,0.222 -0.222,0.584 0,0.806 l 5.407,5.346 -5.391,5.41 c -0.107,0.107 -0.168,0.251 -0.168,0.403 0,0.152 0.057,0.296 0.168,0.403 l 1.538,1.546 c 0.111,0.11 0.255,0.168 0.403,0.168 0.144,0 0.292,-0.054 0.403,-0.168 l 5.37,-5.396 5.374,5.391 c 0.111,0.111 0.255,0.169 0.402,0.169 0.145,0 0.293,-0.054 0.402,-0.169 l 1.539,-1.546 c 0.106,-0.106 0.168,-0.25 0.168,-0.402 -0.002,-0.148 -0.065,-0.292 -0.171,-0.399 z" />
                           </svg>
                           <span v-if="bookmarked(article.md5)" class="sr-only">Remove bookmark for this article</span>
@@ -41,7 +41,7 @@
                 <div>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + article.md5" class="sr-only no-print">Article information:</h4>
-                    <ul :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                    <ul role="list" :aria-labelledby="'article-meta-title-' + article.md5" class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
                       <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
                       <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                       <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>

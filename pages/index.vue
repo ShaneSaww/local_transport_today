@@ -10,11 +10,11 @@
               <article role="article" class="article-item">
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</h4>
-                  <ul :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                  <ul role="list" :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                     <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                     <li class="inline-block no-print">
                       <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
-                        <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" focusable="false" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
                         </svg>
                         <span v-if="bookmarked(article.md5)" class="sr-only">Remove bookmark for this article</span>
@@ -27,7 +27,7 @@
                 <p :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-meta-title-' + key" class="sr-only no-print">Article information:</h4>
-                  <ul :aria-labelledby="'article-meta-title-' + key" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                  <ul role="list" :aria-labelledby="'article-meta-title-' + key" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
                     <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
                     <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                     <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
@@ -43,15 +43,35 @@
           </template>
           <template v-if="displaySidebar">
             <div class="cell cell--7">
-              <aside role="complementary">
+              <aside role="complementary" class="no-print">
+                <h2 id="transport-experts" class="w-full mt-2 mb-8 text-left text-base font-serif text-gray-333">Transport Experts</h2>
+                <ul role="list" aria-labelledby="transport-experts" class="list-none pl-0">
+                  <li v-for="(author, key) in allAuthors" class="block my-6">
+                    <div class="flex flex-row">
+                      <div class="flex-basis-25">
+                        <figure v-if="author.photo">
+                          <img loading="lazy" class="notch-small max-w-full" width="100" height="100" :src="author.photo" :alt="author.name" :title="author.name" />
+                        </figure>
+                      </div>
+                      <div class="flex-basis-75">
+                        <div class="pl-4">
+                          <h3 class="w-full font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/author/' + slugify(author.name) + '/'">{{ author.name }}</nuxt-link></h3>
+                          <h4 v-for="(article, index) in authorEditorials(author.name)" v-if="index < 1" class="w-full font-serif text-left font-normal leading-tight text-xl md:text-sm"><nuxt-link class="text-gray-333 no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </aside>
+              <!--<aside role="complementary">
                 <h2 id="featured-author" class="w-full mb-8 text-left text-base font-serif text-gray-333">Featured: <nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(settingsHome.featuredAuthor) + '/'">{{ settingsHome.featuredAuthor }}</nuxt-link></h2>
-                <ul aria-labelledby="featured-author" class="list-none pl-0">
+                <ul role="list" aria-labelledby="featured-author" class="list-none pl-0">
                   <li v-for="(article, key) in featuredAuthorEditorials" class="block line-after my-3">
                     <article role="article">
                       <h3 class="w-full my-4 font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
                       <aside role="complementary" class="w-full">
                         <h4 :id="'featured-author-'+key" class="sr-only no-print">Article information:</h4>
-                        <ul :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose text-sm pl-0 list-none">
+                        <ul role="list" :aria-labelledby="'featured-author-'+key" class="ltt-text-gray font-serif font-light md:font-medium leading-loose text-sm pl-0 list-none">
                           <li class="pr-6 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                           <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
                         </ul>
@@ -59,7 +79,7 @@
                     </article>
                   </li>
                 </ul>
-              </aside>
+              </aside>-->
             </div>
           </template>
           <template v-else>
@@ -68,11 +88,11 @@
                 <article role="article" class="article-item">
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-links-title-' + (key + 1)" class="sr-only no-print">Article Links:</h4>
-                    <ul :aria-labelledby="'article-links-title-' + (key + 1)" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
+                    <ul role="list" :aria-labelledby="'article-links-title-' + (key + 1)" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                       <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                       <li class="inline-block no-print">
                         <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
-                          <svg aria-hidden="true" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg aria-hidden="true" focusable="false" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
                           </svg>
                           <span v-if="bookmarked(article.md5)" class="sr-only">Remove bookmark for this article</span>
@@ -85,7 +105,7 @@
                   <p :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                   <aside role="complementary" class="w-full">
                     <h4 :id="'article-meta-title-' + (key + 1)" class="sr-only no-print">Article information:</h4>
-                    <ul :aria-labelledby="'article-meta-title-' + (key + 1)" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                    <ul role="list" :aria-labelledby="'article-meta-title-' + (key + 1)" :class="key <= 1 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
                       <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
                       <li class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
                       <li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>
@@ -189,6 +209,11 @@ export default {
 
     featuredAuthorEditorials () {
       return this.$store.getters['editorials/retrieveAuthorEditorials'](this.settingsHome.featuredAuthor)
+    },
+
+    allAuthors () {
+      let authorList = [...this.$store.state.authors.authors]
+      return authorList.sort(function() { return 0.5 - Math.random() })
     }
   },
 
@@ -203,6 +228,10 @@ export default {
 
     bookmarked (articleMd5) {
       return this.$store.getters['bookmarks/checkBookmark'](articleMd5)
+    },
+
+    authorEditorials (author) {
+      return this.$store.getters['editorials/retrieveAuthorEditorials'](author)
     },
 
     ...mapMutations({
