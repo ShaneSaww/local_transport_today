@@ -55,12 +55,25 @@
                       </div>
                       <div class="flex-basis-75">
                         <div class="pl-4">
-                          <h3 class="w-full font-sans text-left font-bold leading-tight text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/author/' + slugify(author.name) + '/'">{{ author.name }}</nuxt-link></h3>
-                          <h4 v-for="(article, index) in authorEditorials(author.name)" v-if="index < 1" class="w-full font-serif text-left font-normal leading-tight text-xl md:text-sm"><nuxt-link class="text-gray-333 no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h4>
+                          <h3 class="w-full font-sans text-left font-bold leading-tight text-base sm:text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/author/' + slugify(author.name) + '/'">{{ author.name }}</nuxt-link></h3>
+                          <h4 v-for="(article, index) in authorEditorials(author.name)" v-if="index < 1" class="w-full font-serif text-left font-normal leading-tight text-sm sm:text-base md:text-sm"><nuxt-link class="text-gray-333 no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h4>
                         </div>
                       </div>
                     </div>
                   </li>
+                </ul>
+              </aside>
+              <aside role="complementary" class="no-print" aria-live="polite" aria-atomic="false" aria-relevant="additions removals">
+                <h2 id="your-bookmarks" class="w-full mt-8 mb-2 text-left text-base font-serif text-gray-333"><nuxt-link to="/myltt#bookmarks" class="text-gray-333 no-underline hover:underline focus:underline">Your Bookmarks</nuxt-link></h2>
+                <div v-if="bookmarkedEditorials.length === 0" class="font-serif mb-4 text-left text-gray-333 leading-normal text-sm">
+                  <p class="italic">You don’t have any bookmarks saved! Simply click the bookmark icon <sup class="top-0 ltt-text-gray" aria-hidden="true"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="fill-current h-4 w-4"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z"></path></svg></sup> alongside any article to store them inside <nuxt-link to="/myltt#bookmarks" class="ltt-text-red no-underline hover:underline focus:underline"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link>.</p>
+                </div>
+                <ul v-else role="list" aria-labelledby="your-bookmarks" class="list-disc pl-0">
+                  <template v-for="(article, key) in bookmarkedEditorials">
+                    <transition name="fade">
+                      <li class="mb-2 ltt-text-red"><nuxt-link class="ltt-headline font-serif text-sm no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></li>
+                    </transition>
+                  </template>
                 </ul>
               </aside>
               <!--<aside role="complementary">
@@ -213,7 +226,12 @@ export default {
 
     allAuthors () {
       let authorList = [...this.$store.state.authors.authors]
-      return authorList.sort(function() { return 0.5 - Math.random() })
+      return authorList.sort(function() { return 0.5 - Math.random() }) // randomise author list
+    },
+
+    bookmarkedEditorials () {
+      let bookmarks = this.allBookmarks()
+      return this.$store.getters['editorials/retrieveBookmarkedEditorials'](bookmarks)
     }
   },
 
@@ -228,6 +246,10 @@ export default {
 
     bookmarked (articleMd5) {
       return this.$store.getters['bookmarks/checkBookmark'](articleMd5)
+    },
+
+    allBookmarks () {
+      return this.$store.getters['bookmarks/retrieveBookmarks']
     },
 
     authorEditorials (author) {
