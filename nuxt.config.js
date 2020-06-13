@@ -29,7 +29,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       //{ name: 'google-site-verification', content: 'ZuWo8BSwX-kcUKx6Hehplgrh7kVxeKxjCmuryUf0vhQ' },
-      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'description', name: 'description', content: pkg.siteDescription },
       { hid: 'robot', name: 'robot', content: 'index, follow' },
       { name: 'format-detection', content: 'telephone=no' },
       { property: 'og:locale', content: 'en_GB' },

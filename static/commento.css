@@ -38,3 +38,7 @@
 .commento-root .commento-login-box-container .commento-login-box {
   border: 1px solid #e4e4e4;
 }
+
+.commento-avatar-img {
+  display: none;
+}

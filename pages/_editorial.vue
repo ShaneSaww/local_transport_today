@@ -75,7 +75,8 @@
         </aside>
       </article>
       <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
-        <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Comments</h2>
+        <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Feedback and Contributions</h2>
+        <p class="text-gray-333 mb-4">Login using social media or create an account to join the discussion with {{ author.name }}.</p>
         <script defer
           src="https://cdn.commento.io/js/commento.js"
           :data-css-override="homepageURL + '/commento.css'"

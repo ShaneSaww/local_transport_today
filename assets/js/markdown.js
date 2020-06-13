@@ -13,10 +13,10 @@ const util = {
     renderer.image = (href, title, text) => {
       if (href) {
         if (title) {
-          return `<figure><img loading="lazy" src="${href}" alt="${text}" title="${title}" /><figcaption>${title}</figcaption></figure>`
+          return `<figure><a href="${href}" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="${href}" alt="${text}" title="${title}" /></a><figcaption>${title}</figcaption></figure>`
         }
         else {
-          return `<figure><img loading="lazy" src="${href}" alt="${text}" /></figure>`
+          return `<figure><a href="${href}" target="_blank" rel="noopener noreferrer"><img loading="lazy" src="${href}" alt="${text}" /></a></figure>`
         }
       }
       else {

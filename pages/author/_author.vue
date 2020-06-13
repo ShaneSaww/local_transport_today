@@ -49,7 +49,8 @@
                 </figure>
               </div>
               <div class="author-bio">
-                <h2 :class="author.photo ? 'my-4': 'mb-4'" class="w-full font-sans text-left font-extrabold ltt-headline leading-tight text-2xl md:text-2xl">{{ author.name }}</h2>
+                <h2 :class="author.photo ? 'mt-4': 'mt-0'" class="w-full font-sans text-left font-extrabold ltt-headline leading-tight text-2xl md:text-2xl">{{ author.name }}</h2>
+                <p class="mb-4 font-serif ltt-text-gray leading-normal text-base">{{ authorEditorials.length }} post<template v-if="authorEditorials.length !== 1">s</template></p>
                 <p class="font-serif text-gray-333 leading-normal text-base">{{ author.bio }}</p>
                 <h4 id="author-social-media-title" class="sr-only no-print">Contact {{ author.name }}:</h4>
                 <ul role="list" v-if="author.email || author.twitter || author.linkedin" aria-labelledby="author-social-media-title" class="no-print pl-0 md:pl-2 pt-4 list-none inline-block">

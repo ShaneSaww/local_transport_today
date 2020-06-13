@@ -4,6 +4,25 @@
     <h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div class="w-full mt-10 mx-6 lg:mx-4 print:mx-0">
+        <aside role="complementary" class="alert-box flex flex-col lg:flex-row lg:justify-center lg:items-center w-full mt-4 lg:mt-0 mb-4">
+          <div class="p-6 lg:mr-4 lg:-ml-12 lg:max-width-28">
+            <h2 class="w-full text-left text-base leading-tight font-sans ltt-headline">Online discussion: The Future of Car Travel</h2>
+              <p class="font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm">Has coping with Covid-19 changed things?</p>
+              <p class="font-serif mt-2 text-left ltt-text-gray font-normal leading-normal text-sm sm:text-base md:text-sm"><time datetime="2020-06-19" aria-label="19 June 2020">19 Jun 2020</time></p>
+          </div>
+          <div class="px-6 pb-6 lg:px-0 lg:pb-0">
+            <p class="mx-auto font-sans text-center leading-tight max-width-90p lg:max-w-none text-sm lg:text-left"><a href="https://www.transportxtra.com/tx-events/?id=2468" class="red-block block lg:inline-block">Join the discussion</a></p>
+          </div>
+        </aside>
+        <!--<aside role="complementary" class="homepage-alert w-full mt-4 lg:mt-0 mb-4">
+          <div></div>
+          <div class="p-6 sm:py-6 sm:px-12 lg:p-6">
+            <h2 class="w-full mb-2 text-left text-base leading-tight font-sans ltt-headline">Online discussion: The Future of Car Travel</h2>
+              <p class="font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm">19 June 2020: Has coping with Covid-19 changed things?</p>
+              <p class="mt-4 mx-auto sm:-ml-2 font-sans text-center max-width-90p sm:max-w-none text-sm sm:text-left"><a href="https://www.transportxtra.com/tx-events/?id=2468" class="red-block block sm:inline-block">Join the discussion</a></p>
+          </div>
+          <div></div>
+        </aside>-->
         <div :class="latestEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
           <template v-for="(article, key) in latestEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">
@@ -44,7 +63,7 @@
           <template v-if="displaySidebar">
             <div class="cell cell--7">
               <aside role="complementary" class="no-print">
-                <h2 id="transport-experts" class="w-full mt-2 mb-8 text-left text-base font-serif text-gray-333">Transport Experts</h2>
+                <h2 id="transport-experts" class="w-full mt-2 mb-8 text-left text-base font-serif text-gray-333">Transport Opinion</h2>
                 <ul role="list" aria-labelledby="transport-experts" class="list-none pl-0">
                   <li v-for="(author, key) in allAuthors" class="block my-6">
                     <div class="flex flex-row">

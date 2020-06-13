@@ -25,7 +25,8 @@ body {
   /*background: -webkit-gradient(linear, left top, left bottom, from(#f7eef1), to(#ffffff));
   background: -webkit-linear-gradient(top, #f7eef1, #ffffff);
   background: linear-gradient(to bottom, #f7eef1, #ffffff);*/
-  background-color: #f7eef1;
+  /*background-color: #f7eef1;*/
+  background-color: #EEEEEE;
 }
 
 @media only screen and (prefers-color-scheme: dark) {
@@ -172,6 +173,38 @@ img {
   color: #ffffff;
 }
 
+.alert-box {
+  background-color: rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .alert-box {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+}
+
+/*.homepage-alert {
+  display: grid;
+  grid-template-columns: 0 1fr 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 992px) {
+  .homepage-alert {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  .homepage-alert {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}*/
+
 .newspaper, .newspaper-truncated {
   position: relative;
   display: grid;
@@ -181,7 +214,8 @@ img {
   grid-gap: 1px;
   /*margin: 0 -16px;*/
   /*background-color: #DADCE0;*/
-  background-color: #e4e4e4;
+  /*background-color: #e4e4e4;*/
+  background-color: #DDDDDD;
   /*background-color: hsl(214, 7%, 47%);*/
 }
 
@@ -192,7 +226,8 @@ img {
 }
 
 .cell {
-  background-color: #f7eef1;
+  /*background-color: #f7eef1;*/
+  background-color: #EEEEEE;
   padding: 1.5rem 0;
 }
 
@@ -573,12 +608,20 @@ img {
     max-height: 15rem;
   }
 
+  .max-w-none {
+    max-width: none;
+  }
+
   .max-width-25 {
     max-width: 25rem;
   }
 
   .max-width-28 {
     max-width: 28rem;
+  }
+
+  .max-width-90p {
+    max-width: 90%;
   }
 
   .max-height-25 {
