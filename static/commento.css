@@ -40,5 +40,9 @@
 }
 
 .commento-root .commento-avatar-img {
-  display: none;
+  display: none; /* Hide all avatars due to dead image from Twitter */
+}
+
+.commento-root .commento-card .commento-name, .commento-root .commento-card .commento-subtitle {
+  margin-left: 0; /* Hide all avatars due to dead image from Twitter */
 }
