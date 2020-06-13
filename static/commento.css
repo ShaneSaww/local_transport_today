@@ -39,6 +39,6 @@
   border: 1px solid #e4e4e4;
 }
 
-.commento-avatar-img {
+.commento-root .commento-avatar-img {
   display: none;
 }
