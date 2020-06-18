@@ -1,4 +1,4 @@
 [[plugins]]
   package = netlify-plugin-search-index
-    [plugins.inputs] =
-      exclude = ['/static/admin', '/static/sitemap.xml']
+  [plugins.inputs]
+    exclude = ['/static/admin', '/static/sitemap.xml']
