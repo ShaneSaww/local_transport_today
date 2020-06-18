@@ -173,19 +173,8 @@ export default {
       displayHero: true,
       displaySidebar: false,
       pageName: 'home'
-      //latestEditorials: this.$store.getters['editorials/retrieveAllEditorials'],
-      //settings: this.$store.getters['settings/retrieveSettings'](''),
-      //featuredAuthorEditorials: this.$store.getters['editorials/retrieveAuthorEditorials']('Phil Goodwin')
-
-      //this.$store.state.todos.list
-      //structuredData: this.$store.state.event.structuredData
     }
   },
-
-  /*mounted () {
-    let juju = this.$slugify('works in mounted')
-    console.log(juju)
-  },*/
 
   components: {
     PageHeader
@@ -279,36 +268,15 @@ export default {
       toggle: 'bookmarks/TOGGLE_BOOKMARK',
       updateBookmarkState: 'bookmarks/UPDATE_BOOKMARKS'
     })
-
-    /*slugify(string) {
-      const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-      const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-      const p = new RegExp(a.split('').join('|'), 'g')
-
-      return string.toString().toLowerCase()
-        .replace(/\s+/g, '-') // Replace spaces with -
-        .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-        .replace(/&/g, '-and-') // Replace & with 'and'
-        .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-        .replace(/\-\-+/g, '-') // Replace multiple - with single -
-        .replace(/^-+/, '') // Trim - from start of text
-        .replace(/-+$/, '') // Trim - from end of text
-    }*/
   },
 
   head() {
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        //{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
         //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
-        //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js' }
       ],
       title: pkg.description,
-      /*title: 'Local Transport Today - Transport Policy, Planning, Finance, Development',
-      meta: [
-        { hid: 'description', name: 'description', content: 'Local Transport Today' }
-      ],*/
       link: [
         { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL }
       ]
