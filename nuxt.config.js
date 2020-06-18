@@ -326,7 +326,9 @@ export default {
               "ol",
               "pre",
               "code",
-              "blockquote"
+              "blockquote",
+              "newspaper",
+              "newspaper-truncated"
             ],
             whitelistPatterns: [/\bhljs\S*/]
           })
