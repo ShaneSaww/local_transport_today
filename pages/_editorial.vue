@@ -233,6 +233,13 @@ export default {
   head() {
     let meta = []
 
+    let keywords = {
+      hid: 'keywords',
+      property: 'keywords',
+      content: this.article.author + ', ' + this.article.categories.join(', ')
+    }
+    meta.push(keywords)
+
     let ogTitle = {
       hid: 'og-title',
       property: 'og:title',

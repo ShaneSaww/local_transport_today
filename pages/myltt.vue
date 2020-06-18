@@ -68,7 +68,7 @@
         </div>
         <h2 id="dark-mode" class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-4xl md:text-6xl">Dark Mode</h2>
         <div class="content-text-spacing font-serif mb-4 text-left text-gray-333 leading-normal text-base md:text-xl">
-          <p>It’s now possible to read the entire site in dark mode, which is preferable during low light situations, and helps to conserve your device’s battery life.</p>
+          <p>It’s now possible to read the entire site in dark mode, which is preferable during low light situations or for anyone who suffers from light sensitivity, and also helps to conserve your device’s battery life.</p>
           <div class="flex flex-col md:flex-row md:flex-wrap md:justify-around">
             <figure class="flex-basis-100 md:flex-basis-50 text-center">
               <img loading="lazy" width="250" height="486" src="~assets/img/iphone7_light_mode_optimised.png" alt="The iPhone displaying the website in light mode" />
@@ -77,7 +77,7 @@
               <img loading="lazy" width="250" height="486" src="~assets/img/iphone7_dark_mode_optimised.png" alt="The iPhone displaying the website in dark mode" />
             </figure>
           </div>
-          <p>This setting is device wide, which means you’ll need to enable this option inside your device’s system preferences. As soon as you toggle this setting our website will reflect those changes immediately.</p>
+          <p>This setting is device wide, which means you’ll need to enable this option inside your device’s system preferences. As soon as you toggle this setting our website will reflect those changes immediately. You can find instructions on how to change your light/dark preference settings for both <a href="https://www.howtogeek.com/222614/how-to-enable-windows-10s-hidden-dark-theme/" class="no-underline hover:underline focus:underline">Windows</a> and <a href="https://support.apple.com/en-us/HT208976" class="no-underline hover:underline focus:underline">MacOS</a>.</p>
           <p class="no-print" aria-live="polite" aria-atomic="true" aria-relevant="all">You currently have your dark mode setting <strong class="dark-mode-inline">enabled</strong><strong class="light-mode-inline">disabled</strong> on your device.</p>
         </div>
         <h2 id="cookie" class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-4xl md:text-6xl">Cookies</h2>

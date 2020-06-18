@@ -186,7 +186,8 @@ export default {
       title: this.category.name + ' - ' + pkg.description,
       meta: [
         { hid: 'og-title', property: 'og:title', content: this.category.name + ' - ' + pkg.description },
-        { hid: 'twitter-title', name: 'twitter:title', content: this.category.name + ' - ' + pkg.description }
+        { hid: 'twitter-title', name: 'twitter:title', content: this.category.name + ' - ' + pkg.description },
+        { hid: 'keywords', name: 'keywords', content: this.category.name }
       ],
       link: [
         { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/category/' + this.categorySlug + '/' }
