@@ -271,10 +271,22 @@ export default {
   },
 
   head() {
+    let structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": pkg.homepageURL
+    }
+
+    structuredData.potentialAction = [{
+      "@type": "SearchAction",
+      "target": pkg.homepageURL + "/search/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }]
+
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        //{ innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
+        { innerHTML: JSON.stringify(structuredData), type: 'application/ld+json' }
       ],
       title: pkg.description,
       link: [

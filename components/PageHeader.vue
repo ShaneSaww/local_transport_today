@@ -22,14 +22,35 @@
         </div>
       </div>
       <div id="menu" :class="open ? 'block': 'hidden'" class="w-full block flex-grow lg:flex lg:w-auto">
-        <ul role="list" aria-labelledby="header-nav-title" class="menu-header w-full px-4 lg:px-0 lg:flex lg:justify-end lg:items-center list-none text-sm">
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link exact to="/" :aria-current="pageName === 'home' ? 'page' : undefined">Home</nuxt-link></li>
-          <li v-if="settingsHeader.category1" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category1) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category1 }}</nuxt-link></li>
-          <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category2 }}</nuxt-link></li>
-          <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category3 }}</nuxt-link></li>
-          <li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mx-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category4 }}</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mx-4"><nuxt-link to="/myltt/" :aria-current="pageName === 'myltt' ? 'page' : undefined"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
+        <ul role="list" aria-labelledby="header-nav-title" class="menu-header w-full px-3 lg:px-0 lg:flex lg:justify-end lg:items-center list-none text-sm">
+          <!--<li class="my-6 lg:my-2 lg:mx-4"><nuxt-link exact to="/" :aria-current="pageName === 'home' ? 'page' : undefined">Home</nuxt-link></li>-->
+          <li v-if="settingsHeader.category1" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category1) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category1 }}</nuxt-link></li>
+          <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category2 }}</nuxt-link></li>
+          <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category3 }}</nuxt-link></li>
+          <!--<li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category4 }}</nuxt-link></li>-->
+          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/myltt/" :aria-current="pageName === 'myltt' ? 'page' : undefined"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
         </ul>
+        <div class="relative mb-4 lg:mb-0">
+          <form role="search" method="get" action="/search/">
+            <datalist id="search_list">
+              <template v-for="(suggestion, key) in searchDataList">
+                <option :value="suggestion.name">{{ suggestion.name }}</option>
+              </template>
+						</datalist>
+            <label for="search" class="sr-only">Search</label>
+            <input class="w-full lg:w-auto font-sans border ltt-headline h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none"
+              list="search_list" type="search" name="search" id="search" placeholder="Search" :value="searchTerm" autocomplete="off" aria-required="true" required>
+            <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
+              <svg class="ltt-headline h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                width="512px" height="512px">
+                <path
+                  d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </nav>
   </header>
@@ -43,6 +64,7 @@ export default {
   data: function () {
     return {
       open: false,
+      searchTerm: this.$route.query.search
       //googleAnalyticsDisableToggle: this.toggleGoogleAnalytics()
     }
   },
@@ -67,6 +89,40 @@ export default {
         category3: null,
         category4: null
       }
+    }
+  },
+
+  computed: {
+    searchDataList () {
+      let allAuthors = this.$store.state.authors.authors
+      let allCategories = this.$store.state.categories.categories
+
+      let authorNames = allAuthors.map(key => {
+        return {
+          name: key.name
+        }
+      })
+
+      let categoryNames = allCategories.map(key => {
+        return {
+          name: key.name
+        }
+      })
+
+      let dataList = authorNames.concat(categoryNames)
+
+      dataList.sort(function (a, b) {
+        if (a.name < b.name) {
+          return -1
+        }
+        if (a.name > b.name) {
+          return 1
+        }
+
+        return 0 // names must be equal
+      })
+
+      return dataList
     }
   },
 

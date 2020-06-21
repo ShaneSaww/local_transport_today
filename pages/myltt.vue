@@ -231,6 +231,9 @@ export default {
     return {
       //__dangerouslyDisableSanitizers: ['script'],
       title: 'myLTT - ' + pkg.description,
+      meta: [
+        { hid: 'description', name: 'description', content: 'Welcome to your myLTT section, where you’ll find your bookmarked articles, our RSS feed, dark mode instructions, and your cookie settings.' }
+      ],
       link: [
         { hid: 'canonical', rel: 'canonical', href: pkg.homepageURL + '/myltt/' }
       ]
