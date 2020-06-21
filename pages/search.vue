@@ -65,7 +65,7 @@ export default {
         searchData = await fetch(`${pkg.homepageURL}/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
       }
       else {
-        searchData = await fetch(`/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
+        searchData = await fetch(`${pkg.homepageURL}/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
       }
     }
 
