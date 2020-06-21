@@ -2,3 +2,9 @@
   package = 'netlify-plugin-search-index'
   [plugins.inputs]
     exclude = ['/admin', '/search', '/sitemap.xml', '/feed.xml', '/200.html']
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
