@@ -36,7 +36,8 @@ export default {
       pageName: 'search',
       searchTerm: this.$route.query.search,
       pkgDescription: pkg.description,
-      siteDescription: pkg.siteDescription
+      siteDescription: pkg.siteDescription,
+      searchResults: []
     }
   },
 
@@ -47,7 +48,21 @@ export default {
   },
 
   mounted() {
+    this.fetchSearchResults()
+    //this.$route.query.juju = 'go'
 
+    /*let searchData
+
+    if(this.$route.query.search) {
+      if (process.env.NODE_ENV !== 'production') { // this allows for testing via localhost
+        searchData = fetch(`${pkg.homepageURL}/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
+      }
+      else {
+        searchData = fetch(`/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
+      }
+    }
+
+    this.searchResults = searchData*/
   },
 
   computed: {
@@ -56,7 +71,7 @@ export default {
     }
   },
 
-  async asyncData({ route }) {
+  /*async asyncData({ route }) {
 
     let searchData
 
@@ -65,14 +80,14 @@ export default {
         searchData = await fetch(`${pkg.homepageURL}/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
       }
       else {
-        searchData = await fetch(`${pkg.homepageURL}/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
+        searchData = await fetch(`/.netlify/functions/search/?search=${route.query.search}`).then(x => x.json())
       }
     }
 
     return {
       searchResults: searchData
     }
-  },
+  },*/
 
   methods: {
     dayjsNuxt (timestamp, format) {
@@ -81,6 +96,22 @@ export default {
 
     slugify (string) {
       return helperSlugify.slugify(string)
+    },
+
+    async fetchSearchResults() {
+
+      let searchData
+
+      if(this.$route.query.search) {
+        if (process.env.NODE_ENV !== 'production') { // this allows for testing via localhost
+          searchData = await this.$axios.$get(`${pkg.homepageURL}/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
+        }
+        else {
+          searchData = await this.$axios.$get(`/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
+        }
+      }
+
+      this.searchResults = searchData
     }
   },
 
