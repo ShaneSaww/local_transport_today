@@ -107,7 +107,7 @@ export default {
           searchData = await this.$axios.$get(`${pkg.homepageURL}/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
         }
         else {
-          searchData = await this.$axios.$get(`/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
+          searchData = await this.$axios.$get(`${pkg.homepageURL}/.netlify/functions/search/?search=${this.$route.query.search}`).then(x => x.json())
         }
       }
 
