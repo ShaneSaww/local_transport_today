@@ -16,7 +16,7 @@
           </article>
         </template>
         <p v-if="!searchResultsLoaded" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">Loading…</p>
-        <p v-else-if="searchResults && searchResults.length === 0 && searchResultsLoaded" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">No results found.</p>
+        <p v-if="searchResults && searchResults.length === 0 && searchResultsLoaded" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">No results found.</p>
       </div>
     </div>
   </div>
