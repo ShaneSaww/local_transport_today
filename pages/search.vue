@@ -5,6 +5,7 @@
       <div class="w-full mt-10 mx-6 lg:mx-4 max-w-sm md:max-w-lg">
         <h1 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-4 text-4xl md:text-6xl lg:mt-0">Search</h1>
         <p v-if="searchTerm" class="font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">You searched for “{{ searchTerm }}”.</p>
+        <p v-else class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">No results found.</p>
         <template v-for="(article, key) in searchResults">
           <article v-if="article.description !== siteDescription" role="article" class="mt-8">
             <h2 class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl md:text-2xl">
@@ -15,8 +16,7 @@
             <p class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.description }}</p>
           </article>
         </template>
-        <p v-if="!searchResultsLoaded" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">Loading…</p>
-        <p v-if="searchResults && searchResults.length === 0 && searchResultsLoaded" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">No results found.</p>
+        <p v-if="searchResults && searchResults.length === 0" class="mt-8 italic font-serif text-left text-gray-333 leading-normal text-base md:text-xl lg:text-2xl">No results found.</p>
       </div>
     </div>
   </div>
@@ -37,8 +37,7 @@ export default {
       searchTerm: this.$route.query.search,
       pkgDescription: pkg.description,
       siteDescription: pkg.siteDescription,
-      searchResults: [],
-      searchResultsLoaded: false
+      searchResults: []
     }
   },
 
@@ -111,7 +110,6 @@ export default {
         )
       }
 
-      this.searchResultsLoaded = true
       this.searchResults = searchData
     }
   },
