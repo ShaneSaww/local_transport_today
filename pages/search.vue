@@ -103,6 +103,7 @@ export default {
       let searchData
 
       if(this.$route.query.search) {
+        // the 'limit' attribute is also available if you want to limit the number of returned search items
         searchData = await this.$axios.$get(`${pkg.homepageURL}/.netlify/functions/search/?search=${this.$route.query.search}`,
           {
             headers: { 'Content-Type': 'application/json' }
