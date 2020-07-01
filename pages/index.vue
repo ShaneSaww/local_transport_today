@@ -75,7 +75,7 @@
                       </div>
                       <div class="flex-basis-75">
                         <div class="pl-4">
-                          <h3 class="w-full font-sans text-left font-bold leading-tight text-base sm:text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/author/' + slugify(author.name) + '/'">{{ author.name }}</nuxt-link></h3>
+                          <h3 class="w-full mb-1 font-sans text-left font-bold leading-tight text-base sm:text-xl md:text-sm"><nuxt-link class="ltt-headline no-underline hover:underline focus:underline" :to="'/author/' + slugify(author.name) + '/'">{{ author.name }}</nuxt-link></h3>
                           <h4 v-for="(article, index) in authorEditorials(author.name)" v-if="index < 1" class="w-full font-serif text-left font-normal leading-tight text-sm sm:text-base md:text-sm"><nuxt-link class="text-gray-333 no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h4>
                         </div>
                       </div>
