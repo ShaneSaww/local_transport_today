@@ -23,6 +23,15 @@ collections: # A list of collections the CMS should be able to edit
         label: 'Home Page'
         name: 'home'
         fields:
+          - {label: 'Masthead', name: 'masthead', widget: 'select', required: true, multiple: false, default: 'none', options: {{ label: "Hide Masthead", value: "none" }, { label: "Display Intro", value: "intro" }, { label: "Display Call-to-Action", value: "cta" }} }
+          - {label: 'Intro Headline', name: 'introHeadline', widget: 'string', required: false}
+          - {label: 'Intro Body', name: 'introBody', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list']}
+          - {label: 'Call-to-Action Headline', name: 'ctaHeadline', widget: 'string', required: false}
+          - {label: 'Call-to-Action Sub-Headline', name: 'ctaSubHeadline', widget: 'string', required: false}
+          - {label: 'Call-to-Action Date', name: 'ctaDate', widget: 'datetime', required: false, format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
+          - {label: 'Call-to-Action URL', name: 'ctaUrl', widget: 'string', required: false}
+          - {label: 'Call-to-Action Button Text', name: 'ctaButtonText', widget: 'string', required: false}
+          - {label: 'Call-to-Action Icon', name: 'ctaIcon', widget: 'select', required: false, multiple: false, default: 'arrow', options: {{ label: "Arrow", value: "arrow" }, { label: "YouTube", value: "video" }} }
           - {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - file: 'assets/content/settings/header.json'
         label: 'Header'
