@@ -31,7 +31,7 @@ collections: # A list of collections the CMS should be able to edit
             widget: "object"
             fields:
               - {label: 'Headline', name: 'headline', widget: 'string', required: false}
-              - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list']}
+              - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list'], editorComponents: []}
           - label: "Call-to-Action"
             name: "cta"
             collapsed: true
