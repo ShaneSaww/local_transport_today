@@ -2,11 +2,13 @@
   "featuredAuthor": "Phil Goodwin",
   "cta": {
     "date": "2020-06-19",
-    "url": "https://www.youtube.com/embed/dHV_GJJl9X4?autoplay=1",
-    "buttonText": "Watch Discussion",
-    "icon": "video",
     "headline": "Online discussion: The Future of Car Travel",
-    "subHeadline": "Has coping with Covid-19 changed things?"
+    "subHeadline": "Has coping with Covid-19 changed things?",
+    "button": {
+      "url": "https://www.youtube.com/embed/dHV_GJJl9X4?autoplay=1",
+      "text": "Watch Discussion",
+      "icon": "video"
+    }
   },
   "intro": {
     "headline": "Welcome to expert discussion of current issues in transport",
