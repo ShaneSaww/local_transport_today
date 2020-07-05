@@ -23,8 +23,8 @@ collections: # A list of collections the CMS should be able to edit
         label: 'Home Page'
         name: 'home'
         fields:
-          - {label: 'Masthead', name: 'masthead', widget: 'select', required: true, multiple: false, default: "none", options: [{ label: "Hide Masthead", value: "none" }, { label: "Display Intro", value: "intro" }, { label: "Display Call-to-Action", value: "cta" }] }
-          - label: "Intro"
+          - {label: 'Masthead', name: 'masthead', widget: 'select', required: true, multiple: false, default: "none", options: [{ label: "Hide Masthead", value: "none" }, { label: "Display Long Intro", value: "intro" }, { label: "Display Call-to-Action", value: "cta" }] }
+          - label: "Long Intro"
             name: "intro"
             collapsed: true
             hint: "Use this to provide a long-form intro message."
@@ -43,7 +43,7 @@ collections: # A list of collections the CMS should be able to edit
               - {label: 'Date', name: 'date', widget: 'datetime', required: false, default: "", format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
               - {label: 'URL', name: 'url', widget: 'string', required: false}
               - {label: 'Button Text', name: 'buttonText', widget: 'string', required: false}
-              - {label: 'Icon', name: 'icon', widget: 'select', required: false, multiple: false, default: "arrow", options: [{ label: "Arrow", value: "arrow" }, { label: "YouTube", value: "video" }] }
+              - {label: 'Icon', name: 'icon', widget: 'select', required: false, multiple: false, default: "arrow", options: [{ label: "None", value: "" }, { label: "Arrow", value: "arrow" }, { label: "YouTube", value: "video" }] }
           - {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 5}
       - file: 'assets/content/settings/header.json'
         label: 'Header'

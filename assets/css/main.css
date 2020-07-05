@@ -187,6 +187,23 @@ img {
   }
 }
 
+.alert-box-copy p {
+  margin-bottom: 1rem;
+}
+
+.alert-box-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.alert-box-copy a {
+  @apply ltt-text-red;
+  text-decoration: none;
+}
+
+.alert-box-copy a:hover, .alert-box-copy a:focus {
+  text-decoration: underline;
+}
+
 .newspaper, .newspaper-truncated {
   position: relative;
   display: grid;
@@ -665,6 +682,22 @@ img {
 
   .notch-small {
     clip-path: polygon(0.5rem 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 0.5rem) 100%, 0 100%, 0 1rem);
+  }
+
+  .fluid-column {
+    -webkit-columns: 3 18.125rem;
+    -moz-columns: 3 18.125rem;
+    -o-columns: 3 18.125rem;
+    -ms-columns: 3 18.125rem;
+    columns: 3 18.125rem;
+    -webkit-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    -o-column-gap: 2rem;
+    -ms-column-gap: 2rem;
+    column-gap: 2rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   /*.bg-light-gray {
