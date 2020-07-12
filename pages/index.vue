@@ -154,6 +154,34 @@
           </template>
         </div>
       </div>
+      <div class="alternate-sections w-full mt-10">
+        <section v-for="(category, index) in allCategories" v-if="categoryEditorials(category.name).length > 1" :id="'category-' + category.slug" class="p-6 lg:p-4 print:px-0">
+          <div class="newspaper-category">
+            <template v-for="(article, key) in categoryEditorials(category.name)" v-if="key <= 6">
+              <div :class="'cell cell--' + key">
+                <h2 v-if="key === 0" class="w-full text-left text-base leading-tight font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/category/' + category.slug + '/'">{{ category.name }}</nuxt-link></h2>
+                <article role="article" class="article-item">
+                  <h3 :class="key <= 0 ? 'md:leading-tighter md:text-2xl': 'md:text-base'" class="w-full mb-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
+                  <p v-if="key <= 2" :class="key <= 0 ? 'md:text-base lg:text-base highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-sm">{{ article.subHeadline }}</p>
+                  <aside role="complementary" class="w-full">
+                    <h4 :id="'category-meta-title-' + index + '-' + key" class="sr-only no-print">Article information:</h4>
+                    <ul role="list" :aria-labelledby="'category-meta-title-' + index + '-' + key" :class="key <= 0 ? 'text-base': 'text-sm'" class="ltt-text-gray font-serif font-light md:font-medium leading-loose pl-0 list-none">
+                      <li class="pr-8 inline-block"><nuxt-link rel="author" class="ltt-text-red no-underline hover:underline focus:underline" :to="'/author/' + slugify(article.author) + '/'">{{ article.author }}</nuxt-link></li>
+                      <li v-if="key <= 2" class="pr-8 inline-block"><time :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
+                      <!--<li class="inline-block" :aria-label="article.estimatedReadingTimeMinutes + ' minute read'">{{ article.estimatedReadingTimeMinutes }} min read</li>-->
+                    </ul>
+                  </aside>
+                </article>
+              </div>
+            </template>
+            <template v-for="num in 7">
+              <template v-if="categoryEditorials(category.name).length < num">
+                <div :class="'hidden md:block cell cell--' + (num - 1)"></div>
+              </template>
+            </template>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -236,6 +264,10 @@ export default {
       return authorList.sort(function() { return 0.5 - Math.random() }) // randomise author list
     },
 
+    allCategories () {
+      return this.$store.state.categories.categories
+    },
+
     bookmarkedEditorials () {
       let bookmarks = this.allBookmarks()
       return this.$store.getters['editorials/retrieveBookmarkedEditorials'](bookmarks)
@@ -261,6 +293,10 @@ export default {
 
     authorEditorials (author) {
       return this.$store.getters['editorials/retrieveAuthorEditorials'](author)
+    },
+
+    categoryEditorials (category) {
+      return this.$store.getters['editorials/retrieveCategoryEditorials'](category)
     },
 
     parseMarkdown (content) {

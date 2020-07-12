@@ -1,8 +1,7 @@
 <template>
-  <footer role="contentinfo" class="mt-10 w-full flex flex-wrap justify-center content-text-spacing font-serif text-black leading-normal text-base">
-    <div class="flex-basis-50 border-t ltt-border-gray opacity-50 mb-2 lg:mb-0"><hr /></div>
+  <footer role="contentinfo" class="w-full ltt-bg-dark-gray flex flex-wrap justify-center font-serif text-black leading-normal text-base">
     <div id="footer" class="flex-basis-100 flex flex-col lg:flex-row mx-6 my-4">
-      <p class="flex-basis-100 text-gray-333 text-left md:text-center">Proudly created by <a href="http://localtransporttoday.co.uk" class="no-underline hover:underline focus:underline">Local Transport Today</a> and <a href="http://www.landor.co.uk/" class="no-underline hover:underline focus:underline">Landor LINKS</a>.</p>
+      <p class="flex-basis-100 text-white text-left md:text-center">Proudly created by <a href="http://localtransporttoday.co.uk" class="text-white underline hover:no-underline focus:no-underline">Local Transport Today</a> and <a href="http://www.landor.co.uk/" class="text-white underline hover:no-underline focus:no-underline">Landor LINKS</a>.</p>
       <!--<div class="m-4 lg:w-1/3 lg:m-8">
         <nuxt-link exact to="/" class="no-underline text-white"><img width="250" height="107" src="~assets/img/northern_travel_tourism_show_red_shadow.svg" alt="GO Travel Show logo" /><span class="sr-only">Group Travel Show for group organisers, travel trade and tour operators</span></nuxt-link>
         <p class="mt-4">Proudly curated by <a class="northshow-text-red-dark no-underline hover:underline focus:underline" href="https://grouptravelorganiser.com">GTO magazine</a> and <a class="northshow-text-red-dark no-underline hover:underline focus:underline" href="https://www.landortravelpublications.com">Landor Travel Publications</a>.</p>

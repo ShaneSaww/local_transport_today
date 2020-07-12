@@ -24,10 +24,14 @@
       <div id="menu" :class="open ? 'block': 'hidden'" class="w-full block flex-grow lg:flex lg:w-auto">
         <ul role="list" aria-labelledby="header-nav-title" class="menu-header w-full px-3 lg:px-0 lg:flex lg:justify-end lg:items-center list-none text-sm">
           <!--<li class="my-6 lg:my-2 lg:mx-4"><nuxt-link exact to="/" :aria-current="pageName === 'home' ? 'page' : undefined">Home</nuxt-link></li>-->
-          <li v-if="settingsHeader.category1" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category1) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category1 }}</nuxt-link></li>
-          <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category2 }}</nuxt-link></li>
-          <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category3 }}</nuxt-link></li>
+          <!-- <li v-if="settingsHeader.category1" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category1) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category1 }}</nuxt-link></li> -->
+          <!-- <li v-if="settingsHeader.category2" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category2) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category2 }}</nuxt-link></li> -->
+          <!-- <li v-if="settingsHeader.category3" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category3) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category3 }}</nuxt-link></li> -->
           <!--<li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category4 }}</nuxt-link></li>-->
+          <!-- <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/about/" :aria-current="pageName === 'about' ? 'page' : undefined">About</nuxt-link></li> -->
+          <!-- <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/contribute/" :aria-current="pageName === 'contribute' ? 'page' : undefined">Contribute</nuxt-link></li> -->
+          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/category/" :aria-current="pageName === 'categories' ? 'page' : undefined">Subjects</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/author/" :aria-current="pageName === 'authors' ? 'page' : undefined">Authors</nuxt-link></li>
           <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/myltt/" :aria-current="pageName === 'myltt' ? 'page' : undefined"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
         </ul>
         <div class="relative mb-4 lg:mb-0">

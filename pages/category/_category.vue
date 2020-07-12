@@ -178,10 +178,28 @@ export default {
   },
 
   head() {
+
+    let structuredData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Categories",
+        "item": pkg.homepageURL + '/category/'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": this.category.name,
+        "item": pkg.homepageURL + '/category/' + this.categorySlug + '/'
+      }]
+    }
+
     return {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
-        { innerHTML: JSON.stringify(this.structuredData), type: 'application/ld+json' }
+        { innerHTML: JSON.stringify(structuredData), type: 'application/ld+json' }
       ],
       title: this.category.name + ' - ' + pkg.description,
       meta: [

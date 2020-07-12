@@ -204,7 +204,7 @@ img {
   text-decoration: underline;
 }
 
-.newspaper, .newspaper-truncated {
+.newspaper, .newspaper-truncated, .newspaper-category {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -213,9 +213,49 @@ img {
   background-color: #DDDDDD;
 }
 
+.newspaper-category {
+  background-color: #edd4c4;
+  position: relative;
+  z-index: 1;
+}
+
+.newspaper-category h2 a.red-block {
+  z-index: 2;
+  padding-left: 2rem;
+  margin-left: -2rem;
+}
+
+.alternate-sections section:nth-child(odd) .newspaper-category {
+  background-color: #e0c9b9;
+}
+
+.alternate-sections section, .alternate-sections section .cell {
+  background-color: #fee4d3;
+}
+
+.alternate-sections section:nth-child(odd), .alternate-sections section:nth-child(odd) .cell {
+  background-color: #f1d8c7;
+}
+
 @media only screen and (prefers-color-scheme: dark) {
-  .newspaper, .newspaper-truncated {
+  .newspaper, .newspaper-truncated, .newspaper-category {
     background-color: #2f2d31;
+  }
+
+  .newspaper-category {
+    background-color: #2f2d31;
+  }
+
+  .alternate-sections section:nth-child(odd) .newspaper-category {
+    background-color: #2f2d31;
+  }
+
+  .alternate-sections section, .alternate-sections section .cell {
+    background-color: #211f23;
+  }
+
+  .alternate-sections section:nth-child(odd), .alternate-sections section:nth-child(odd) .cell {
+    background-color: #262326;
   }
 }
 
@@ -230,37 +270,37 @@ img {
   }
 }
 
-.newspaper .cell--0, .newspaper-truncated .cell--0 {
+.newspaper .cell--0, .newspaper-truncated .cell--0, .newspaper-category .cell--0 {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
 }
 
-.newspaper .cell--1, .newspaper-truncated .cell--1 {
+.newspaper .cell--1, .newspaper-truncated .cell--1, .newspaper-category .cell--1 {
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
 }
 
-.newspaper .cell--2, .newspaper-truncated .cell--2 {
+.newspaper .cell--2, .newspaper-truncated .cell--2, .newspaper-category .cell--2 {
   grid-column: 1 / span 1;
   grid-row: 3 / span 1;
 }
 
-.newspaper .cell--3, .newspaper-truncated .cell--3 {
+.newspaper .cell--3, .newspaper-truncated .cell--3, .newspaper-category .cell--3 {
   grid-column: 1 / span 1;
   grid-row: 4 / span 1;
 }
 
-.newspaper .cell--4, .newspaper-truncated .cell--4 {
+.newspaper .cell--4, .newspaper-truncated .cell--4, .newspaper-category .cell--4 {
   grid-column: 1 / span 1;
   grid-row: 5 / span 1;
 }
 
-.newspaper .cell--5, .newspaper-truncated .cell--5 {
+.newspaper .cell--5, .newspaper-truncated .cell--5, .newspaper-category .cell--5 {
   grid-column: 1 / span 1;
   grid-row: 6 / span 1;
 }
 
-.newspaper .cell--6, .newspaper-truncated .cell--6 {
+.newspaper .cell--6, .newspaper-truncated .cell--6, .newspaper-category .cell--6 {
   grid-column: 1 / span 1;
   grid-row: 7 / span 1;
 }
@@ -288,6 +328,12 @@ img {
 @media (min-width: 768px) {
   .newspaper, .newspaper-truncated {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1px;
+  }
+
+  .newspaper-category {
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 1px;
   }
@@ -414,11 +460,59 @@ img {
   .newspaper-truncated .cell--10 {
     display: none;
   }
+
+  .newspaper-category .cell--0 {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 4;
+    padding-left: 0;
+  }
+
+  .newspaper-category .cell--1 {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    padding-right: 0;
+  }
+
+  .newspaper-category .cell--2 {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 2;
+    padding-right: 0;
+  }
+
+  .newspaper-category .cell--3 {
+    grid-column: 1 / span 1;
+    grid-row: 5 / span 1;
+    padding-left: 0;
+  }
+
+  .newspaper-category .cell--4 {
+    grid-column: 2 / span 1;
+    grid-row: 5 / span 1;
+    padding-right: 0;
+  }
+
+  .newspaper-category .cell--5 {
+    grid-column: 1 / span 1;
+    grid-row: 6 / span 1;
+    padding-left: 0;
+  }
+
+  .newspaper-category .cell--6 {
+    grid-column: 2 / span 1;
+    grid-row: 6 / span 1;
+    padding-right: 0;
+  }
 }
 
 @media (min-width: 992px) {
   .newspaper, .newspaper-truncated {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1px;
+  }
+
+  .newspaper-category {
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 1px;
   }
@@ -498,6 +592,52 @@ img {
     padding-right: 1.5rem;
     display: block;
   }
+
+  .newspaper-category .cell--0 {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 4;
+    padding-left: 0.5rem;
+  }
+
+  .newspaper-category .cell--1 {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    padding-right: 1.5rem;
+  }
+
+  .newspaper-category .cell--2 {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 2;
+    padding-right: 1.5rem;
+  }
+
+  .newspaper-category .cell--3 {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .newspaper-category .cell--4 {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .newspaper-category .cell--5 {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .newspaper-category .cell--6 {
+    grid-column: 3 / span 1;
+    grid-row: 4 / span 1;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
 }
 
 /*! purgecss end ignore */
@@ -512,7 +652,17 @@ img {
   text-align:left;
 }
 
+.newspaper-category .article-item {
+  min-height: 0;
+}
+
 @media only screen and (prefers-color-scheme: dark) {
+  .article-item p {
+    font-weight: 100;
+  }
+}
+
+@media only screen and (-ms-high-contrast: white-on-black) {
   .article-item p {
     font-weight: 100;
   }
@@ -700,6 +850,70 @@ img {
     break-inside: avoid;
   }
 
+  .column-1 {
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    -o-columns: 1;
+    -ms-columns: 1;
+    columns: 1;
+  }
+
+  .column-2 {
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    -o-columns: 2;
+    -ms-columns: 2;
+    columns: 2;
+  }
+
+  .column-3 {
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    -o-columns: 3;
+    -ms-columns: 3;
+    columns: 3;
+  }
+
+  .column-4 {
+    -webkit-columns: 4;
+    -moz-columns: 4;
+    -o-columns: 4;
+    -ms-columns: 4;
+    columns: 4;
+  }
+
+  .column-5 {
+    -webkit-columns: 5;
+    -moz-columns: 5;
+    -o-columns: 5;
+    -ms-columns: 5;
+    columns: 5;
+  }
+
+  .column-6 {
+    -webkit-columns: 6;
+    -moz-columns: 6;
+    -o-columns: 6;
+    -ms-columns: 6;
+    columns: 6;
+  }
+
+  .column-gap-4 {
+    column-gap: 1rem;
+  }
+
+  .column-gap-8 {
+    column-gap: 2rem;
+  }
+
+  .column-width-40 {
+    column-width: 10rem;
+  }
+
+  .column-rule-white-03 {
+    column-rule: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
   /*.bg-light-gray {
     background-color: #e4e4e4;
   }
@@ -717,9 +931,17 @@ img {
     color: #431b0b;
   }
 
+  .ltt-headline-border {
+    border-color: #431b0b;
+  }
+
   @media only screen and (prefers-color-scheme: dark) {
     .ltt-headline {
       color: #eee;
+    }
+
+    .ltt-headline-border {
+      border-color: #eee;
     }
   }
 
@@ -785,6 +1007,16 @@ img {
   .ltt-bg-gray {
     background-color: #4D4D4D;
     background-color: hsl(214, 7%, 47%);
+  }
+
+  .ltt-bg-dark-gray {
+    background-color: #4D4D4D;
+  }
+
+  @media only screen and (prefers-color-scheme: dark) {
+    .ltt-bg-dark-gray {
+      background-color: #2e2b2d;
+    }
   }
 
   .text-gray-333 {
@@ -954,6 +1186,12 @@ img {
 }
 
 @media only screen and (prefers-color-scheme: dark) {
+  .content-text-spacing {
+    font-weight: 100;
+  }
+}
+
+@media only screen and (-ms-high-contrast: white-on-black) {
   .content-text-spacing {
     font-weight: 100;
   }
@@ -1405,9 +1643,9 @@ pre {
 }
 
 @media print {
-  body, .newspaper, .newspaper-truncated, .cell {
+  body, .newspaper, .newspaper-truncated, .newspaper-category, .alternate-sections section, .cell {
     background-image: none !important;
-    background-color: #ffffff !important;
+    background-color: #FFFFFF !important;
   }
 
   @page {
@@ -1432,7 +1670,7 @@ pre {
     page-break-after: avoid; /* Prevents page-breaks right after these elements, because that looks odd */
   }
 
-  #main figure, #main aside, #main blockquote {
+  #main figure, #main aside, #main blockquote, .cell {
     page-break-inside: avoid; /* Avoid page-breaks inside these elements */
   }
 

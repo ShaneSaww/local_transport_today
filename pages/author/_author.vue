@@ -52,7 +52,7 @@
                 <h2 :class="author.photo ? 'mt-4': 'mt-0'" class="w-full font-sans text-left font-extrabold ltt-headline leading-tight text-2xl md:text-2xl">{{ author.name }}</h2>
                 <p class="mb-4 font-serif ltt-text-gray leading-normal text-base">{{ authorEditorials.length }} post<template v-if="authorEditorials.length !== 1">s</template></p>
                 <p class="font-serif text-gray-333 leading-normal text-base">{{ author.bio }}</p>
-                <h4 id="author-social-media-title" class="sr-only no-print">Contact {{ author.name }}:</h4>
+                <h4 v-if="author.email || author.twitter || author.linkedin" id="author-social-media-title" class="sr-only no-print">Contact {{ author.name }}:</h4>
                 <ul role="list" v-if="author.email || author.twitter || author.linkedin" aria-labelledby="author-social-media-title" class="no-print pl-0 md:pl-2 pt-4 list-none inline-block">
                   <li v-if="author.email" class="block md:inline-block mb-2 mr-6">
                     <a :href="'mailto:' + author.email" class="leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333"><svg aria-hidden="true" focusable="false" role="img" class="fill-current h-5 w-5" viewBox="0 0 229.66 229.66" xmlns="http://www.w3.org/2000/svg"><g transform="translate(288.87 -28.254)"><path d="m-272.85 223.12c-7.2498-1.0772-13.345-6.668-15.407-14.132-0.58413-2.1145-0.62245-6.1736-0.62245-65.93 0-59.756 0.0383-63.815 0.62245-65.93 1.7586-6.3659 6.1622-11.131 12.394-13.411l2.5054-0.91663h99.131c95.225 0 99.213 0.0255 101.23 0.64847 6.2047 1.9145 10.844 6.3943 12.958 12.514l0.81552 2.3602v64.735c0 62.538-0.0226 64.801-0.66614 66.675-1.1473 3.3418-2.2684 5.2105-4.6238 7.7074-2.3674 2.5095-4.8337 4.0632-8.292 5.2235-1.8662 0.62615-5.6859 0.65284-100.01 0.69895-53.94 0.0264-98.955-0.0833-100.03-0.24362zm190.07-13.614c0.19708-0.59124-59.382-55.158-60.225-55.158-0.38921 0-2.9064 2.0073-5.7798 4.6091-6.1944 5.6087-8.1328 7.0839-11.33 8.6224-4.1295 1.9872-7.1915 2.6937-12.524 2.8894-5.9672 0.21905-10.066-0.53215-14.666-2.6876-3.7642-1.764-5.2439-2.8654-11.616-8.6466-2.7164-2.4645-5.2149-4.6337-5.5522-4.8205-0.49798-0.2757-1.2607 0.24913-4.0569 2.7916-26.314 23.925-56.385 51.778-56.473 52.307-0.11093 0.66408 1.4133 0.67391 90.987 0.58653 68.112-0.0665 91.134-0.19093 91.235-0.49334zm-161.92-37.516c16.254-15.132 29.599-27.803 29.657-28.157 0.12807-0.79099-58.526-54.08-59.791-54.322l-0.81453-0.1557v55.074c0 54.648 5e-3 55.074 0.69829 55.074 0.43728 0 11.744-10.284 30.251-27.514zm172.38 26.72c0.28114-1.0491 0.27639-107.45-5e-3 -108.5-0.14339-0.53533-0.43734-0.77588-0.8622-0.70556-0.35454 0.0587-13.55 11.805-29.323 26.103-33.573 30.434-30.688 27.762-30.529 28.275 0.23528 0.7557 59.346 55.611 59.93 55.615 0.31691 2e-3 0.67194-0.35334 0.78893-0.78991zm-98.203-43.061c2.2997-0.9474 5.4392-3.0314 8.5776-5.694 6.7422-5.7198 79.458-72.667 79.553-73.242 0.11114-0.67151-1.1783-0.68112-91.437-0.68112-60.495 0-91.623 0.11936-91.767 0.35187-0.11961 0.19353 0.46633 1.0525 1.3021 1.9088 1.2132 1.243 64.175 58.91 75.684 69.319 6.3648 5.7566 11.472 8.8615 14.549 8.8454 0.87859-5e-3 2.4706-0.36806 3.5377-0.80769z"/></g></svg><span class="pl-2 align-text-bottom font-serif font-light md:font-medium leading-normal text-base ltt-text-red no-underline hover:underline focus:underline">Email</span></a>
@@ -223,19 +223,38 @@ export default {
       meta.push(twitterDescription)
     }
 
-    let structuredData = {
+    let structuredData = [{
       "@context": "https://schema.org",
       "@type": "Person",
       "name": this.author.name
-    }
+    }]
 
     if (this.author.photo) {
-      structuredData.image = pkg.homepageURL + this.author.photo
+      structuredData[0].image = pkg.homepageURL + this.author.photo
     }
 
     if (this.author.email) {
-      structuredData.email = this.author.email
+      structuredData[0].email = this.author.email
     }
+
+    let authorIndex = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Authors",
+        "item": pkg.homepageURL + '/author/'
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": this.author.name,
+        "item": pkg.homepageURL + '/author/' + this.authorSlug + '/'
+      }]
+    }
+
+    structuredData.push(authorIndex)
 
     return {
       __dangerouslyDisableSanitizers: ['script'],
