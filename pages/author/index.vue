@@ -6,7 +6,7 @@
       <section class="w-full mt-10 ltt-bg-dark-gray p-6 no-print">
         <h2 id="author-index" class="sr-only">Categories</h2>
         <ul role="list" aria-labelledby="author-index" class="pl-0 font-sans list-none sm:column-width-40 column-gap-8 column-rule-white-03">
-          <li v-for="(author, index) in allAuthors" class="py-4 sm:py-1"><nuxt-link v-scroll-to="{ el: '#author-' + author.slug, offset: -100, duration: 1000 }" :to="'#author-' + author.slug" class="text-white leading-normal no-underline hover:underline focus:underline">{{ author.name }}</nuxt-link></li>
+          <li v-for="(author, index) in allAuthors" class="py-4 sm:py-1"><nuxt-link v-scroll-to="{ el: '#author-' + author.slug, offset: -50, duration: 1000 }" :to="'#author-' + author.slug" class="text-white leading-normal no-underline hover:underline focus:underline">{{ author.name }}</nuxt-link></li>
         </ul>
       </section>
       <div class="alternate-sections w-full">
@@ -16,7 +16,7 @@
               <h2 class="w-full text-left text-base leading-tight font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/author/' + author.slug + '/'">{{ author.name }}</nuxt-link></h2>
               <div class="block h-full">
                 <figure v-if="author.photo" class="sm:w-32 sm:float-left mb-4 sm:mr-4 sm:mb-2">
-                  <img loading="lazy" class="notch-small max-w-full" width="310" height="310" :src="author.photo" :alt="author.name" :title="author.name" />
+                  <img loading="lazy" class="notch sm:notch-small max-w-full" width="310" height="310" :src="author.photo" :alt="author.name" :title="author.name" />
                 </figure>
                 <p class="w-full font-serif md:text-base lg:text-base highlight-first-line mb-4 text-left text-gray-333 leading-normal text-sm">{{ author.bio }}</p>
                 <h4 v-if="author.email || author.twitter || author.linkedin" :id="'author-social-media-title-' + index" class="sr-only no-print">Contact {{ author.name }}:</h4>
