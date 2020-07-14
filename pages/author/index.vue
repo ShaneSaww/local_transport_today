@@ -16,7 +16,7 @@
               <h2 class="w-full text-left text-base leading-tight font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/author/' + author.slug + '/'">{{ author.name }}</nuxt-link></h2>
               <div class="block h-full">
                 <figure v-if="author.photo" class="sm:w-32 sm:float-left mb-4 sm:mr-4 sm:mb-2">
-                  <img loading="lazy" class="notch sm:notch-small max-w-full" width="310" height="310" :src="author.photo" :alt="author.name" :title="author.name" />
+                  <img loading="lazy" class="notch sm:notch-small md:notch-small lg:notch-small max-w-full" width="310" height="310" :src="author.photo" :alt="author.name" :title="author.name" />
                 </figure>
                 <p class="w-full font-serif md:text-base lg:text-base highlight-first-line mb-4 text-left text-gray-333 leading-normal text-sm">{{ author.bio }}</p>
                 <h4 v-if="author.email || author.twitter || author.linkedin" :id="'author-social-media-title-' + index" class="sr-only no-print">Contact {{ author.name }}:</h4>
