@@ -24,7 +24,9 @@
         <div :class="latestEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
           <template v-for="(article, key) in latestEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">
-              <article role="article" class="article-item">
+              <article role="article" :aria-labelledby="'headline-' + key" class="article-item">
+                <h2 v-if="key === 0" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link v-scroll-to="{ el: '#headline-' + key, offset: -75, duration: 1000 }" :to="'#headline-' + key" class="red-block inline-block">Latest Discussions<br /><span class="text-white opacity-75 text-xs">from LTT<template v-if="article.issue"> issue № {{ article.issue }}</template></span></nuxt-link></h2>
+                <h2 v-if="key === 2" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link v-scroll-to="{ el: '#headline-' + key, offset: -75, duration: 1000 }" :to="'#headline-' + key" class="red-block inline-block">Recent Discussions<br /><span class="text-white opacity-75 text-xs">from LTT</span></nuxt-link></h2>
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</h4>
                   <ul role="list" :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
@@ -40,7 +42,7 @@
                     </li>
                   </ul>
                 </aside>
-                <h2 :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h2>
+                <h3 :id="'headline-' + key" :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
                 <p :class="key <= 1 ? 'md:text-xl lg:text-xl highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-base">{{ article.subHeadline }}</p>
                 <aside role="complementary" class="w-full">
                   <h4 :id="'article-meta-title-' + key" class="sr-only no-print">Article information:</h4>
@@ -61,7 +63,8 @@
           <template v-if="displaySidebar">
             <div class="cell cell--7">
               <aside role="complementary" class="no-print">
-                <h2 id="transport-experts" class="w-full mt-2 mb-8 text-left text-base font-serif text-gray-333">Transport Opinion</h2>
+                <h2 id="transport-experts" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" to="/author/">Transport Opinion<br /><span class="text-white opacity-75 text-xs">from our Contributors</span></nuxt-link></h2>
+                <!-- <h2 id="transport-experts" class="w-full mt-2 mb-8 text-left text-base font-serif text-gray-333">Transport Opinion</h2> -->
                 <ul role="list" aria-labelledby="transport-experts" class="list-none pl-0">
                   <li v-for="(author, key) in allAuthors" class="block my-6">
                     <div class="flex flex-row">
@@ -160,7 +163,7 @@
             <template v-for="(article, key) in categoryEditorials(category.name)" v-if="key <= 6">
               <div :class="'cell cell--' + key">
                 <h2 v-if="key === 0" class="w-full text-left text-base leading-tight font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/category/' + category.slug + '/'">{{ category.name }}</nuxt-link></h2>
-                <article role="article" class="article-item">
+                <article v-if="key <= 5" role="article" class="article-item">
                   <h3 :class="key <= 0 ? 'md:leading-tighter md:text-2xl': 'md:text-base'" class="w-full mb-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h3>
                   <p v-if="key <= 2" :class="key <= 0 ? 'md:text-base lg:text-base highlight-first-line': ''" class="w-full font-serif mb-4 text-left text-gray-333 leading-normal text-sm">{{ article.subHeadline }}</p>
                   <aside role="complementary" class="w-full">
@@ -172,6 +175,7 @@
                     </ul>
                   </aside>
                 </article>
+                <span v-if="key === 6" class="w-full text-left text-base font-bold leading-none font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/category/' + category.slug + '/'">Read more Discussions<br /><span class="text-white opacity-75 text-xs">about {{ category.name }}</span></nuxt-link></span>
               </div>
             </template>
             <template v-for="num in 7">
