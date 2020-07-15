@@ -3,8 +3,27 @@
     <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="pageName" />
     <h1 class="sr-only"><nuxt-link exact to="/">Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
-      <div class="w-full mt-10 mx-6 lg:mx-4 print:mx-0">
-        <aside v-if="settingsHome.masthead === 'cta'" role="complementary" class="alert-box flex flex-col lg:flex-row lg:justify-center lg:items-center w-full mt-4 lg:mt-0 mb-4">
+      <div v-if="settingsHome.masthead === 'cta' || settingsHome.masthead === 'intro'" class="w-full mt-6 md:mt-8">
+        <aside v-if="settingsHome.masthead === 'cta'" role="complementary" class="alert-box flex flex-col lg:flex-row lg:justify-center lg:items-center w-full">
+          <div class="p-6 lg:mr-4 lg:-ml-12 lg:max-width-28">
+            <h2 v-if="settingsHome.cta.headline" class="w-full text-left text-base leading-tight font-sans ltt-headline">{{ settingsHome.cta.headline }}</h2>
+              <p v-if="settingsHome.cta.subHeadline" class="font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm">{{ settingsHome.cta.subHeadline }}</p>
+              <p v-if="settingsHome.cta.date" class="font-serif mt-2 text-left ltt-text-gray font-normal leading-normal text-sm sm:text-base md:text-sm"><time :datetime="settingsHome.cta.date" :aria-label="dayjsNuxt(settingsHome.cta.date, 'D MMMM YYYY')">{{ dayjsNuxt(settingsHome.cta.date, 'D MMM YYYY') }}</time></p>
+          </div>
+          <div v-if="settingsHome.cta.button.url" class="px-6 pb-6 lg:px-0 lg:pb-0">
+            <p class="mx-auto font-sans text-center leading-tight max-width-90p lg:max-w-none text-sm lg:text-left"><a :href="settingsHome.cta.button.url" class="red-block flex lg:inline-flex flex-row items-center"><svg v-if="settingsHome.cta.button.icon" aria-hidden="true" focusable="false" class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path :d="settingsHome.cta.button.icon === 'video' ? 'M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z': 'M 19.42928,12.67 8.38214,23.7171 Q 8.09926,24 7.71216,24 7.32506,24 7.04219,23.7171 L 4.57072,21.2457 q -0.28288,-0.2829 -0.28288,-0.67 0,-0.3871 0.28288,-0.67 L 12.47643,12 4.57072,4.0943 q -0.28288,-0.2829 -0.28288,-0.67 0,-0.3871 0.28288,-0.67 L 7.04219,0.2829 Q 7.32506,0 7.71216,0 8.09926,0 8.38214,0.2829 L 19.42928,11.33 q 0.28288,0.2829 0.28288,0.67 0,0.3871 -0.28288,0.67 z'" /></svg>
+            <span>{{ settingsHome.cta.button.text }}</span></a></p>
+          </div>
+        </aside>
+        <aside v-if="settingsHome.masthead === 'intro'" role="complementary" class="alert-box flex flex-col lg:flex-row lg:justify-center lg:items-center w-full">
+          <div class="p-6">
+            <h2 v-if="settingsHome.intro.headline" class="w-full text-left text-base leading-tight font-sans ltt-headline mb-4">{{ settingsHome.intro.headline }}</h2>
+            <div v-html="parseMarkdown(settingsHome.intro.body)" class="alert-box-copy md:fluid-column font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm"></div>
+          </div>
+        </aside>
+      </div>
+      <div :class="settingsHome.masthead === 'none' ? 'mt-8' : ''" class="w-full mx-6 lg:mx-4 print:mx-0">
+        <!-- <aside v-if="settingsHome.masthead === 'cta'" role="complementary" class="alert-box flex flex-col lg:flex-row lg:justify-center lg:items-center w-full mt-4 lg:mt-0 mb-4">
           <div class="p-6 lg:mr-4 lg:-ml-12 lg:max-width-28">
             <h2 v-if="settingsHome.cta.headline" class="w-full text-left text-base leading-tight font-sans ltt-headline">{{ settingsHome.cta.headline }}</h2>
               <p v-if="settingsHome.cta.subHeadline" class="font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm">{{ settingsHome.cta.subHeadline }}</p>
@@ -20,7 +39,7 @@
             <h2 v-if="settingsHome.intro.headline" class="w-full text-left text-base leading-tight font-sans ltt-headline mb-4">{{ settingsHome.intro.headline }}</h2>
             <div v-html="parseMarkdown(settingsHome.intro.body)" class="alert-box-copy md:fluid-column font-serif text-left text-gray-333 font-normal leading-normal text-sm sm:text-base md:text-sm"></div>
           </div>
-        </aside>
+        </aside> -->
         <div :class="latestEditorials.length > 5 ? 'newspaper': 'newspaper-truncated'">
           <template v-for="(article, key) in latestEditorials" v-if="key <= 6">
             <div :class="'cell cell--' + key">
