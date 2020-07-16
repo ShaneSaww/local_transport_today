@@ -932,6 +932,10 @@ img {
     column-width: 10rem;
   }
 
+  .column-width-44 {
+    column-width: 11rem;
+  }
+
   .column-rule-white-03 {
     column-rule: 1px solid rgba(255, 255, 255, 0.3);
   }
@@ -1279,6 +1283,14 @@ img {
   font-style: italic;
   color: #4D4D4D;
   color: hsl(214, 7%, 47%);
+}
+
+.dropcap ul, .dropcap ol {
+  margin-bottom: 1.75rem;
+}
+
+.dropcap li {
+  margin-bottom: 0.25rem;
 }
 
 .dropcap figure {

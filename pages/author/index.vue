@@ -6,7 +6,7 @@
       <section class="w-full mt-10 ltt-bg-dark-gray p-6 no-print">
         <!-- <h2 id="author-index" class="sr-only">Authors</h2> -->
         <h2 id="author-index" class="font-sans text-white text-xl leading-none pb-4 sm:pb-2">Meet our Authors</h2>
-        <ul role="list" aria-labelledby="author-index" class="pl-0 font-sans list-none sm:column-width-40 column-gap-8 column-rule-white-03">
+        <ul role="list" aria-labelledby="author-index" class="pl-0 font-sans list-none sm:column-width-44 column-gap-8 column-rule-white-03">
           <li v-for="(author, index) in allAuthors" class="py-4 sm:py-1"><nuxt-link v-scroll-to="{ el: '#author-' + author.slug, offset: -50, duration: 1000 }" :to="'#author-' + author.slug" class="text-white text-base leading-normal no-underline hover:underline focus:underline">{{ author.name }}</nuxt-link></li>
         </ul>
       </section>

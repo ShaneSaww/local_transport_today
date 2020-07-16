@@ -70,6 +70,12 @@
               else {
                 return '';
               }
+            },
+
+            listitem (text, task, checked) {
+              if (!task) {
+                return `<li class="font-mono ltt-text-red"><span class="font-serif text-gray-333">${text}</span></li>`
+              }
             }
           };
 

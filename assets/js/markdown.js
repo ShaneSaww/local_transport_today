@@ -24,6 +24,12 @@ const util = {
       }
     }
 
+    renderer.listitem = (text, task, checked) => {
+      if (!task) {
+        return `<li class="font-mono ltt-text-red"><span class="font-serif text-gray-333">${text}</span></li>`
+      }
+    }
+
     marked.setOptions({ renderer }) // set the renderer to marked
 
     return marked(content)
