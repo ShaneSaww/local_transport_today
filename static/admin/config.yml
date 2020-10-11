@@ -31,7 +31,7 @@ collections: # A list of collections the CMS should be able to edit
             widget: "object"
             fields:
               - {label: 'Headline', name: 'headline', widget: 'string', required: false}
-              - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list'], editorComponents: []}
+              - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list'], editor_components: []}
           - label: "Call-to-Action"
             name: "cta"
             collapsed: true
@@ -40,7 +40,7 @@ collections: # A list of collections the CMS should be able to edit
             fields:
               - {label: 'Headline', name: 'headline', widget: 'string', required: false}
               - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: false}
-              - {label: 'Date', name: 'date', widget: 'datetime', required: false, default: "", format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
+              - {label: 'Date', name: 'date', widget: 'datetime', required: false, default: "", format: 'YYYY-MM-DD', date_format: 'Do MMMM YYYY', time_format: false}
               - label: "Button"
                 name: "button"
                 collapsed: false
@@ -50,15 +50,15 @@ collections: # A list of collections the CMS should be able to edit
                   - {label: 'URL', name: 'url', widget: 'string', required: false}
                   - {label: 'Text', name: 'text', widget: 'string', required: false}
                   - {label: 'Icon', name: 'icon', widget: 'select', required: false, multiple: false, default: "arrow", options: [{ label: "None", value: "" }, { label: "Arrow", value: "arrow" }, { label: "YouTube", value: "video" }] }
-          #- {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
+          #- {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'authors', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
       #- file: 'assets/content/settings/header.json'
       #  label: 'Header'
       #  name: 'header'
       #  fields:
-      #    - {label: 'Category 1', name: 'category1', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
-      #    - {label: 'Category 2', name: 'category2', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
-      #    - {label: 'Category 3', name: 'category3', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
-      #    - {label: 'Category 4', name: 'category4', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
+      #    - {label: 'Category 1', name: 'category1', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
+      #    - {label: 'Category 2', name: 'category2', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
+      #    - {label: 'Category 3', name: 'category3', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
+      #    - {label: 'Category 4', name: 'category4', widget: 'relation', required: false, hint: 'Leave blank to disable this setting.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
   - label: 'Authors'
     name: 'authors'
     folder: 'assets/content/authors'
@@ -87,7 +87,7 @@ collections: # A list of collections the CMS should be able to edit
       preview: false
     fields:
       - {label: 'Name', name: 'name', widget: 'string', required: true}
-      #- {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20, hint: 'Leave blank to disable this setting.'}
+      #- {label: 'Featured Author', name: 'featuredAuthor', widget: 'relation', required: false, collection: 'authors', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20, hint: 'Leave blank to disable this setting.'}
   - label: 'Editorials'
     name: 'editorials'
     folder: 'assets/content/editorials'
@@ -103,8 +103,8 @@ collections: # A list of collections the CMS should be able to edit
       - {label: 'Allow User Comments?', name: 'allowComments', widget: 'boolean', default: true}
       - {label: 'Headline', name: 'headline', widget: 'string', required: true}
       - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: An enticing sub-headline can be found from the blockquote inside the print publication edition.'}
-      - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: true, optionsLength: 20}
-      - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', displayFields: ['name'], searchFields: ['name'], valueField: 'name', multiple: false, optionsLength: 20}
-      - {label: 'LTT Issue Number', name: 'issue', widget: 'number', valueType: 'int', min: 1, step: 1, required: false}
-      - {label: 'Date Published', name: 'datePublished', widget: 'datetime', required: true, format: 'YYYY-MM-DD', dateFormat: 'Do MMMM YYYY', timeFormat: false}
-      - {label: 'Body', name: 'body', widget: 'markdown', required: true, buttons: ['bold', 'italic', 'link', 'heading-three', 'quote', 'bulleted-list', 'numbered-list'], editorComponents: ['image']}
+      - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: true, options_length: 20}
+      - {label: 'Author', name: 'author', widget: 'relation', required: true, collection: 'authors', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: false, options_length: 20}
+      - {label: 'LTT Issue Number', name: 'issue', widget: 'number', value_type: 'int', min: 1, step: 1, required: false}
+      - {label: 'Date Published', name: 'datePublished', widget: 'datetime', required: true, format: 'YYYY-MM-DD', date_format: 'Do MMMM YYYY', time_format: false}
+      - {label: 'Body', name: 'body', widget: 'markdown', required: true, buttons: ['bold', 'italic', 'link', 'heading-three', 'quote', 'bulleted-list', 'numbered-list'], editor_components: ['image']}
