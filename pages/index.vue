@@ -320,7 +320,28 @@ export default {
     let structuredData = {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": pkg.homepageURL
+      "url": pkg.homepageURL,
+      "publisher": {
+        "@type": "Organization",
+        "name": pkg.description,
+        "url": pkg.homepageURL,
+        "logo": {
+          "@type": "ImageObject",
+          "url": pkg.homepageURL + "/local_transport_today_logo_square_colour.png",
+          "width": 480,
+          "height": 480
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": pkg.homepageURL + "/local_transport_today_logo_square_colour.png",
+        "width": 480,
+        "height": 480
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": pkg.homepageURL
+      }
     }
 
     structuredData.potentialAction = [{
