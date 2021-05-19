@@ -28,6 +28,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'theme-color', content: '#BD2730' },
       //{ name: 'google-site-verification', content: 'ZuWo8BSwX-kcUKx6Hehplgrh7kVxeKxjCmuryUf0vhQ' },
       { hid: 'description', name: 'description', content: pkg.siteDescription },
       { hid: 'robot', name: 'robot', content: 'index, follow' },

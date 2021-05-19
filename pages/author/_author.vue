@@ -151,6 +151,13 @@ export default {
     }
     meta.push(keywords)
 
+    let ogUrl = {
+      hid: 'og-url',
+      property: 'og:url',
+      content: pkg.homepageURL + '/author/' + this.authorSlug + '/'
+    }
+    meta.push(ogUrl)
+
     let ogTitle = {
       hid: 'og-title',
       property: 'og:title',
