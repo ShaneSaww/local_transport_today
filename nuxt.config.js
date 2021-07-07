@@ -31,7 +31,7 @@ export default {
       { name: 'theme-color', content: '#BD2730' },
       //{ name: 'google-site-verification', content: 'ZuWo8BSwX-kcUKx6Hehplgrh7kVxeKxjCmuryUf0vhQ' },
       { hid: 'description', name: 'description', content: pkg.siteDescription },
-      { hid: 'robot', name: 'robot', content: 'index, follow' },
+      { hid: 'robots', name: 'robots', content: 'index, follow' },
       { name: 'format-detection', content: 'telephone=no' },
       { property: 'og:locale', content: 'en_GB' },
       { hid: 'og-type', property: 'og:type', content: 'website' },
