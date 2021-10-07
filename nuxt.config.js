@@ -285,6 +285,9 @@ export default {
     hostname: pkg.homepageURL,
     cacheTime: 1000 * 60 * 15,
     trailingSlash: true,
+    exclude: [
+      '/search'
+    ],
     xslUrl: '/sitemap.xsl',
     //generate: true, // Enable when using nuxt generate
     async routes () {
