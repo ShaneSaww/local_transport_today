@@ -1,19 +1,19 @@
 <template>
   <div>
-    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="pageName" />
+    <page-header :displayHero="displayHero" :pageName="pageName" />
     <h1 class="sr-only"><nuxt-link to="/category/">Subjects - Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-6">
       <section class="w-full mt-10 ltt-bg-dark-gray p-6 no-print">
         <!-- <h2 id="category-index" class="sr-only">Subjects</h2> -->
         <h2 id="author-index" aria-label="A to Z of Subjects" class="font-sans text-white text-xl leading-none pb-4 sm:pb-2">A-Z of Subjects</h2>
         <ul role="list" aria-labelledby="category-index" class="pl-0 font-sans list-none sm:column-width-44 column-gap-8 column-rule-white-03">
-          <li v-for="(category, index) in allCategories" class="py-4 sm:py-1"><nuxt-link v-scroll-to="{ el: '#category-' + category.slug, offset: -50, duration: 1000 }" :to="'#category-' + category.slug" class="text-white text-base leading-normal no-underline hover:underline focus:underline">{{ category.name }}</nuxt-link></li>
+          <li v-for="(category, index) in allCategories" v-if="category.editorials.length > 0" class="py-4 sm:py-1"><a v-scroll-to="{ el: '#category-' + category.slug, offset: -50, duration: 1000 }" :href="'#category-' + category.slug" class="text-white text-base leading-normal no-underline hover:underline focus:underline">{{ category.name }}</a></li>
         </ul>
       </section>
       <div class="alternate-sections w-full">
-        <section v-for="(category, index) in allCategories" :id="'category-' + category.slug" class="p-6 lg:p-4 print:px-0">
+        <section v-for="(category, index) in allCategories" v-if="category.editorials.length > 0" :id="'category-' + category.slug" class="p-6 lg:p-4 print:px-0">
           <div class="newspaper-category">
-            <template v-for="(article, key) in categoryEditorials(category.name)" v-if="key <= 6">
+            <template v-for="(article, key) in category.editorials" v-if="key <= 6">
               <div :class="'cell cell--' + key">
                 <h2 v-if="key === 0" class="w-full text-left text-base leading-tight font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" :to="'/category/' + category.slug + '/'">{{ category.name }}</nuxt-link></h2>
                 <article v-if="key <= 5" role="article" class="article-item">
@@ -32,7 +32,7 @@
               </div>
             </template>
             <template v-for="num in 7">
-              <template v-if="categoryEditorials(category.name).length < num">
+              <template v-if="category.editorials.length < num">
                 <div :class="'hidden md:block cell cell--' + (num - 1)"></div>
               </template>
             </template>
@@ -61,8 +61,52 @@ export default {
     PageHeader
   },
 
-  async fetch ({ store }) {
-    //await store.dispatch('pages/retrievePages')
+  async asyncData({ params, payload }) {
+    if (payload) {
+      return {
+        allCategories: payload.categories
+      }
+    }
+    else {
+      let contextEditorials = await require.context('~/assets/content/editorials/', false, /\.json$/)
+
+      let allEditorials = await contextEditorials.keys().map(key => ({
+        ...contextEditorials(key),
+        slug: `${key.replace('.json', '').replace('./', '')}`,
+      }))
+
+      allEditorials.sort(function (a, b) {
+        if (a.datePublished < b.datePublished) {
+          return 1
+        }
+        if (a.datePublished > b.datePublished) {
+          return -1
+        }
+
+        return 0 // names must be equal
+      })
+
+      let contextCategories = await require.context('~/assets/content/categories/', false, /\.json$/)
+
+      let allCategories = await contextCategories.keys().map(key => ({
+        ...contextCategories(key),
+        slug: `${key.replace('.json', '').replace('./', '')}`,
+      }))
+
+      let categoryIndex = allCategories.map(category => {
+        let categoryEditorials = allEditorials.filter(x => x.published === true && x.categories.includes(category.name))
+
+        return {
+          slug: category.slug,
+          name: category.name,
+          editorials: categoryEditorials
+        }
+      })
+
+      return {
+        allCategories: categoryIndex
+      }
+    }
   },
 
   mounted() {
@@ -70,9 +114,9 @@ export default {
   },
 
   computed: {
-    settingsHeader () {
-      return this.$store.getters['settings/retrieveSetting']('header')
-    },
+    // settingsHeader () {
+    //   return this.$store.getters['settings/retrieveSetting']('header')
+    // },
 
     // latestEditorials () {
     //   return this.$store.getters['editorials/retrieveAllEditorials']
@@ -87,9 +131,9 @@ export default {
     //   return authorList.sort(function() { return 0.5 - Math.random() }) // randomise author list
     // },
 
-    allCategories () {
-      return this.$store.state.categories.categories
-    },
+    // allCategories () {
+    //   return this.$store.state.categories.categories
+    // },
 
     // bookmarkedEditorials () {
     //   let bookmarks = this.allBookmarks()
@@ -118,9 +162,9 @@ export default {
     //   return this.$store.getters['editorials/retrieveAuthorEditorials'](author)
     // },
 
-    categoryEditorials (category) {
-      return this.$store.getters['editorials/retrieveCategoryEditorials'](category)
-    }
+    // categoryEditorials (category) {
+    //   return this.$store.getters['editorials/retrieveCategoryEditorials'](category)
+    // }
   },
 
   head() {

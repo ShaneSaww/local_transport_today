@@ -3,7 +3,9 @@ require('dotenv').config()
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')
 const path = require('path')
-import axios from 'axios' // we'll need this later for our dynamic routes
+import axios from 'axios'
+import pageRoutes from './helpers/generateRoutes' // page routes are generated here
+import generateFeed from './helpers/generateFeed' // RSS feed is generated here
 
 class TailwindExtractor {
   static extract(content) {
@@ -15,6 +17,7 @@ import pkg from './package'
 
 export default {
   mode: 'universal',
+  target: 'static',
 
   /*
   ** Headers of the page
@@ -29,6 +32,8 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'theme-color', content: '#BD2730' },
+      { name: 'apple:content_id', content: '1532204990' },
+      { name: 'apple-itunes-app', content: 'app-id=1532204990' },
       //{ name: 'google-site-verification', content: 'ZuWo8BSwX-kcUKx6Hehplgrh7kVxeKxjCmuryUf0vhQ' },
       { hid: 'description', name: 'description', content: pkg.siteDescription },
       { hid: 'robots', name: 'robots', content: 'index, follow' },
@@ -117,9 +122,6 @@ export default {
     { src: '~/plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/autotrack.js', mode: 'client' },
     { src: '~/plugins/vue-scrollto.js', mode: 'server'}
-    //{ src: '~/plugins/markdown.js', mode: 'client'}
-    //{ src: '~/plugins/helper.js', mode: 'server'}
-    //{ src: '~/plugins/imagesloaded.pkgd.min.js', mode: 'client' },
   ],
 
   /*
@@ -128,13 +130,17 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'nuxt-leaflet',
     'vue-scrollto/nuxt',
     'cookie-universal-nuxt',
     '@nuxtjs/feed',
     '@nuxtjs/sitemap'
-    //['nuxt-leaflet', { /* module options */ }],
   ],
+
+  buildModules: [
+    //'@nuxtjs/prismic',
+    '@/modules/sitemapRouteGenerator'
+  ],
+
   /*
   ** Axios module configuration
   */
@@ -143,6 +149,17 @@ export default {
   },
 
   feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        return await generateFeed(feed)
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2'
+    }
+  ],
+
+  /*feed: [
     {
       path: '/feed.xml',
       async create(feed) {
@@ -204,51 +221,64 @@ export default {
           })
         })
       },
-      cacheTime: 1000 * 60 * 15, // How long should the feed be cached (15-mins)
-      type: 'rss2', // Can be: rss2, atom1, json1
-      //data: ['Some additional data'] // Will be passed as 2nd argument to `create` function
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
     }
-  ],
+  ],*/
+
+  router: {
+    trailingSlash: true
+  },
 
   generate: {
     interval: 200,
-    routes: function () {
-      const fs = require('fs')
-      const path = require('path')
+    exclude: [
 
-      let categories = fs.readdirSync('./assets/content/categories').map(file => {
-        let slug = file.replace('.json', '').replace('./', '')
-
-        return {
-          route: '/category/' + slug + '/',
-          payload: require(`./assets/content/categories/${file}`)
-        }
-      })
-
-      let authors = fs.readdirSync('./assets/content/authors').map(file => {
-        let slug = file.replace('.json', '').replace('./', '')
-
-        return {
-          route: '/author/' + slug + '/',
-          payload: require(`./assets/content/authors/${file}`)
-        }
-      })
-
-      let editorials = fs.readdirSync('./assets/content/editorials').map(file => {
-        let slug = file.replace('.json', '').replace('./', '')
-
-        return {
-          route: '/' + slug + '/',
-          payload: require(`./assets/content/editorials/${file}`)
-        }
-      })
-
-      return Promise.all([categories, authors, editorials]).then(values => {
-        //return values.join().split(',')
-        return categories.concat(authors, editorials)
-      })
+    ],
+    async routes() {
+      return await pageRoutes()
     }
   },
+
+  // generate: {
+  //   interval: 200,
+  //   routes: function () {
+  //     const fs = require('fs')
+  //     const path = require('path')
+  //
+  //     let categories = fs.readdirSync('./assets/content/categories').map(file => {
+  //       let slug = file.replace('.json', '').replace('./', '')
+  //
+  //       return {
+  //         route: '/category/' + slug + '/',
+  //         payload: require(`./assets/content/categories/${file}`)
+  //       }
+  //     })
+  //
+  //     let authors = fs.readdirSync('./assets/content/authors').map(file => {
+  //       let slug = file.replace('.json', '').replace('./', '')
+  //
+  //       return {
+  //         route: '/author/' + slug + '/',
+  //         payload: require(`./assets/content/authors/${file}`)
+  //       }
+  //     })
+  //
+  //     let editorials = fs.readdirSync('./assets/content/editorials').map(file => {
+  //       let slug = file.replace('.json', '').replace('./', '')
+  //
+  //       return {
+  //         route: '/' + slug + '/',
+  //         payload: require(`./assets/content/editorials/${file}`)
+  //       }
+  //     })
+  //
+  //     return Promise.all([categories, authors, editorials]).then(values => {
+  //       //return values.join().split(',')
+  //       return categories.concat(authors, editorials)
+  //     })
+  //   }
+  // },
 
   sitemap: {
     path: '/sitemap.xml',

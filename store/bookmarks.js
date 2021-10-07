@@ -1,5 +1,5 @@
 
-import axios from 'axios'
+/*import axios from 'axios'
 import pkg from '~/package'
 
 export const state = () => ({
@@ -92,24 +92,5 @@ export const mutations = {
 }
 
 export const actions = {
-  /*async retrieveCookieBookmarks({ commit }) {
 
-    let cookieBookmarksArray = []
-    let cookieBookmarksString
-
-    if (process.client) { // Nuxt requires this otherwise 'window.' or 'document.' will be undefined for server-side
-      if (window.localStorage) {
-        cookieBookmarksString = localStorage.getItem('bookmarks')
-      }
-      else {
-        cookieBookmarksString = this.$cookies.get('bookmarks', { parseJSON: false })
-      }
-    }
-
-    if (cookieBookmarksString) {
-      cookieBookmarksArray = cookieBookmarksString.split('-')
-    }
-
-    await commit('UPDATE_BOOKMARKS', cookieBookmarksArray)
-  }*/
-}
+}*/

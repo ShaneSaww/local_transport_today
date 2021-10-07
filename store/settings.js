@@ -1,5 +1,5 @@
 
-import axios from 'axios'
+/*import axios from 'axios'
 
 export const state = () => ({
   settings: []
@@ -30,4 +30,4 @@ export const actions = {
 
     await commit('UPDATE_SETTINGS', settings)
   }
-}
+}*/

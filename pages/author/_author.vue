@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :displayHero="displayHero" :settingsHeader="settingsHeader" :pageName="authorSlug" />
+    <page-header :displayHero="displayHero" :pageName="authorSlug" />
     <h1 class="sr-only"><nuxt-link :to="'/author/' + authorSlug + '/'">{{ author.name }} - Local Transport Today Discussion</nuxt-link></h1>
     <div role="main" id="main" class="w-full overflow-hidden flex flex-wrap justify-center pt-8">
       <div class="w-full mt-10 mx-6 lg:mx-4 print:mx-0">
@@ -12,7 +12,7 @@
                   <h4 :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</h4>
                   <ul role="list" :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                     <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
-                    <li class="inline-block no-print">
+                    <!-- <li class="inline-block no-print">
                       <button :title="bookmarked(article.md5) ? 'Remove bookmark': 'Bookmark article'" :class="bookmarked(article.md5) ? 'ani-sparkle-once': ''" class="focus-outline-none leading-none text-sm no-underline ltt-text-gray hover:text-gray-333 focus:text-gray-333" @click="toggle(article.md5)">
                         <svg aria-hidden="true" focusable="false" role="img" class="fill-current h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path :d="bookmarked(article.md5) ? 'M 17,3 H 7 C 5.9,3 5,3.9 5,5 v 16 l 7,-3 7,3 V 5 C 19,3.9 18.1,3 17,3 Z': 'M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V6c0-.55.45-1 1-1h8c.55 0 1 .45 1 1v12z'" />
@@ -20,7 +20,7 @@
                         <span v-if="bookmarked(article.md5)" class="sr-only">Remove bookmark for this article</span>
                         <span v-else class="sr-only">Bookmark this article</span>
                       </button>
-                    </li>
+                    </li> -->
                   </ul>
                 </aside>
                 <h2 :class="key <= 1 ? 'md:leading-tighter md:text-5xl': 'md:text-2xl'" class="w-full my-4 font-sans text-left font-extrabold leading-tight text-2xl"><nuxt-link rel="bookmark" class="ltt-headline no-underline hover:underline focus:underline" :to="'/' + article.slug + '/'">{{ article.headline }}</nuxt-link></h2>
@@ -78,7 +78,7 @@ import PageHeader from '~/components/PageHeader.vue'
 import dayjs from 'dayjs'
 import helperSlugify from '~/assets/js/slugify.js'
 import pkg from '~/package'
-import { mapMutations } from 'vuex'
+//import { mapMutations } from 'vuex'
 
 export default {
   data: function () {
@@ -96,12 +96,36 @@ export default {
   async asyncData({ params, payload }) {
     if (payload) {
       return {
-        author: payload
+        author: payload.author,
+        authorEditorials: payload.authorEditorials
       }
     }
     else {
+      let contextEditorials = await require.context('~/assets/content/editorials/', false, /\.json$/)
+
+      let allEditorials = await contextEditorials.keys().map(key => ({
+        ...contextEditorials(key),
+        slug: `${key.replace('.json', '').replace('./', '')}`,
+      }))
+
+      allEditorials.sort(function (a, b) {
+        if (a.datePublished < b.datePublished) {
+          return 1
+        }
+        if (a.datePublished > b.datePublished) {
+          return -1
+        }
+
+        return 0 // names must be equal
+      })
+
+      let author = await require(`~/assets/content/authors/${params.author}.json`)
+
+      let authorEditorials = allEditorials.filter(x => x.published === true && x.author === author.name)
+
       return {
-        author: await require(`~/assets/content/authors/${params.author}.json`)
+        author,
+        authorEditorials
       }
     }
   },
@@ -109,17 +133,17 @@ export default {
   mounted() {
     //this.author = this.$store.getters['authors/retrieveAuthor'](this.authorSlug)
 
-    this.updateBookmarkState()
+    //this.updateBookmarkState()
   },
 
   computed: {
-    settingsHeader () {
-      return this.$store.getters['settings/retrieveSetting']('header')
-    },
+    // settingsHeader () {
+    //   return this.$store.getters['settings/retrieveSetting']('header')
+    // },
 
-    authorEditorials () {
-      return this.$store.getters['editorials/retrieveAuthorEditorials'](this.author.name)
-    }
+    // authorEditorials () {
+    //   return this.$store.getters['editorials/retrieveAuthorEditorials'](this.author.name)
+    // }
   },
 
   methods: {
@@ -131,14 +155,14 @@ export default {
       return helperSlugify.slugify(string)
     },
 
-    bookmarked (articleMd5) {
-      return this.$store.getters['bookmarks/checkBookmark'](articleMd5)
-    },
+    // bookmarked (articleMd5) {
+    //   return this.$store.getters['bookmarks/checkBookmark'](articleMd5)
+    // },
 
-    ...mapMutations({
-      toggle: 'bookmarks/TOGGLE_BOOKMARK',
-      updateBookmarkState: 'bookmarks/UPDATE_BOOKMARKS'
-    })
+    // ...mapMutations({
+    //   toggle: 'bookmarks/TOGGLE_BOOKMARK',
+    //   updateBookmarkState: 'bookmarks/UPDATE_BOOKMARKS'
+    // })
   },
 
   head() {

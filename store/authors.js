@@ -1,5 +1,5 @@
 
-import axios from 'axios'
+/*import axios from 'axios'
 
 export const state = () => ({
   authors: []
@@ -30,4 +30,4 @@ export const actions = {
 
     await commit('UPDATE_AUTHORS', authors)
   }
-}
+}*/

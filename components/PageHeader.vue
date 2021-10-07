@@ -30,20 +30,22 @@
           <!--<li v-if="settingsHeader.category4" class="my-6 lg:my-2 lg:mr-4"><nuxt-link :to="'/category/' + slugify(settingsHeader.category4) + '/'" :aria-current="pageName === slugify(settingsHeader.category1) ? 'page' : undefined">{{ settingsHeader.category4 }}</nuxt-link></li>-->
           <!-- <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/about/" :aria-current="pageName === 'about' ? 'page' : undefined">About</nuxt-link></li> -->
           <!-- <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/contribute/" :aria-current="pageName === 'contribute' ? 'page' : undefined">Contribute</nuxt-link></li> -->
+          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/about/" :aria-current="pageName === 'about' ? 'page' : undefined">About</nuxt-link></li>
           <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/category/" :aria-current="pageName === 'categories' ? 'page' : undefined">Subjects</nuxt-link></li>
           <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/author/" :aria-current="pageName === 'authors' ? 'page' : undefined">Authors</nuxt-link></li>
-          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/myltt/" :aria-current="pageName === 'myltt' ? 'page' : undefined"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li>
+          <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/settings/" :aria-current="pageName === 'settings' ? 'page' : undefined">Settings</nuxt-link></li>
+          <!-- <li class="my-6 lg:my-2 lg:mr-6"><nuxt-link to="/myltt/" :aria-current="pageName === 'myltt' ? 'page' : undefined"><span class="font-serif italic opacity-75">my</span>LTT</nuxt-link></li> -->
         </ul>
         <div class="relative mb-4 lg:mb-0">
           <form role="search" method="get" action="/search/">
-            <datalist id="search_list">
+            <!-- <datalist id="search_list">
               <template v-for="(suggestion, key) in searchDataList">
                 <option :value="suggestion.name">{{ suggestion.name }}</option>
               </template>
-						</datalist>
+						</datalist> -->
             <label for="search" class="sr-only">Search</label>
-            <input type="search" class="w-full lg:w-auto font-sans border ltt-headline h-10 px-5 pr-12 rounded-lg text-sm focus:outline-none"
-              list="search_list" name="search" id="search" placeholder="Search" :value="searchTerm" autocomplete="off" aria-required="true" required>
+            <!-- <input type="search" class="w-full lg:w-auto font-sans border ltt-headline h-10 px-5 pr-12 rounded-lg text-base md:text-sm focus:outline-none" list="search_list" name="search" id="search" placeholder="Search" :value="searchTerm" autocomplete="off" aria-required="true" required> -->
+            <input type="search" class="w-full lg:w-auto font-sans border ltt-headline h-10 px-5 pr-12 rounded-lg text-base md:text-sm focus:outline-none" name="search" id="search" placeholder="Search" :value="searchTerm" autocomplete="off" aria-required="true" required />
             <input type="submit" value="Submit" name="Submit" class="sr-only" />
             <button aria-hidden="true" type="submit" class="absolute right-0 top-0 mt-3 mr-4">
               <svg focusable="false" class="ltt-headline h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +87,7 @@ export default {
       required: false,
       default: false
     },
-    settingsHeader: {
+    /*settingsHeader: {
       type: Object,
       required: false,
       default: {
@@ -94,41 +96,41 @@ export default {
         category3: null,
         category4: null
       }
-    }
+    }*/
   },
 
   computed: {
-    searchDataList () {
-      let allAuthors = this.$store.state.authors.authors
-      let allCategories = this.$store.state.categories.categories
-
-      let authorNames = allAuthors.map(key => {
-        return {
-          name: key.name
-        }
-      })
-
-      let categoryNames = allCategories.map(key => {
-        return {
-          name: key.name
-        }
-      })
-
-      let dataList = authorNames.concat(categoryNames)
-
-      dataList.sort(function (a, b) {
-        if (a.name < b.name) {
-          return -1
-        }
-        if (a.name > b.name) {
-          return 1
-        }
-
-        return 0 // names must be equal
-      })
-
-      return dataList
-    }
+    // searchDataList () {
+    //   let allAuthors = this.$store.state.authors.authors
+    //   let allCategories = this.$store.state.categories.categories
+    //
+    //   let authorNames = allAuthors.map(key => {
+    //     return {
+    //       name: key.name
+    //     }
+    //   })
+    //
+    //   let categoryNames = allCategories.map(key => {
+    //     return {
+    //       name: key.name
+    //     }
+    //   })
+    //
+    //   let dataList = authorNames.concat(categoryNames)
+    //
+    //   dataList.sort(function (a, b) {
+    //     if (a.name < b.name) {
+    //       return -1
+    //     }
+    //     if (a.name > b.name) {
+    //       return 1
+    //     }
+    //
+    //     return 0 // names must be equal
+    //   })
+    //
+    //   return dataList
+    // }
   },
 
   methods: {

@@ -1,5 +1,5 @@
 
-import axios from 'axios'
+/*import axios from 'axios'
 import helperMd5 from '~/assets/js/md5.js'
 import helperEstimateReadingTime from '~/assets/js/reading-time.js'
 
@@ -86,4 +86,4 @@ export const actions = {
 
     commit('UPDATE_EDITORIALS', publishedEditorials)
   }
-}
+}*/

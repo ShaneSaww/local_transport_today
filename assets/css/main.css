@@ -1674,6 +1674,11 @@ pre {
   .dark-mode-inline {
     display: inline-block;
   }
+
+  .commento-root input[type=text], .commento-root textarea {
+    background-color: #000000;
+    color: #aeadae;
+  }
 }
 
 @media print {
@@ -1743,7 +1748,7 @@ pre {
   }
 
   .content-text-spacing p {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
   }
 
   article {
