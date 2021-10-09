@@ -78,6 +78,8 @@ collections: # A list of collections the CMS should be able to edit
     extension: 'json'
     create: true
     identifier_field: name
+    preview_path: "/author/{{slug}}/"
+    sortable_fields: ['name']
     editor:
       preview: false
     fields:
@@ -95,6 +97,8 @@ collections: # A list of collections the CMS should be able to edit
     extension: 'json'
     create: true
     identifier_field: name
+    preview_path: "/category/{{slug}}/"
+    sortable_fields: ['name']
     editor:
       preview: false
     fields:
@@ -108,6 +112,21 @@ collections: # A list of collections the CMS should be able to edit
     extension: 'json'
     create: true
     identifier_field: headline
+    preview_path: "/{{slug}}/"
+    summary: "{{fields.headline}} ({{fields.author}})"
+    sortable_fields: ['headline', 'author', 'issue']
+    view_filters:
+      - label: 'Phil Goodwin'
+        field: author
+        pattern: 'Phil Goodwin'
+      - label: 'Peter Stonham'
+        field: author
+        pattern: 'Peter Stonham'
+    view_groups:
+      - label: 'LTT Issue No.'
+        field: issue
+      - label: 'Author'
+        field: author
     editor:
       preview: true
     fields:
