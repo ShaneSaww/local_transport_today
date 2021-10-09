@@ -113,7 +113,7 @@ collections: # A list of collections the CMS should be able to edit
     create: true
     identifier_field: headline
     preview_path: "/{{slug}}/"
-    summary: "{{fields.headline}} ({{fields.author}})"
+    summary: "{{fields.headline}} ({{fields.author}}) [LTT{{fields.issue}}]"
     sortable_fields: ['headline', 'author', 'issue']
     view_filters:
       - label: 'Phil Goodwin'
