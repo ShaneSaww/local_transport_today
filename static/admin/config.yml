@@ -123,8 +123,6 @@ collections: # A list of collections the CMS should be able to edit
         field: author
         pattern: 'Peter Stonham'
     view_groups:
-      - label: 'LTT Issue No.'
-        field: issue
       - label: 'Author'
         field: author
     editor:
