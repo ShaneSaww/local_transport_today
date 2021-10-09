@@ -286,11 +286,14 @@ export default {
     cacheTime: 1000 * 60 * 15,
     trailingSlash: true,
     exclude: [
-      '/search'
+      '/search/'
     ],
     xslUrl: '/sitemap.xsl',
     //generate: true, // Enable when using nuxt generate
-    async routes () {
+    routes: [
+      '/' // the script will find the other static pages itself
+    ]
+    /*async routes () {
       let fs = require('fs')
       let path = require('path')
 
@@ -320,7 +323,7 @@ export default {
       })
 
       return editorials.concat(categories, authors)
-    }
+    }*/
   },
 
   /*
