@@ -7,8 +7,8 @@ backend:
 media_folder: 'static/images/uploads' # Media files will be stored in the repo under static/images/uploads
 public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
 
-site_url: https://www.localtransport.today
-display_url: https://localtransport.today
+site_url: https://discussion.lttmagazine.co.uk
+display_url: https://discussion.lttmagazine.co.uk
 logo_url: '/local_transport_today_logo_colour.svg'
 
 collections: # A list of collections the CMS should be able to edit
