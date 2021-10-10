@@ -10,6 +10,13 @@ function estimateReadingTime (articleBody) {
   return helperEstimateReadingTime.estimateReadingTime(articleBody)
 }
 
+function convertNameToAlphabetical (name) {
+  let nameArray = name.split(' ')
+  let firstname = nameArray.shift() // also removes first item from the array
+  nameArray.push(firstname)
+  return nameArray.join(' ')
+}
+
 export default async () => {
 
   const fs = require('fs')
@@ -119,6 +126,7 @@ export default async () => {
 
     return {
       slug: slug,
+      a2z: convertNameToAlphabetical(author.name),
       author: author,
       editorials: authorEditorials
     }
@@ -128,37 +136,40 @@ export default async () => {
 
   let pagesAbout = await require(`../assets/content/pages/about.json`)
 
-  let pages = [
-    {
-      route: '/about/',
-      payload: {
-        content: pagesAbout
-      }
-    },
-    {
-      route: '/',
-      payload: {
-        authors: authorIndex,
-        categories: categoryIndex,
-        editorials: editorialsIndex,
-        settings: settingsHome
-      }
-    },
-    {
-      route: '/author/',
-      payload: {
-        authors: authorIndex
-      }
-    },
-    {
-      route: '/category/',
-      payload: {
-        categories: categoryIndex
-      }
-    }
-  ]
-
   return Promise.all([categories, authors, editorials, categoryIndex, authorIndex, settingsHome, pagesAbout]).then(values => {
+
+    authorIndex.sort((a, b) => a.a2z.localeCompare(b.a2z))
+
+    let pages = [
+      {
+        route: '/about/',
+        payload: {
+          content: pagesAbout
+        }
+      },
+      {
+        route: '/',
+        payload: {
+          authors: authorIndex,
+          categories: categoryIndex,
+          editorials: editorialsIndex,
+          settings: settingsHome
+        }
+      },
+      {
+        route: '/author/',
+        payload: {
+          authors: authorIndex
+        }
+      },
+      {
+        route: '/category/',
+        payload: {
+          categories: categoryIndex
+        }
+      }
+    ]
+
     return pages.concat(categories, authors, editorials)
   })
 

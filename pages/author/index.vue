@@ -81,6 +81,14 @@ export default {
   },
 
   async asyncData({ params, payload }) {
+
+    function convertNameToAlphabetical (name) {
+      let nameArray = name.split(' ')
+      let firstname = nameArray.shift() // also removes first item from the array
+      nameArray.push(firstname)
+      return nameArray.join(' ')
+    }
+
     if (payload) {
       return {
         allAuthors: payload.authors
@@ -110,7 +118,10 @@ export default {
       let allAuthors = await contextAuthors.keys().map(key => ({
         ...contextAuthors(key),
         slug: `${key.replace('.json', '').replace('./', '')}`,
+        a2z: convertNameToAlphabetical(contextAuthors(key).name)
       }))
+
+      allAuthors.sort((a, b) => a.a2z.localeCompare(b.a2z))
 
       let authorIndex = allAuthors.map(author => {
         let authorEditorials = allEditorials.filter(x => x.published === true && x.author === author.name)

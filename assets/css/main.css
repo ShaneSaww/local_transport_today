@@ -1019,6 +1019,10 @@ img {
     color: hsl(214, 7%, 43%);
   }
 
+  .ltt-text-gray-a11y {
+    color: #4A4F53;
+  }
+
   .ltt-border-gray {
     border-color: #4D4D4D;
     border-color: hsl(214, 7%, 47%);

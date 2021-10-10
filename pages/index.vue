@@ -30,7 +30,7 @@
                 <h2 v-if="key === 0" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link v-scroll-to="{ el: '#headline-' + key, offset: -75, duration: 1000 }" :to="'#headline-' + key" class="red-block inline-block">Latest Discussions<br /><span class="text-white opacity-75 text-xs">from LTT<template v-if="article.issue"> issue № {{ article.issue }}</template></span></nuxt-link></h2>
                 <h2 v-if="key === 2" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link v-scroll-to="{ el: '#headline-' + key, offset: -75, duration: 1000 }" :to="'#headline-' + key" class="red-block inline-block">Recent Discussions<br /><span class="text-white opacity-75 text-xs">from LTT</span></nuxt-link></h2>
                 <aside role="complementary" class="w-full">
-                  <h4 :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</h4>
+                  <p :id="'article-links-title-' + key" class="sr-only no-print">Article Links:</p>
                   <ul role="list" :aria-labelledby="'article-links-title-' + key" class="flex flex-wrap flex-row justify-between content-around ltt-text-gray font-serif font-light md:font-medium leading-loose text-base pl-0 list-none">
                     <li v-if="article.categories.length > 0" class="inline-block"><nuxt-link class="ltt-text-red no-underline hover:underline focus:underline" :to="'/category/' + slugify(article.categories[0]) + '/'">{{ article.categories[0] }}</nuxt-link></li>
                     <!-- <li class="inline-block no-print">
@@ -224,6 +224,13 @@ export default {
       return helperEstimateReadingTime.estimateReadingTime(articleBody)
     }
 
+    function convertNameToAlphabetical (name) {
+      let nameArray = name.split(' ')
+      let firstname = nameArray.shift() // also removes first item from the array
+      nameArray.push(firstname)
+      return nameArray.join(' ')
+    }
+
     if (payload) {
       return {
         allAuthors: payload.authors,
@@ -279,7 +286,10 @@ export default {
       let allAuthors = await contextAuthors.keys().map(key => ({
         ...contextAuthors(key),
         slug: `${key.replace('.json', '').replace('./', '')}`,
+        a2z: convertNameToAlphabetical(contextAuthors(key).name)
       }))
+
+      allAuthors.sort((a, b) => a.a2z.localeCompare(b.a2z))
 
       let authorIndex = allAuthors.map(author => {
         let authorEditorials = allEditorials.filter(x => x.published === true && x.author === author.name)
