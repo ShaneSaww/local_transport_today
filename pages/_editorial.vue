@@ -19,7 +19,7 @@
             <li v-if="article.issue" class="inline-block">Featured inside <abbr title="Local Transport Today">LTT</abbr> issue № {{ article.issue }}</li>
           </ul>
         </aside>
-        <div v-html="parseMarkdown(article.body)" class="dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-xl"></div>
+        <div v-html="parseMarkdown(article.body)" class="dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"></div>
         <div class="no-print border-t border-solid border-light-gray mt-8 py-4 flex flex-row justify-between">
           <aside role="complementary">
             <h4 id="share-social-media-title" class="sr-only">Share on social media:</h4>
