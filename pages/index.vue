@@ -94,7 +94,7 @@
                     <a href="https://play.google.com/store/apps/details?id=com.pagesuite.localtransport"><img loading="lazy" class="w-48" src="~assets/img/google_play.png" alt="Get it on Google Play" /></a>
                   </li>
                   <li class="block my-6">
-                    <a href="https://subscriber.pagesuite-professional.co.uk/subscribe.aspx?t=2135&eid=037b1581-0376-473b-8655-0f5cd55cc151"><img loading="lazy" class="w-48" src="~assets/img/desktop_pwa.png" alt="Read it on your desktop" /></a>
+                    <a href="https://edition.pagesuite-professional.co.uk//launch.aspx?pbid=f22143ee-b08b-46a7-ab5d-103efddfaa39"><img loading="lazy" class="w-48" src="~assets/img/desktop_pwa.png" alt="Read it on your desktop" /></a>
                   </li>
                   <li class="block my-6">
                     <a href="https://www.lttmagazine.co.uk/issue/831"><img loading="lazy" class="w-48" src="~assets/img/read_pdf.png" alt="Read it as a PDF" /></a>
