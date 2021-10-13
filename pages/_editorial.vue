@@ -300,6 +300,29 @@ export default {
     }
     meta.push(twitterTitle)
 
+    if (this.author.photo) {
+      let twitterCard = {
+        hid: 'twitter-card',
+        name: 'twitter:card',
+        content: 'summary'
+      }
+      meta.push(twitterCard)
+
+      let twitterImage = {
+        hid: 'twitter-image',
+        name: 'twitter:image',
+        content: pkg.homepageURL + this.author.photo
+      }
+      meta.push(twitterImage)
+
+      let twitterImageAlt = {
+        hid: 'twitter-image-alt',
+        name: 'twitter:image:alt',
+        content: 'Photo of ' + this.author.name
+      }
+      meta.push(twitterImageAlt)
+    }
+
     if (this.article.subHeadline) {
       let description = {
         hid: 'description',
@@ -346,9 +369,9 @@ export default {
           "name": pkg.description,
           "logo": {
             "@type": "ImageObject",
-            "url": pkg.homepageURL + '/ltt_google_amp.png',
-            "height": 60,
-            "width": 600
+            "url": pkg.homepageURL + '/local_transport_today_square.png',
+            "height": 480,
+            "width": 480
           }
         },
         "description": this.article.subHeadline

@@ -395,14 +395,14 @@ export default {
         "url": pkg.homepageURL,
         "logo": {
           "@type": "ImageObject",
-          "url": pkg.homepageURL + "/local_transport_today_logo_square_colour.png",
+          "url": pkg.homepageURL + "/local_transport_today_square.png",
           "width": 480,
           "height": 480
         }
       },
       "image": {
         "@type": "ImageObject",
-        "url": pkg.homepageURL + "/local_transport_today_logo_square_colour.png",
+        "url": pkg.homepageURL + "/local_transport_today_square.png",
         "width": 480,
         "height": 480
       },
