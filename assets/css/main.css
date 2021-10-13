@@ -177,8 +177,8 @@ img {
 
 @media only screen and (prefers-color-scheme: dark) {
   .commento-root input[type=text], .commento-root textarea {
-    background-color: #000000;
-    color: #aeadae;
+    background-color: #000000 !important;
+    color: #aeadae !important;
   }
 }
 
