@@ -175,6 +175,13 @@ img {
 
 /*! purgecss start ignore */
 
+@media only screen and (prefers-color-scheme: dark) {
+  .commento-root input[type=text], .commento-root textarea {
+    background-color: #000000;
+    color: #aeadae;
+  }
+}
+
 .alert-box {
   background-color: rgba(0, 0, 0, 0.05);
   position: relative;
@@ -1677,11 +1684,6 @@ pre {
 
   .dark-mode-inline {
     display: inline-block;
-  }
-
-  .commento-root input[type=text], .commento-root textarea {
-    background-color: #000000;
-    color: #aeadae;
   }
 }
 

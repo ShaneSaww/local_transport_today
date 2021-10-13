@@ -99,7 +99,7 @@
           <div class="checkbox_switch pb-8" aria-live="polite" aria-atomic="false" aria-relevant="text">
             <label><input @click="toggleGoogleAnalyticsToggle()" type="checkbox" aria-labelledby="toggle-google-analytics" name="enableGoogleAnalytics" v-model="enableGoogleAnalytics" /><span v-if="enableGoogleAnalytics" class="pl-2 leading-tight checkbox-label font-sans text-base ltt-headline font-bold hover:underline focus:underline">Enabled</span><span v-else class="pl-2 leading-tight checkbox-label font-sans text-base ltt-headline font-bold hover:underline focus:underline">Disabled</span></label>
           </div>
-          <p>If you’d like to go one step further and opt out of being tracked by <em>Google Analytics</em> for all websites, then you can visit <a href="https://tools.google.com/dlpage/gaoptout/" class="no-underline hover:underline focus:underline">Google’s opt-out page</a>.</p>
+          <p>If you’d like to go one step further and opt out of being tracked by <em>Google Analytics</em> for <strong>all</strong> websites, then you can visit <a href="https://tools.google.com/dlpage/gaoptout/" class="no-underline hover:underline focus:underline">Google’s opt-out page</a>.</p>
         </div>
       </div>
     </div>
