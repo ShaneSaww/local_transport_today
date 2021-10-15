@@ -97,7 +97,7 @@
                     <a href="https://edition.pagesuite-professional.co.uk//launch.aspx?pbid=f22143ee-b08b-46a7-ab5d-103efddfaa39"><img loading="lazy" class="w-48" src="~assets/img/desktop_pwa.png" alt="Read it on your desktop" /></a>
                   </li>
                   <li class="block my-6">
-                    <a href="https://www.lttmagazine.co.uk/issue/831"><img loading="lazy" class="w-48" src="~assets/img/read_pdf.png" alt="Read it as a PDF" /></a>
+                    <a href="https://www.lttmagazine.co.uk/issue/832"><img loading="lazy" class="w-48" src="~assets/img/read_pdf.png" alt="Read it as a PDF" /></a>
                   </li>
                 </ul>
               </aside>
