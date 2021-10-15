@@ -9,7 +9,7 @@ public_folder: '/images/uploads' # The src attribute for uploaded media will beg
 
 site_url: https://discussion.lttmagazine.co.uk
 display_url: https://discussion.lttmagazine.co.uk
-logo_url: '/ltt_logo.svg'
+logo_url: '/ltt_logo_cms.png'
 
 collections: # A list of collections the CMS should be able to edit
   - label: 'Pages'
