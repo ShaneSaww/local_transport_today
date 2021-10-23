@@ -41,7 +41,7 @@ collections: # A list of collections the CMS should be able to edit
             hint: "Use this to provide guidelines/instructions for comment policy."
             widget: "object"
             fields:
-              - {label: 'Display the Comments Statement?', name: 'display', widget: 'boolean', default: false}
+              - {label: 'Display the Comments Statement?', name: 'display', widget: 'boolean', default: false, required: false}
               - {label: 'Headline', name: 'headline', widget: 'string', required: false}
               - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list'], editor_components: []}
       - file: 'assets/content/settings/home.json'
@@ -141,8 +141,8 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: true
     fields:
-      - {label: 'Publish Editorial Online?', name: 'published', widget: 'boolean', default: false}
-      - {label: 'Allow User Comments?', name: 'allowComments', widget: 'boolean', default: true}
+      - {label: 'Publish Editorial Online?', name: 'published', widget: 'boolean', default: false, required: false}
+      - {label: 'Allow User Comments?', name: 'allowComments', widget: 'boolean', default: true, required: false}
       - {label: 'Headline', name: 'headline', widget: 'string', required: true}
       - {label: 'Sub-Headline', name: 'subHeadline', widget: 'string', required: true, hint: 'Tip: An enticing sub-headline can be found from the blockquote inside the print publication edition.'}
       - {label: 'Categories', name: 'categories', widget: 'relation', required: true, hint: 'Multiple categories allowed.', collection: 'categories', display_fields: ['name'], search_fields: ['name'], value_field: 'name', multiple: true, options_length: 20}
