@@ -16,7 +16,7 @@
             <li class="pr-4 lg:pr-8 inline-block">Viewpoint by <nuxt-link :to="'/author/' + slugify(article.author) + '/'" itemprop="author" rel="author" class="ltt-text-red no-underline hover:underline focus:underline">{{ article.author }}</nuxt-link></li>
             <li class="pr-4 lg:pr-8 inline-block"><time itemprop="pubdate" :datetime="article.datePublished" :aria-label="dayjsNuxt(article.datePublished, 'D MMMM YYYY')">{{ dayjsNuxt(article.datePublished, 'D MMM YYYY') }}</time></li>
             <li :aria-label="article.estimatedReadingTimeMinutes + ' minute read'" class="pr-4 lg:pr-8 inline-block">{{ article.estimatedReadingTimeMinutes }} min read</li>
-            <li v-if="article.issue" class="inline-block">Featured inside <abbr title="Local Transport Today">LTT</abbr> issue № {{ article.issue }}</li>
+            <li v-if="article.issue" class="inline-block"><a href="https://www.lttmagazine.co.uk/edition" class="ltt-text-red no-underline hover:underline focus:underline">Featured inside <abbr title="Local Transport Today">LTT</abbr> issue № {{ article.issue }}</a></li>
           </ul>
         </aside>
         <div v-html="parseMarkdown(article.body)" class="dropcap content-text-spacing font-serif text-gray-333 leading-normal text-base md:text-xl lg:text-2xl"></div>

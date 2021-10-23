@@ -31,6 +31,19 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: false
     files:
+      - file: 'assets/content/settings/editorials.json'
+        label: 'Editorial Pages'
+        name: 'editorials'
+        fields:
+          - label: "Comments Statement"
+            name: "commentsStatement"
+            collapsed: false
+            hint: "Use this to provide guidelines/instructions for comment policy."
+            widget: "object"
+            fields:
+              - {label: 'Display the Comments Statement?', name: 'display', widget: 'boolean', default: false}
+              - {label: 'Headline', name: 'headline', widget: 'string', required: false}
+              - {label: 'Body', name: 'body', widget: 'markdown', required: false, buttons: ['bold', 'italic', 'link', 'heading-three', 'bulleted-list', 'numbered-list'], editor_components: []}
       - file: 'assets/content/settings/home.json'
         label: 'Home Page'
         name: 'home'

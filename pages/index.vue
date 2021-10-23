@@ -85,7 +85,7 @@
                 </ul>
               </aside>
               <aside role="complementary" class="no-print">
-                <h2 id="download-ltt" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><nuxt-link class="red-block inline-block" to="/author/">LTT Subscription<br /><span class="text-white opacity-75 text-xs">released fortnightly</span></nuxt-link></h2>
+                <h2 id="download-ltt" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><a class="red-block inline-block" href="https://www.lttmagazine.co.uk">LTT Subscription<br /><span class="text-white opacity-75 text-xs">released fortnightly</span></a></h2>
                 <ul role="list" aria-labelledby="download-ltt" class="list-none pl-0">
                   <li class="block my-6">
                     <a href="https://apps.apple.com/tt/app/local-transport-today/id1532204990"><img loading="lazy" class="w-48" src="~assets/img/appstore.png" alt="Download on the App Store" /></a>
