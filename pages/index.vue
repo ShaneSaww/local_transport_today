@@ -85,8 +85,9 @@
                 </ul>
               </aside>
               <aside role="complementary" class="no-print">
-                <h2 id="download-ltt" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><a class="red-block inline-block" href="https://www.lttmagazine.co.uk">LTT Subscription<br /><span class="text-white opacity-75 text-xs">released fortnightly</span></a></h2>
-                <ul role="list" aria-labelledby="download-ltt" class="list-none pl-0">
+                <h2 id="download-ltt" class="w-full text-left text-base leading-none font-sans ltt-headline mb-8"><a class="red-block inline-block" href="https://www.lttmagazine.co.uk">Are you an LTT reader?<br /><span class="text-white opacity-75 text-xs">learn about our subscription options</span></a></h2>
+                <a href="https://www.lttmagazine.co.uk"><img loading="lazy" class="w-60" src="~assets/img/lttmagazine_safari_light.jpg" alt="LTT magazine" /></a>
+                <!-- <ul role="list" aria-labelledby="download-ltt" class="list-none pl-0">
                   <li class="block my-6">
                     <a href="https://apps.apple.com/tt/app/local-transport-today/id1532204990"><img loading="lazy" class="w-48" src="~assets/img/appstore.png" alt="Download on the App Store" /></a>
                   </li>
@@ -99,7 +100,7 @@
                   <li class="block my-6">
                     <a href="https://www.lttmagazine.co.uk/issue/832"><img loading="lazy" class="w-48" src="~assets/img/read_pdf.png" alt="Read it as a PDF" /></a>
                   </li>
-                </ul>
+                </ul> -->
               </aside>
               <!-- <aside role="complementary" class="no-print" aria-live="polite" aria-atomic="false" aria-relevant="additions removals text">
                 <h2 id="your-bookmarks" class="w-full text-left text-base leading-none font-sans ltt-headline my-4"><nuxt-link class="red-block inline-block" to="/myltt#bookmarks">Your Bookmarks<br /><span class="text-white opacity-75 text-xs">{{ bookmarkedEditorials.length === 0 ? 'No' : bookmarkedEditorials.length }} discussion<template v-if="bookmarkedEditorials.length !== 1">s</template> saved</span></nuxt-link></h2>
