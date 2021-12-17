@@ -87,6 +87,7 @@ collections: # A list of collections the CMS should be able to edit
   - label: 'Authors'
     name: 'authors'
     folder: 'assets/content/authors'
+    slug: "{{slug}}"
     format: 'json'
     extension: 'json'
     create: true
@@ -106,6 +107,7 @@ collections: # A list of collections the CMS should be able to edit
   - label: 'Categories'
     name: 'categories'
     folder: 'assets/content/categories'
+    slug: "{{slug}}"
     format: 'json'
     extension: 'json'
     create: true
@@ -120,7 +122,7 @@ collections: # A list of collections the CMS should be able to edit
   - label: 'Editorials'
     name: 'editorials'
     folder: 'assets/content/editorials'
-    #slug: "{{fields.categories}}_{{slug}}_{{fields.author}}"
+    slug: "{{slug}}"
     format: 'json'
     extension: 'json'
     create: true
