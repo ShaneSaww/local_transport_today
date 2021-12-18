@@ -1,3 +1,11 @@
+[dev]
+  command = "npm run dev"
+
+[build]
+  command = "npm run generate"
+  publish = "dist"
+  functions = "functions"
+
 [[plugins]]
   package = 'netlify-plugin-search-index'
   [plugins.inputs]

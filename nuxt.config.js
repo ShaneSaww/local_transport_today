@@ -94,7 +94,9 @@ export default {
   },
 
   env: {
-    googleAnalyticsID: 'UA-166386469-1'
+    googleAnalyticsID: 'UA-166386469-1',
+    magicPublishableApiKey: `${process.env.MAGIC_PUBLISHABLE_API_KEY}`,
+    urlServerlessFunctions: process.env.NODE_ENV !== 'production' ? 'http://localhost:8888' : pkg.homepageURL
   },
 
   serverMiddleware: [

@@ -82,7 +82,306 @@
           </div>
         </aside>
       </article>
-      <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+
+      <section id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+        <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">
+          Feedback and Contributions
+        </h2>
+
+        <p v-if="displayCommentsErrorMessage" class="text-gray-333 mb-4 leading-normal">
+          Sorry, there is a problem loading the comments from our database. Please wait a few minutes before refreshing the page, thank you.
+        </p>
+
+        <div v-else-if="loadingComments" class="text-gray-333 font-bold flex flex-row items-center">
+          <div class="flex items-center pr-2">
+            <svg aria-hidden="true" focusable="false" class="loader h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10,3 C6.13400675,3 3,6.13400675 3,10 C3,11.9329966 3.78350169,13.6829966 5.05025253,14.9497475 L6.46446609,13.5355339 C5.55964406,12.6307119 5,11.3807119 5,10 C5,7.23857625 7.23857625,5 10,5 L10,3 L10,3 Z M14.9497475,5.05025253 C16.2164983,6.31700338 17,8.06700338 17,10 C17,13.8659932 13.8659932,17 10,17 L10,15 C12.7614237,15 15,12.7614237 15,10 C15,8.61928813 14.4403559,7.36928813 13.5355339,6.46446609 L14.9497475,5.05025253 L14.9497475,5.05025253 Z M10,20 L6,16 L10,12 L10,20 L10,20 Z M10,8 L14,4 L10,0 L10,8 L10,8 Z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <p>Loading…</p>
+        </div>
+
+        <template v-else>
+          <p v-if="comments.length === 0" class="text-gray-333 mb-4">
+            No comments yet, so why not be the first?…
+          </p>
+          <template v-if="comments.length > 0">
+            <transition-group
+              name="comment-transition"
+              tag="ul"
+              role="list"
+              class="mb-4 pl-0"
+              aria-live="assertive"
+              aria-atomic="true"
+              aria-relevant="all"
+              enter-active-class="transition ease-in-out duration-1000 transform"
+              enter-class="opacity-50"
+              enter-to-class="opacity-100"
+              leave-active-class="transition ease-in-out duration-75 transform"
+              leave-class="opacity-100"
+              leave-to-class="opacity-50"
+            >
+              <li
+                v-for="(comment, index) in comments"
+                :key="comment._id"
+                :ref="'comment-' + comment._id"
+                class="comment-transition flex flex-col py-4 border-b border-solid border-light-gray"
+              >
+                <h3 class="text-gray-333 font-bold text-base leading-normal">
+                  {{ comment.user.forename }} {{ comment.user.surname }} ({{ comment.user.occupation }}, {{ comment.user.organisation }})
+                </h3>
+                <p class="whitespace-pre-line font-serif text-gray-333 leading-normal text-base">{{ comment.message }}</p>
+                <p class="text-sm ltt-text-gray font-serif font-light md:font-medium leading-loose">
+                  <time :datetime="dayjsNuxt(comment.timestamp, 'YYYY-MM-DD')" :aria-label="dayjsNuxt(comment.timestamp, 'D MMMM YYYY')">{{ dayjsNuxt(comment.timestamp, 'D MMM YYYY') }}</time>
+                </p>
+              </li>
+            </transition-group>
+          </template>
+        </template>
+      </section>
+
+      <section v-if="!displayCommentsErrorMessage" id="contribution" class="no-print bg-light-gray sm:rounded-lg font-serif w-full sm:mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
+
+        <div class="p-6 sm:p-8" aria-live="polite" aria-atomic="true" aria-relevant="all">
+          <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mb-4 text-xl md:text-2xl">
+            {{ displayLoginForm ? 'Sign-in and join the discussion with ' + author.name : 'Join the discussion with ' + author.name }}
+          </h2>
+
+          <div v-if="loading" class="text-gray-333 font-bold flex flex-row items-center">
+            <div class="flex items-center pr-2">
+              <svg aria-hidden="true" focusable="false" class="loader h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10,3 C6.13400675,3 3,6.13400675 3,10 C3,11.9329966 3.78350169,13.6829966 5.05025253,14.9497475 L6.46446609,13.5355339 C5.55964406,12.6307119 5,11.3807119 5,10 C5,7.23857625 7.23857625,5 10,5 L10,3 L10,3 Z M14.9497475,5.05025253 C16.2164983,6.31700338 17,8.06700338 17,10 C17,13.8659932 13.8659932,17 10,17 L10,15 C12.7614237,15 15,12.7614237 15,10 C15,8.61928813 14.4403559,7.36928813 13.5355339,6.46446609 L14.9497475,5.05025253 L14.9497475,5.05025253 Z M10,20 L6,16 L10,12 L10,20 L10,20 Z M10,8 L14,4 L10,0 L10,8 L10,8 Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p>Loading…</p>
+          </div>
+
+          <div v-else>
+
+            <p v-if="displayMagicErrorMessage" class="text-base leading-normal text-gray-333 mb-4">
+              Sorry, our server is having a temporary problem connecting to our authentication provider. Please wait a few minutes before reloading the page, thank you.
+            </p>
+
+            <p v-if="displayDatabaseErrorMessage" class="text-base leading-normal text-gray-333 mb-4">
+              Sorry, our server had a problem submitting your comment onto our database. This may be a temporary problem, so please wait a few minutes before submitting again, thank you.
+            </p>
+
+            <form v-if="displayLoginForm" v-on:submit.prevent="validateLoginForm()">
+
+              <div class="sr-only" aria-hidden="true">
+                <label for="website">Please ignore this text box. It is used to detect spammers. If you enter anything into this text box, your message will not be sent.</label>
+                <input v-model="form.honeypot" type="text" id="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <label for="email" class="text-base leading-tight">All we need is your email address <em>(no password required).</em></label>
+
+              <div class="mt-4 flex flex-col md:flex-row">
+                <div class="w-full pb-2 md:pb-0 md:pr-2">
+                  <input
+                    id="email"
+                    v-model.trim="form.email"
+                    type="email"
+                    placeholder="name@company.com"
+                    required="required"
+                    aria-required="true"
+                    autocomplete="email"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    enterkeyhint="done"
+                    class="form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                  >
+                </div>
+
+                <div class="w-full md:pl-2">
+                  <span class="flex rounded-md shadow-sm">
+                    <button type="submit" :aria-disabled="loading ? 'true' : undefined" :class="{ 'cursor-wait opacity-75': loading }" class="w-full flex sm:inline-flex py-4 px-6 border border-transparent text-base leading-tight font-medium rounded-lg text-white ltt-bg-red hover:ltt-bg-red-dark focus:outline-none focus:ltt-bg-red-dark transition duration-150 ease-in-out flex-row justify-center items-center">
+                      <!-- <div class="flex items-center pr-5">
+                        <svg aria-hidden="true" focusable="false" :class="loading ? 'visible' : 'invisible'" class="loader h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M10,3 C6.13400675,3 3,6.13400675 3,10 C3,11.9329966 3.78350169,13.6829966 5.05025253,14.9497475 L6.46446609,13.5355339 C5.55964406,12.6307119 5,11.3807119 5,10 C5,7.23857625 7.23857625,5 10,5 L10,3 L10,3 Z M14.9497475,5.05025253 C16.2164983,6.31700338 17,8.06700338 17,10 C17,13.8659932 13.8659932,17 10,17 L10,15 C12.7614237,15 15,12.7614237 15,10 C15,8.61928813 14.4403559,7.36928813 13.5355339,6.46446609 L14.9497475,5.05025253 L14.9497475,5.05025253 Z M10,20 L6,16 L10,12 L10,20 L10,20 Z M10,8 L14,4 L10,0 L10,8 L10,8 Z" clip-rule="evenodd" />
+                        </svg>
+                      </div> -->
+                      <div class="flex-1">
+                        Sign-in <span class="hidden sm:inline-block">with Email</span>
+                        <span aria-live="assertive" aria-atomic="true" aria-relevant="additions text" class="sr-only">
+                          {{ loading ? 'Please wait' : '' }}
+                        </span>
+                      </div>
+                      <!-- <div class="w-10"></div> -->
+                    </button>
+                  </span>
+                </div>
+
+              </div>
+
+            </form>
+
+            <form v-if="displayCommentForm" v-on:submit.prevent="validateCommentForm()">
+
+              <div class="sr-only" aria-hidden="true">
+                <label for="website">Please ignore this text box. It is used to detect spammers. If you enter anything into this text box, your message will not be sent.</label>
+                <input v-model="form.honeypot" type="text" id="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <p class="text-base leading-tight">
+                <em>
+                  <template v-if="!user.forename || !user.surname">
+                    For accountability reasons all fields are required.
+                  </template>
+                  Please keep your comments constructive.
+                </em>
+              </p>
+
+              <div v-if="!user.forename || !user.surname" class="mt-8 flex flex-col md:flex-row">
+                <div class="w-full pb-2 md:pb-0 md:pr-2">
+                  <label for="forename" class="text-base leading-tight">Forename</label>
+                  <input
+                    id="forename"
+                    v-model.trim="form.forename"
+                    type="text"
+                    required="required"
+                    aria-required="true"
+                    autocomplete="given-name"
+                    autocorrect="off"
+                    autocapitalize="words"
+                    spellcheck="false"
+                    enterkeyhint="next"
+                    class="mt-1 form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                  >
+                </div>
+
+                <div class="w-full mt-2 md:mt-0 md:pl-2">
+                  <label for="surname" class="text-base leading-tight">Surname</label>
+                  <input
+                    id="surname"
+                    v-model.trim="form.surname"
+                    type="text"
+                    required="required"
+                    aria-required="true"
+                    autocomplete="family-name"
+                    autocorrect="off"
+                    autocapitalize="words"
+                    spellcheck="false"
+                    enterkeyhint="next"
+                    class="mt-1 form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                  >
+                </div>
+              </div>
+
+              <div v-if="!user.occupation || !user.organisation" class="mt-4 flex flex-col md:flex-row">
+                <div class="w-full pb-2 md:pb-0 md:pr-2">
+                  <label for="occupation" class="text-base leading-tight">Occupation</label>
+                  <input
+                    id="occupation"
+                    v-model.trim="form.occupation"
+                    type="text"
+                    required="required"
+                    aria-required="true"
+                    autocomplete="organization-title"
+                    autocorrect="off"
+                    autocapitalize="words"
+                    spellcheck="true"
+                    enterkeyhint="next"
+                    class="mt-1 form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                  >
+                </div>
+
+                <div class="w-full mt-2 md:mt-0 md:pl-2">
+                  <label for="organisation" class="text-base leading-tight">Organisation</label>
+                  <input
+                    id="organisation"
+                    v-model.trim="form.organisation"
+                    type="text"
+                    required="required"
+                    aria-required="true"
+                    autocomplete="organization"
+                    autocorrect="off"
+                    autocapitalize="words"
+                    spellcheck="false"
+                    enterkeyhint="next"
+                    class="mt-1 form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                  >
+                </div>
+
+              </div>
+
+              <div class="mt-4 flex flex-col">
+                <label
+                  for="message"
+                  :class="!user.forename || !user.surname ? 'text-base leading-tight' : 'sr-only'"
+                >Message</label>
+
+                <textarea
+                  id="message"
+                  v-model.trim="form.message"
+                  required="required"
+                  aria-required="true"
+                  rows="10"
+                  autocomplete="off"
+                  autocorrect="on"
+                  autocapitalize="sentences"
+                  spellcheck="true"
+                  enterkeyhint="send"
+                  class="mt-1 form-input block w-full px-6 py-4 border border-gray-800 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:border-gray-333 text-base leading-tight font-medium"
+                ></textarea>
+              </div>
+
+              <div class="mt-4 block md:inline-block">
+                <span class="flex rounded-md shadow-sm">
+                  <button type="submit" :aria-disabled="loading ? 'true' : undefined" :class="{ 'cursor-wait opacity-75': loading }" class="w-full flex sm:inline-flex py-4 px-6 border border-transparent text-base leading-tight font-medium rounded-lg text-white ltt-bg-red hover:ltt-bg-red-dark focus:outline-none focus:ltt-bg-red-dark transition duration-150 ease-in-out flex-row justify-center items-center">
+                    <!-- <div class="flex items-center pr-5">
+                      <svg aria-hidden="true" focusable="false" :class="loading ? 'visible' : 'invisible'" class="loader h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10,3 C6.13400675,3 3,6.13400675 3,10 C3,11.9329966 3.78350169,13.6829966 5.05025253,14.9497475 L6.46446609,13.5355339 C5.55964406,12.6307119 5,11.3807119 5,10 C5,7.23857625 7.23857625,5 10,5 L10,3 L10,3 Z M14.9497475,5.05025253 C16.2164983,6.31700338 17,8.06700338 17,10 C17,13.8659932 13.8659932,17 10,17 L10,15 C12.7614237,15 15,12.7614237 15,10 C15,8.61928813 14.4403559,7.36928813 13.5355339,6.46446609 L14.9497475,5.05025253 L14.9497475,5.05025253 Z M10,20 L6,16 L10,12 L10,20 L10,20 Z M10,8 L14,4 L10,0 L10,8 L10,8 Z" clip-rule="evenodd" />
+                      </svg>
+                    </div> -->
+                    <div class="flex-1">
+                      Submit <span class="hidden sm:inline-block">your contribution</span>
+                      <span aria-live="assertive" aria-atomic="true" aria-relevant="additions text" class="sr-only">
+                        {{ loading ? 'Please wait' : '' }}
+                      </span>
+                    </div>
+                    <!-- <div class="w-10"></div> -->
+                  </button>
+                </span>
+              </div>
+
+              <div aria-live="assertive" aria-atomic="true" aria-relevant="additions text">
+                <div v-if="emptyFields" role="alert" class="opacity-black-01 text-black font-bold p-4 mt-4">
+                  <p>Please fill-in all the fields.</p>
+                </div>
+              </div>
+
+            </form>
+
+            <p v-if="displayThankYouMessage" class="text-base leading-normal text-gray-333 mb-4">
+              Your comments have been submitted. Thank you for your contribution.
+            </p>
+
+          </div>
+        </div>
+
+        <div v-if="!loading" class="opacity-black-005 py-4 px-6 sm:px-8 flex flex-row sm:rounded-b-lg">
+          <p v-if="displayLoginForm" class="italic text-base leading-tight"><strong>How does this work?</strong> - We’ll email you a magic link for a password-free sign in.</p>
+
+          <p v-if="displayCommentForm" class="italic text-base leading-tight font-bold">
+            <span class="block md:inline-block">
+              Logged in as {{ user.forename && user.surname ? user.forename + ' ' + user.surname : user.email }}.
+            </span>
+            <span class="block md:inline-block">
+              Not you? - <button type="button" @click="logout()" class="ltt-text-red font-serif font-medium leading-loose italic text-base no-underline hover:underline focus:underline">Logout</button>
+            </span>
+          </p>
+        </div>
+
+      </section>
+
+      <div aria-live="assertive" aria-atomic="true" aria-relevant="additions text">
+        <div v-if="error" role="alert" class="max-w-lg sm:mx-auto opacity-black-02 text-white p-4 mb-8">
+          <p class="text-center">{{ error }}</p>
+        </div>
+      </div>
+
+      <!-- <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Feedback and Contributions</h2>
         <p class="text-gray-333 mb-4">Login using social media or create an account to join the discussion with {{ author.name }}.</p>
         <script defer
@@ -93,7 +392,9 @@
           :data-page-id="'/' + article.slug + '/'">
         </script>
         <div id="commento" class="font-serif text-gray-333 leading-normal text-base md:text-xl"></div>
-      </section>
+      </section> -->
+
+
       <section v-if="authorEditorials.length > 0" id="further-contributions" class="no-print w-full mx-6 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red my-8 text-xl md:text-2xl">Further contributions from {{ article.author }}</h2>
         <div class="flex flex-col md:flex-row md:flex-wrap md:justify-between">
@@ -144,13 +445,37 @@ import helperMarkdown from '~/assets/js/markdown.js'
 import pkg from '~/package'
 import { mapMutations } from 'vuex'
 
+import { Magic } from 'magic-sdk'
+
 export default {
   data: function () {
     return {
       displayHero: true,
       articleSlug: this.$route.params.editorial,
       homepageURL: pkg.homepageURL,
-      devStatus: process.env.NODE_ENV
+      devStatus: process.env.NODE_ENV,
+      magicClient: null,
+      displayLoginForm: false,
+      displayCommentForm: false,
+      displayMagicErrorMessage: false,
+      displayDatabaseErrorMessage: false,
+      displayCommentsErrorMessage: false,
+      displayThankYouMessage: false,
+      form: {
+        email: null,
+        honeypot: null,
+        forename: null,
+        surname: null,
+        occupation: null,
+        organisation: null,
+        message: null
+      },
+      user: {},
+      comments: [],
+      loadingComments: false,
+      loading: false,
+      error: null,
+      emptyFields: false
     }
   },
 
@@ -223,6 +548,9 @@ export default {
 
   mounted() {
     //this.updateBookmarkState()
+
+    this.loadComments(this.articleSlug)
+    this.loadMagicAuth()
   },
 
   computed: {
@@ -268,7 +596,219 @@ export default {
     // ...mapMutations({
     //   toggle: 'bookmarks/TOGGLE_BOOKMARK',
     //   updateBookmarkState: 'bookmarks/UPDATE_BOOKMARKS'
-    // })
+    // }),
+
+    async loadComments (postSlug) {
+      this.loadingComments = true
+
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-comments',
+        {
+          postSlug
+        }
+      )
+      .then((response) => {
+        this.comments = this.comments.concat(response.data)
+        this.loadingComments = false
+      })
+      .catch((error) => {
+        this.displayCommentsErrorMessage = true
+        this.loadingComments = false
+        //console.log(error)
+      })
+    },
+
+    async loadMagicAuth () {
+      this.loading = true
+
+      this.magicClient = new Magic(process.env.magicPublishableApiKey, { locale: 'en' })
+
+      try {
+        await this.magicClient.preload()
+        this.isUserLoggedIn()
+      } catch {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+      }
+    },
+
+    async isUserLoggedIn () {
+      try {
+        const isLoggedIn = await this.magicClient.user.isLoggedIn()
+
+        isLoggedIn ? this.getMagicUser() : this.loadLoginForm()
+      } catch {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+      }
+    },
+
+    loadLoginForm () {
+      this.loading = false
+      this.displayLoginForm = true
+    },
+
+    async validateLoginForm () {
+      this.loading = true
+      this.displayMagicErrorMessage = false
+
+      this.form.email = this.form.email.toLowerCase()
+
+      if (!this.form.honeypot && this.form.email) {
+        try {
+          await this.magicClient.auth.loginWithMagicLink({ email: this.form.email })
+          this.displayLoginForm = false
+          this.getMagicUser()
+        } catch {
+          this.displayMagicErrorMessage = true
+          this.loading = false
+        }
+      }
+      else {
+        // do some error checking etc
+      }
+    },
+
+    async getMagicUser () {
+      try {
+        const { email, issuer } = await this.magicClient.user.getMetadata()
+        this.getFaunaUser(issuer, email)
+      } catch {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+      }
+    },
+
+    async getFaunaUser (magicId, email) {
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-user',
+        {
+          magicId
+        }
+      )
+      .then((response) => {
+        this.user = response.data ? response.data : { email, magicId }
+
+        this.loading = false
+        this.displayCommentForm = true
+      })
+      .catch((error) => {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+        //console.log(error)
+      })
+    },
+
+    validateCommentForm () {
+      this.emptyFields = false
+
+      if (this.form.honeypot) {
+        return
+      }
+
+      if (!this.user.forename || !this.user.surname) {
+        if (!this.form.forename || !this.form.surname) {
+          this.emptyFields = true
+          return
+        }
+      }
+
+      if (!this.user.occupation || !this.user.organisation) {
+        if (!this.form.occupation || !this.form.organisation) {
+          this.emptyFields = true
+          return
+        }
+      }
+
+      !this.user.forename && !this.user.surname ? this.addUser() : this.addComment()
+    },
+
+    async addUser () {
+
+      this.form.forename = properlyFormatedWords(this.form.forename)
+      this.form.surname = properlyFormatedWords(this.form.surname)
+
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-user',
+        {
+          user: this.user,
+          forename: this.form.forename,
+          surname: this.form.surname,
+          occupation: this.form.occupation,
+          organisation: this.form.organisation
+        }
+      )
+      .then((response) => {
+        Object.assign(this.user, response.data)
+
+        this.addComment()
+      })
+      .catch((error) => {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+        //console.log(error)
+      })
+    },
+
+    async addComment () {
+      this.displayCommentForm = false
+      this.displayDatabaseErrorMessage = false
+      this.loading = true
+
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-comment',
+        {
+          userId: this.user._id,
+          postSlug: this.articleSlug,
+          message: this.form.message,
+          timestamp: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z'
+        }
+      )
+      .then((response) => {
+        this.form.message = null
+        this.updateComments(response.data)
+      })
+      .catch((error) => {
+        this.displayCommentForm = true
+        this.displayDatabaseErrorMessage = true
+        this.loading = false
+        console.log(error)
+
+        this.$nextTick(() => {
+          this.$scrollTo('#contribution', 500, { container: '#main' })
+        })
+      })
+    },
+
+    async updateComments (newComment) {
+      this.loading = false
+      this.displayThankYouMessage = true
+      this.comments.push(newComment)
+
+      this.$nextTick(() => {
+        this.$scrollTo('#contribution', 500, { container: '#main' })
+      })
+    },
+
+    async logout () {
+      this.loading = true
+      this.displayCommentForm = false
+      this.displayMagicErrorMessage = false
+
+      try {
+        await this.magicClient.user.logout()
+
+        this.displayLoginForm = true
+        this.loading = false
+      } catch {
+        this.displayMagicErrorMessage = true
+        this.loading = false
+      }
+    },
+
+    properlyFormatedWords (text) {
+      let words = text.split(' ')
+
+      return words.map((word) => {
+        return word[0].toUpperCase() + word.substring(1).toLowerCase()
+      }).join(" ")
+    }
   },
 
   head() {
