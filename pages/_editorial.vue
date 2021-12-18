@@ -173,7 +173,7 @@
                 <input v-model="form.honeypot" type="text" id="website" tabindex="-1" autocomplete="off" />
               </div>
 
-              <label for="email" class="text-base leading-tight">All we need is your email address <em>(no password required).</em></label>
+              <label for="email" class="text-base leading-tight text-gray-333">All we need is your email address <em>(no password required).</em></label>
 
               <div class="mt-4 flex flex-col md:flex-row">
                 <div class="w-full pb-2 md:pb-0 md:pr-2">
@@ -223,7 +223,7 @@
                 <input v-model="form.honeypot" type="text" id="website" tabindex="-1" autocomplete="off" />
               </div>
 
-              <p class="text-base leading-tight">
+              <p class="text-base leading-tight text-gray-333">
                 <em>
                   <template v-if="!user.forename || !user.surname">
                     For accountability reasons all fields are required.
@@ -234,7 +234,7 @@
 
               <div v-if="!user.forename || !user.surname" class="mt-8 flex flex-col md:flex-row">
                 <div class="w-full pb-2 md:pb-0 md:pr-2">
-                  <label for="forename" class="text-base leading-tight">Forename</label>
+                  <label for="forename" class="text-base leading-tight text-gray-333">Forename</label>
                   <input
                     id="forename"
                     v-model.trim="form.forename"
@@ -251,7 +251,7 @@
                 </div>
 
                 <div class="w-full mt-2 md:mt-0 md:pl-2">
-                  <label for="surname" class="text-base leading-tight">Surname</label>
+                  <label for="surname" class="text-base leading-tight text-gray-333">Surname</label>
                   <input
                     id="surname"
                     v-model.trim="form.surname"
@@ -270,7 +270,7 @@
 
               <div v-if="!user.occupation || !user.organisation" class="mt-4 flex flex-col md:flex-row">
                 <div class="w-full pb-2 md:pb-0 md:pr-2">
-                  <label for="occupation" class="text-base leading-tight">Occupation</label>
+                  <label for="occupation" class="text-base leading-tight text-gray-333">Occupation</label>
                   <input
                     id="occupation"
                     v-model.trim="form.occupation"
@@ -287,7 +287,7 @@
                 </div>
 
                 <div class="w-full mt-2 md:mt-0 md:pl-2">
-                  <label for="organisation" class="text-base leading-tight">Organisation</label>
+                  <label for="organisation" class="text-base leading-tight text-gray-333">Organisation</label>
                   <input
                     id="organisation"
                     v-model.trim="form.organisation"
@@ -308,7 +308,7 @@
               <div class="mt-4 flex flex-col">
                 <label
                   for="message"
-                  :class="!user.forename || !user.surname ? 'text-base leading-tight' : 'sr-only'"
+                  :class="!user.forename || !user.surname ? 'text-base leading-tight text-gray-333' : 'sr-only'"
                 >Message</label>
 
                 <textarea
@@ -346,7 +346,7 @@
               </div>
 
               <div aria-live="assertive" aria-atomic="true" aria-relevant="additions text">
-                <div v-if="emptyFields" role="alert" class="opacity-black-01 text-black font-bold p-4 mt-4">
+                <div v-if="emptyFields" role="alert" class="opacity-black-01 text-gray-333 font-bold p-4 mt-4">
                   <p>Please fill-in all the fields.</p>
                 </div>
               </div>
@@ -361,9 +361,9 @@
         </div>
 
         <div v-if="!loading" class="opacity-black-005 py-4 px-6 sm:px-8 flex flex-row sm:rounded-b-lg">
-          <p v-if="displayLoginForm" class="italic text-base leading-tight"><strong>How does this work?</strong> - We’ll email you a magic link for a password-free sign in.</p>
+          <p v-if="displayLoginForm" class="italic text-base leading-tight text-gray-333"><strong>How does this work?</strong> - We’ll email you a magic link for a password-free sign in.</p>
 
-          <p v-if="displayCommentForm" class="italic text-base leading-tight font-bold">
+          <p v-if="displayCommentForm" class="italic text-base leading-tight font-bold text-gray-333">
             <span class="block md:inline-block">
               Logged in as {{ user.forename && user.surname ? user.forename + ' ' + user.surname : user.email }}.
             </span>
@@ -375,11 +375,11 @@
 
       </section>
 
-      <div aria-live="assertive" aria-atomic="true" aria-relevant="additions text">
+      <!-- <div aria-live="assertive" aria-atomic="true" aria-relevant="additions text">
         <div v-if="error" role="alert" class="max-w-lg sm:mx-auto opacity-black-02 text-white p-4 mb-8">
           <p class="text-center">{{ error }}</p>
         </div>
-      </div>
+      </div> -->
 
       <!-- <section v-if="article.allowComments && devStatus === 'production'" id="comments" class="no-print font-serif w-full mx-6 mb-8 lg:mx-4 max-w-sm md:max-w-lg border-t border-solid border-light-gray">
         <h2 class="font-sans font-extrabold text-left leading-tight md:leading-tighter ltt-text-red mt-8 mb-4 text-xl md:text-2xl">Feedback and Contributions</h2>
@@ -474,7 +474,7 @@ export default {
       comments: [],
       loadingComments: false,
       loading: false,
-      error: null,
+      //error: null,
       emptyFields: false
     }
   },
@@ -716,6 +716,11 @@ export default {
           this.emptyFields = true
           return
         }
+      }
+
+      if (!this.form.message) {
+        this.emptyFields = true
+        return
       }
 
       !this.user.forename && !this.user.surname ? this.addUser() : this.addComment()
