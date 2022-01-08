@@ -6,6 +6,7 @@ const path = require('path')
 import axios from 'axios'
 import pageRoutes from './helpers/generateRoutes' // page routes are generated here
 import generateFeed from './helpers/generateFeed' // RSS feed is generated here
+import generateJson from './helpers/generateJson' // JSON feed is generated here
 
 class TailwindExtractor {
   static extract(content) {
@@ -158,6 +159,14 @@ export default {
       },
       cacheTime: 1000 * 60 * 15,
       type: 'rss2'
+    },
+    {
+      path: '/feed.json',
+      async create(feed) {
+        return await generateJson(feed)
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'json1'
     }
   ],
 
