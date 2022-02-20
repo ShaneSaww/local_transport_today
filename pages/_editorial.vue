@@ -601,7 +601,7 @@ export default {
     async loadComments (postSlug) {
       this.loadingComments = true
 
-      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-comments',
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-comments-cache',
         {
           postSlug
         }
@@ -679,7 +679,7 @@ export default {
     },
 
     async getFaunaUser (magicId, email) {
-      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-user',
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-get-user-cache',
         {
           magicId
         }
@@ -731,7 +731,7 @@ export default {
       this.form.forename = properlyFormatedWords(this.form.forename)
       this.form.surname = properlyFormatedWords(this.form.surname)
 
-      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-user',
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-user-cache',
         {
           user: this.user,
           forename: this.form.forename,
@@ -757,7 +757,7 @@ export default {
       this.displayDatabaseErrorMessage = false
       this.loading = true
 
-      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-comment',
+      await this.$axios.post(process.env.urlServerlessFunctions + '/.netlify/functions/faunadb-add-comment-cache',
         {
           userId: this.user._id,
           postSlug: this.articleSlug,

@@ -1,7 +1,7 @@
 
-const axios = require('axios');
-const print = require('graphql').print;
-const gql = require('graphql-tag');
+const axios = require('axios')
+const print = require('graphql').print
+const gql = require('graphql-tag')
 
 exports.handler = async function(event, context) {
 
