@@ -141,7 +141,7 @@ collections: # A list of collections the CMS should be able to edit
       - label: 'Author'
         field: author
     editor:
-      preview: true
+      preview: false
     fields:
       - {label: 'Publish Editorial Online?', name: 'published', widget: 'boolean', default: false, required: false}
       - {label: 'Allow User Comments?', name: 'allowComments', widget: 'boolean', default: true, required: false}
