@@ -872,7 +872,7 @@ export default {
     let twitterData2 = {
       hid: 'twitter-data-2',
       name: 'twitter:data2',
-      content: this.article.estimatedReadingTimeMinutes
+      content: this.article.estimatedReadingTimeMinutes + ' min read'
     }
     meta.push(twitterData2)
 
