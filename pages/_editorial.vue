@@ -848,6 +848,34 @@ export default {
     }
     meta.push(twitterTitle)
 
+    let twitterLabel1 = {
+      hid: 'twitter-label-1',
+      name: 'twitter:label1',
+      content: 'Written by'
+    }
+    meta.push(twitterLabel1)
+
+    let twitterData1 = {
+      hid: 'twitter-data-1',
+      name: 'twitter:data1',
+      content: this.author.name
+    }
+    meta.push(twitterData1)
+
+    let twitterLabel2 = {
+      hid: 'twitter-label-2',
+      name: 'twitter:label2',
+      content: 'Estimated reading time'
+    }
+    meta.push(twitterLabel2)
+
+    let twitterData2 = {
+      hid: 'twitter-data-2',
+      name: 'twitter:data2',
+      content: this.article.estimatedReadingTimeMinutes
+    }
+    meta.push(twitterData2)
+
     if (this.author.photo) {
       let twitterCard = {
         hid: 'twitter-card',
