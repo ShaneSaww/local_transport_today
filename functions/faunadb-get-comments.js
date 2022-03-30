@@ -5,6 +5,8 @@ const gql = require('graphql-tag')
 
 exports.handler = async function(event, context) {
 
+  let test = 'Please ignore. This is being added to force AWS to recompile the lambda function.'
+
   const { FAUNA_READONLY_KEY, FAUNA_GRAPHQL_URL } = process.env
 
   const body = JSON.parse(event.body)
